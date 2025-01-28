@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -45,26 +46,13 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
 
     public Vector3 FindNearestEnemy(Vector3 turretPos)
     {
-        RaycastHit[] hits = Physics.SphereCastAll(turretPos, 3f, Vector3.one, LayerMask.NameToLayer("Enemy"));
-        int iteration = 0;
+        if (currentEnemies.Count == 0) return new Vector3(0, 0, 0);
         
-        while (hits.Length == 0)
-        {
-            if (iteration++ > 20)
-            {
-                Debug.LogWarning("Y po d'ennemies");
-                return Vector3.zero;
-            }
-            
-            hits = Physics.SphereCastAll(turretPos, 3f + iteration, Vector3.one, LayerMask.NameToLayer("Enemy"));
-        }
-
         float bestDist = Mathf.Infinity;
         int bestIndex = 0;
-        for (int i = 0; i < hits.Length; i++)
+        for (int i = 0; i < currentEnemies.Count; i++)
         {
-            float dist = Vector2.Distance(new Vector2(turretPos.x, turretPos.z),
-                new Vector2(hits[i].point.x, hits[i].point.z));
+            float dist = currentEnemies[i].transform.position.z;
             
             if (dist < bestDist)
             {
@@ -73,7 +61,7 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
             }
         }
 
-        return hits[bestIndex].point;
+        return currentEnemies[bestIndex].transform.position;
     }
     
     
@@ -90,7 +78,7 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
     public void KillEnemy(EnemyMaster killedEnemy)
     {
         currentEnemies.Remove(killedEnemy);
-        Destroy(killedEnemy);
+        Destroy(killedEnemy.gameObject);
     }
     
 }

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletsDamages: 3
   fireRate: 1
-  bulletSpeed: 4
+  bulletSpeed: 6

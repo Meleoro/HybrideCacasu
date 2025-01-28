@@ -21,8 +21,9 @@ public class Bullet : MonoBehaviour
         transform.position += Time.deltaTime * speed * moveDir;
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.GetComponentInParent<EnemyMaster>().TakeDamage(damages);
+        //other.gameObject.GetComponentInParent<EnemyMaster>().TakeDamage(damages);
+        Destroy(gameObject);
     }
 }
