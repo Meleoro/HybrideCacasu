@@ -238,6 +238,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "utilities": {
+      "version": "https://github.com/Meleoro/Utilities.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "651ecc5224d43d638cf70c5881f42eb0f42977b1"
+    },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
       "depth": 0,
