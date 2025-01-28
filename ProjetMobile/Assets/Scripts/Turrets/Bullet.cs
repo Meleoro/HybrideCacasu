@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //other.gameObject.GetComponentInParent<EnemyMaster>().TakeDamage(damages);
+        other.gameObject.GetComponentInParent<EnemyMaster>().TakeDamage(damages);
         Destroy(gameObject);
     }
 }
