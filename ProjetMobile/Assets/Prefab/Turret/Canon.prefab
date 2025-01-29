@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Socle
       objectReference: {fileID: 0}
+    - target: {fileID: 132372253720954067, guid: 16585c816a250ae41a82537c359bc40c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0179
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 16585c816a250ae41a82537c359bc40c, type: 3}
       propertyPath: m_Name
       value: SM_Canon
