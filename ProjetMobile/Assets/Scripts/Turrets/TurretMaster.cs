@@ -24,9 +24,11 @@ public class TurretMaster : MonoBehaviour
 
     [Header("Private Infos")] 
     private TurretModificatorValues modificatorValues = new TurretModificatorValues(1, 1);
+    private Vector3 aimedPoint;
 
     [Header("References")] 
     [SerializeField] private Bullet bulletPrefab;
+    [SerializeField] private ParticleSystem shootVFX;
 
     
     private void Start()
@@ -43,7 +45,7 @@ public class TurretMaster : MonoBehaviour
 
     private void RotateTurret()
     {
-        Vector3 aimedPoint = EnemiesManager.Instance.FindNearestEnemy(transform.position);
+        aimedPoint = EnemiesManager.Instance.FindNearestEnemy(transform.position);
 
         if (aimedPoint != Vector3.zero)
         {
@@ -66,7 +68,8 @@ public class TurretMaster : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(turretData.shootCooldown / modificatorValues.fireRateMultiplier);
-            
+
+            if (aimedPoint == Vector3.zero) continue;
             Shoot(EnemiesManager.Instance.FindNearestEnemy(transform.position));
         }
     }
@@ -78,6 +81,8 @@ public class TurretMaster : MonoBehaviour
             Bullet newBullet = Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
             newBullet.InitialiseBullet(aimedPoint + new Vector3(Random.Range(-turretData.shootDispersion, turretData.shootDispersion), 0, 0), turretData);
         }
+        
+        shootVFX.Play();
     }
 
     #endregion
