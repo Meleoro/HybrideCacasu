@@ -8,8 +8,8 @@ public class TurretSlot : MonoBehaviour
     [SerializeField] private Color dataColor; 
     
     [Header("Private Infos")] 
-    [SerializeField] private ModificatorData currentData;
-    [SerializeField] private int modificatorStackAmount;
+    [SerializeField] private ModificatorData currentModificator;
+    [SerializeField] private int currentStackAmount;
     
     [Header("References")] 
     [SerializeField] private Image slotImage;
@@ -25,7 +25,7 @@ public class TurretSlot : MonoBehaviour
     
     public void ActualiseSlot()
     {
-        if (currentData == null)
+        if (currentModificator == null)
         {
             modificatorImage.enabled = false;
             modificatorImage.sprite = null;
@@ -34,30 +34,77 @@ public class TurretSlot : MonoBehaviour
         }
 
         modificatorImage.enabled = true;
-        modificatorImage.sprite = currentData.modificatorSprite;
+        modificatorImage.sprite = currentModificator.modificatorSprite;
         slotImage.color = dataColor;
     }
 
     public (ModificatorData, int) GetCurrentModificator()
     {
-        if (currentData == null) return (null, 0);
+        if (currentModificator == null) return (null, 0);
 
-        return (currentData, modificatorStackAmount);
+        return (currentModificator, currentStackAmount);
+    }
+
+
+    public void StartOverlayButton()
+    {
+        mainScript.StartOverlaySlot(this);
+    }
+
+    public void EndOverlayButton()
+    {
+        mainScript.EndOverlaySlot(this);
     }
     
-
+    
     #region Drag Functions
 
     public void StartDrag()
     {
-        if (currentData == null) return;
+        if (currentModificator == null) return;
         
-        mainScript.StartDrag(currentData.modificatorSprite);
+        mainScript.StartDrag(currentModificator.modificatorSprite, this);
     }
 
-    public void EndDrag()
+    public (ModificatorData, int) AddModificator(ModificatorData modificatorData, int modificatorStackAmount, bool isExchange = false)
     {
+        // If the slot is empty
+        if (currentModificator == null)
+        {
+            currentModificator = modificatorData;
+            currentStackAmount = 1;
+
+            return (null, 0);
+        }
+
+        // If we can merge
+        if (currentModificator.modificatorType == modificatorData.modificatorType)
+        {
+            currentStackAmount = modificatorStackAmount + currentStackAmount;
+
+            return (null, 0);
+        }
+
+        // If we want to exchange two slots modificators
+        if (isExchange)
+        {
+            ModificatorData saveData = currentModificator;
+            int saveStack = currentStackAmount;
+            
+            currentModificator = modificatorData;
+            currentStackAmount = modificatorStackAmount;
+            
+            return (saveData, saveStack);
+        }
         
+        // if the slot is not valid
+        return (null, 0);
+    }
+
+    public void RemoveModificator()
+    {
+        currentModificator = null;
+        currentStackAmount = 0;
     }
 
     #endregion

@@ -128,8 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noDataColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
   dataColor: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
-  currentData: {fileID: 11400000, guid: c0d1f39fe22acc24b985946d91180ded, type: 2}
-  modificatorStackAmount: 1
+  currentModificator: {fileID: 0}
+  currentStackAmount: 0
   slotImage: {fileID: 2791288579603949972}
   modificatorImage: {fileID: 5979182716364120351}
 --- !u!1 &7362372423126204760
@@ -273,6 +273,38 @@ MonoBehaviour:
         - m_Target: {fileID: 1464900420156791418}
           m_TargetAssemblyTypeName: TurretSlot, Assembly-CSharp
           m_MethodName: StartDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1464900420156791418}
+          m_TargetAssemblyTypeName: TurretSlot, Assembly-CSharp
+          m_MethodName: StartOverlayButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1464900420156791418}
+          m_TargetAssemblyTypeName: TurretSlot, Assembly-CSharp
+          m_MethodName: EndOverlayButton
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

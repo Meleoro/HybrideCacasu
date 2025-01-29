@@ -4,6 +4,12 @@ using UnityEngine;
 
 public struct TurretModificatorValues
 {
+    public TurretModificatorValues(float baseDamage = 1, float baseFireRate = 1)
+    {
+        damageMultiplier = baseDamage;
+        fireRateMultiplier = baseFireRate;
+    }
+    
     public float damageMultiplier;
     public float fireRateMultiplier;
 }
@@ -11,13 +17,21 @@ public struct TurretModificatorValues
 
 public class TurretMaster : MonoBehaviour
 {
+    [Header("Parameters")]
     [SerializeField] private TurretData turretData;
+    [SerializeField][Range(0, 2)] private int turretIndex;
+
+    [Header("Private Infos")] 
+    private TurretModificatorValues modificatorValues = new TurretModificatorValues(1, 1);
 
     [Header("References")] 
     [SerializeField] private Bullet bulletPrefab;
 
+    
     private void Start()
     {
+        HUDManager.Instance.OnModificatorDragEndAction += ActualiseModificators;
+        
         StartCoroutine(ShootBehaviorCoroutine());
     }
 
@@ -38,12 +52,20 @@ public class TurretMaster : MonoBehaviour
         }
     }
 
+    private void ActualiseModificators()
+    {
+        modificatorValues = HUDManager.Instance.turretSlotsManager.GetTurretModificators(turretIndex);
+    }
+
+
+    #region Shoot Functions
+
     private IEnumerator ShootBehaviorCoroutine()
     {
         while (true)
         {
-            yield return new WaitForSeconds(turretData.fireRate);
-
+            yield return new WaitForSeconds(turretData.fireRate / modificatorValues.fireRateMultiplier);
+            
             Shoot(EnemiesManager.Instance.FindNearestEnemy(transform.position));
         }
     }
@@ -51,6 +73,8 @@ public class TurretMaster : MonoBehaviour
     private void Shoot(Vector3 aimedPoint)
     {
         Bullet newBullet = Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
-        newBullet.InitialiseBullet(aimedPoint, turretData.bulletSpeed, turretData.bulletsDamages);
+        newBullet.InitialiseBullet(aimedPoint, turretData.bulletSpeed, (int)(turretData.bulletsDamages * modificatorValues.damageMultiplier));
     }
+
+    #endregion
 }

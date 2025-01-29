@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1528462000}
     m_Modifications:
+    - target: {fileID: 1464900420156791418, guid: 21882fc1cd605b9489f647111f515819, type: 3}
+      propertyPath: currentModificator
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d6019168603ca647ac96e70138df86a, type: 2}
     - target: {fileID: 1606263011615943674, guid: 21882fc1cd605b9489f647111f515819, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1313,6 +1317,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2127563232}
     m_Modifications:
+    - target: {fileID: 594848606351930095, guid: fec84b790862f95499718a10c00720a9, type: 3}
+      propertyPath: turretIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3614578801910342834, guid: fec84b790862f95499718a10c00720a9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5
@@ -1477,6 +1485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58035bd0f77edc948a517731dd7b52ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretSlotsManager: {fileID: 1076690337}
   dragImage: {fileID: 1885673585}
 --- !u!1 &1517287773
 GameObject:
@@ -1597,6 +1606,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2127563232}
     m_Modifications:
+    - target: {fileID: 594848606351930095, guid: fec84b790862f95499718a10c00720a9, type: 3}
+      propertyPath: turretIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3614578801910342834, guid: fec84b790862f95499718a10c00720a9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1654,6 +1667,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1528462000}
     m_Modifications:
+    - target: {fileID: 1464900420156791418, guid: 21882fc1cd605b9489f647111f515819, type: 3}
+      propertyPath: currentModificator
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d6019168603ca647ac96e70138df86a, type: 2}
     - target: {fileID: 1606263011615943674, guid: 21882fc1cd605b9489f647111f515819, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2105,9 +2122,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1308511264}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -51.059998, y: -1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 185.94, y: 506}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1885673585
@@ -2117,7 +2134,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885673583}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -2394,6 +2411,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1528462000}
     m_Modifications:
+    - target: {fileID: 1464900420156791418, guid: 21882fc1cd605b9489f647111f515819, type: 3}
+      propertyPath: currentModificator
+      value: 
+      objectReference: {fileID: 11400000, guid: c0d1f39fe22acc24b985946d91180ded, type: 2}
     - target: {fileID: 1606263011615943674, guid: 21882fc1cd605b9489f647111f515819, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

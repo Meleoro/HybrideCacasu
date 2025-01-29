@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class TurretSlotsManager : MonoBehaviour
 {
     [Header("Private Infos")] 
+    private TurretSlot currentOverlayedSlot;
+    private TurretSlot dragSlotOrigin;
 
     [Header("References")] 
     [SerializeField] private TurretSlot[] turret1Slots;
@@ -59,7 +61,7 @@ public class TurretSlotsManager : MonoBehaviour
                 break;
         }
 
-        TurretModificatorValues returnedValues = new TurretModificatorValues();
+        TurretModificatorValues returnedValues = new TurretModificatorValues(1, 1);
 
         for (int i = 0; i < slots.Length; i++)
         {
@@ -81,16 +83,47 @@ public class TurretSlotsManager : MonoBehaviour
         return returnedValues;
     }
 
+    #region Overlay Functions
+
+    public void StartOverlaySlot(TurretSlot overlayedSlot)
+    {
+        currentOverlayedSlot = overlayedSlot;
+    }
+
+    public void EndOverlaySlot(TurretSlot endedOverlayedSlot)
+    {
+        if (currentOverlayedSlot == endedOverlayedSlot)
+        {
+            currentOverlayedSlot = null;
+        }
+    }
+
+    #endregion
+    
+    
+
     #region Drag Functions
 
-    public void StartDrag(Sprite draggedSprite)
+    public void StartDrag(Sprite draggedSprite, TurretSlot dragOrigin)
     {
+        dragSlotOrigin = dragOrigin;
         HUDManager.Instance.StartDrag(draggedSprite);
     }
     
     public void EndDrag()
     {
+        if (currentOverlayedSlot is null) return;
         
+        (ModificatorData modificatorData, int stack) = dragSlotOrigin.GetCurrentModificator();
+        (modificatorData, stack) = currentOverlayedSlot.AddModificator(modificatorData, stack, true);
+        
+        dragSlotOrigin.RemoveModificator();
+        if (modificatorData is not null)
+        {
+            dragSlotOrigin.AddModificator(modificatorData, stack);
+        }
+        
+        ActualiseSlotsImages();
     }
 
     #endregion

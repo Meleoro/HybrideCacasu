@@ -4,11 +4,22 @@ using UnityEngine.UI;
 
 public class HUDManager : GenericSingletonClass<HUDManager>
 {
+    [Header("Actions")] 
+    public Action OnModificatorDragEndAction;
+    
     [Header("Private Infos")] 
     private bool isDragging;
-    
+
     [Header("References")] 
+    public TurretSlotsManager turretSlotsManager;
     [SerializeField] private Image dragImage;
+    private RectTransform canvasRect;
+
+
+    private void Start()
+    {
+        canvasRect = GetComponent<RectTransform>();
+    }
 
 
     private void Update()
@@ -37,24 +48,21 @@ public class HUDManager : GenericSingletonClass<HUDManager>
 
         if(Input.touches[0].phase == TouchPhase.Ended)
             EndDrag();
-        
 
-        Vector2 dragPos = Input.touches[0].position;
-        Debug.Log(dragPos);
-        Ray ray = CameraManager.Instance._camera.ScreenPointToRay(dragPos);
-        RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, 100, LayerMask.NameToLayer("Ground")))
-        {
-            dragPos = hit.point;
-        }
+        Vector2 dragPos = new Vector2(Mathf.Lerp(0, canvasRect.rect.width, Input.GetTouch(0).position.x / Screen.width), 
+            Mathf.Lerp(0, canvasRect.rect.height, Input.GetTouch(0).position.y / Screen.height)) 
+                          - new Vector2(canvasRect.rect.width * 0.5f, canvasRect.rect.height * 0.5f);
         
-        dragImage.rectTransform.localPosition = new Vector3(dragPos.x * 0.5f - Screen.width * 0.25f, dragPos.y * 0.5f - Screen.height * 0.25f, 0);
+        dragImage.rectTransform.localPosition = new Vector3(dragPos.x, dragPos.y, 0);
     }
 
     private void EndDrag()
     {
         isDragging = false;
         dragImage.enabled = false;
+        
+        turretSlotsManager.EndDrag();
+        OnModificatorDragEndAction.Invoke();
     }
 
     #endregion
