@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d4f9af980d2014e987993b750e5f88, type: 3}
   m_Name: Turret1-1
   m_EditorClassIdentifier: 
-  bulletsDamages: 3
-  fireRate: 1
+  turretName: Turret 1
+  turretDescription: Oui
+  damages: 2
+  shootCooldown: 0.5
+  shootDispersion: 0.3
   bulletSpeed: 6
+  bulletCount: 3
+  bulletSize: 1
+  shootBehavior: 0
+  bulletBehavior: 1

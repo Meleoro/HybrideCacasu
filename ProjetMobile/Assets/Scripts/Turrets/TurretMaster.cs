@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public struct TurretModificatorValues
 {
@@ -64,7 +65,7 @@ public class TurretMaster : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(turretData.fireRate / modificatorValues.fireRateMultiplier);
+            yield return new WaitForSeconds(turretData.shootCooldown / modificatorValues.fireRateMultiplier);
             
             Shoot(EnemiesManager.Instance.FindNearestEnemy(transform.position));
         }
@@ -72,8 +73,13 @@ public class TurretMaster : MonoBehaviour
 
     private void Shoot(Vector3 aimedPoint)
     {
-        Bullet newBullet = Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
-        newBullet.InitialiseBullet(aimedPoint, turretData.bulletSpeed, (int)(turretData.bulletsDamages * modificatorValues.damageMultiplier));
+        for (int i = 0; i < turretData.bulletCount; i++)
+        {
+            Bullet newBullet = Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
+            newBullet.transform.localScale = Vector3.one * turretData.bulletSize;
+            newBullet.InitialiseBullet(aimedPoint + new Vector3(Random.Range(-turretData.shootDispersion, turretData.shootDispersion), 0, 0), 
+                turretData.bulletSpeed, (int)(turretData.damages * modificatorValues.damageMultiplier));
+        }
     }
 
     #endregion
