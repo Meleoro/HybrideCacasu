@@ -9,6 +9,7 @@ public class EnemyMaster : MonoBehaviour
     [SerializeField] private int enemyHealth;
     [SerializeField] private float enemySpeed;
     [SerializeField] private Vector2 moveDir;
+    [SerializeField] private float moneyDropMultiplicator = 1f;
 
     [Header("Private Infos")] 
     private float currentHealth;
@@ -57,8 +58,7 @@ public class EnemyMaster : MonoBehaviour
     public IEnumerator SlowEnemyCoroutine(float multiplicator, float duration)
     {
         currentSpeed = enemySpeed - enemySpeed * (multiplicator - 1);
-        Debug.Log(multiplicator);
-        
+
         yield return new WaitForSeconds(duration);
 
         currentSpeed = enemySpeed;
@@ -98,6 +98,7 @@ public class EnemyMaster : MonoBehaviour
 
     private void Die()
     {
+        MoneyManager.Instance.AddMoney((int)(GameManager.Instance.levelData.moneyPerEnemy * moneyDropMultiplicator));
         Instantiate(deathVFX, transform.position, Quaternion.Euler(0, 0, 0));
         
         EnemiesManager.Instance.KillEnemy(this);
