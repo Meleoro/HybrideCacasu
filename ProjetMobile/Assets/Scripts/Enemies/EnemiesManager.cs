@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class EnemiesManager : MonoBehaviour
+public class EnemiesManager : GenericSingletonClass<EnemiesManager>
 {
     [Header("Private Infos")]
-    [SerializeField] private LevelData levelData;
+    private LevelData levelData;
     private float currentTimer;
     
     [Header("Private Infos")] 
@@ -17,10 +18,9 @@ public class EnemiesManager : MonoBehaviour
     [SerializeField] private Transform[] enemiesSpawns;
 
 
-    private void InitialiseEnemyManager(LevelData levelData)
+    public void InitialiseEnemyManager(LevelData levelData)
     {
-        if(levelData != null)
-            this.levelData = levelData;
+        this.levelData = levelData;
 
         currentTimer = 0;
         StartCoroutine(EnemiesConstantSpawnCoroutine());
@@ -44,6 +44,27 @@ public class EnemiesManager : MonoBehaviour
     }
 
 
+    public Vector3 FindNearestEnemy(Vector3 turretPos)
+    {
+        if (currentEnemies.Count == 0) return new Vector3(0, 0, 0);
+        
+        float bestDist = Mathf.Infinity;
+        int bestIndex = 0;
+        for (int i = 0; i < currentEnemies.Count; i++)
+        {
+            float dist = currentEnemies[i].transform.position.z;
+            
+            if (dist < bestDist)
+            {
+                bestDist = dist;
+                bestIndex = i;
+            }
+        }
+
+        return currentEnemies[bestIndex].transform.position;
+    }
+    
+    
     private void SpawnEnemy()
     {
         int spawnedEnemyIndex = Random.Range(0, levelData.spawnableEnemies.Length);
@@ -54,10 +75,10 @@ public class EnemiesManager : MonoBehaviour
     }
 
 
-    private void KillEnemy(EnemyMaster killedEnemy)
+    public void KillEnemy(EnemyMaster killedEnemy)
     {
         currentEnemies.Remove(killedEnemy);
-        Destroy(killedEnemy);
+        Destroy(killedEnemy.gameObject);
     }
     
 }
