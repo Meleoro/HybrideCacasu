@@ -21,25 +21,31 @@ public class Bullet : MonoBehaviour
 
     [Header("Explode Private Infos")] 
     private float explosionRange;
+
+    [Header("Bullet Effects")] 
+    private float slowStrength;
+    private float burnStrength;
     
     
-    public void InitialiseBullet(Vector3 aimedPoint, TurretData data)
+    public void InitialiseBullet(Vector3 aimedPoint, TurretData data, TurretModificatorValues modificatorValues)
     {
         Destroy(gameObject, 10f);
         
         moveDir = (aimedPoint - transform.position).normalized;
         moveDir.y = 0;
 
-        transform.localScale = Vector3.one * data.bulletSize;
-        speed = data.bulletSpeed;
-        damages = data.damages;
+        transform.localScale = Vector3.one * (data.bulletSize * modificatorValues.projectileSizeMultiplier);
+        speed = data.bulletSpeed * modificatorValues.projectileSpeedMultiplier;
+        damages = (int)(data.damages * modificatorValues.damageMultiplier);
         behaviorBullet = data.bulletBehavior;
         behaviorShoot = data.shootBehavior;
+
+        burnStrength = modificatorValues.burnStrength;
+        slowStrength = modificatorValues.slowStrength;
 
         if (data.shootBehavior == ShootBehavior.Throw)
         {
             maxDist = -transform.position.z + aimedPoint.z;
-
             endPoint = aimedPoint;
         }
 
@@ -80,11 +86,27 @@ public class Bullet : MonoBehaviour
 
         for (int i = 0; i < hits.Length; i++)
         {
-            hits[i].collider.GetComponentInParent<EnemyMaster>().TakeDamage(damages, transform.position);
+            EnemyMaster enemy = hits[i].collider.GetComponentInParent<EnemyMaster>();
+            
+            ApplySpecialEffects(enemy);
+            enemy.TakeDamage(damages, transform.position);
         }
 
         Instantiate(explosionVFX, transform.position, Quaternion.Euler(0, 0, 0));
         Destroy(gameObject);
+    }
+
+    private void ApplySpecialEffects(EnemyMaster enemy)
+    {
+        if (burnStrength != 1)
+        {
+            StartCoroutine(enemy.BurnEnemyCoroutine(burnStrength, 5f));
+        }
+
+        if (slowStrength != 1)
+        {
+            StartCoroutine(enemy.SlowEnemyCoroutine(slowStrength, 1f));
+        }
     }
     
 
@@ -104,7 +126,9 @@ public class Bullet : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.GetComponentInParent<EnemyMaster>().TakeDamage(damages, transform.position);
+        EnemyMaster hitedEnemy = other.gameObject.GetComponentInParent<EnemyMaster>();
+        hitedEnemy.TakeDamage(damages, transform.position);
+        ApplySpecialEffects(hitedEnemy);
 
         switch (behaviorBullet)
         {

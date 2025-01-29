@@ -9,10 +9,20 @@ public struct TurretModificatorValues
     {
         damageMultiplier = baseDamage;
         fireRateMultiplier = baseFireRate;
+        addedProjectiles = 0;
+        projectileSizeMultiplier = 1;
+        projectileSpeedMultiplier = 1;
+        slowStrength = 1;
+        burnStrength = 1;
     }
     
     public float damageMultiplier;
     public float fireRateMultiplier;
+    public int addedProjectiles;
+    public float projectileSizeMultiplier;
+    public float projectileSpeedMultiplier;
+    public float slowStrength;
+    public float burnStrength;
 }
 
 
@@ -34,7 +44,7 @@ public class TurretMaster : MonoBehaviour
     private void Start()
     {
         HUDManager.Instance.OnModificatorDragEndAction += ActualiseModificators;
-        
+        modificatorValues = new TurretModificatorValues(1, 1);
         StartCoroutine(ShootBehaviorCoroutine());
     }
 
@@ -79,7 +89,8 @@ public class TurretMaster : MonoBehaviour
         for (int i = 0; i < turretData.bulletCount; i++)
         {
             Bullet newBullet = Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
-            newBullet.InitialiseBullet(aimedPoint + new Vector3(Random.Range(-turretData.shootDispersion, turretData.shootDispersion), 0, 0), turretData);
+            newBullet.InitialiseBullet(aimedPoint + new Vector3(Random.Range(-turretData.shootDispersion, turretData.shootDispersion), 0, 0), 
+                turretData, modificatorValues);
         }
         
         shootVFX.Play();

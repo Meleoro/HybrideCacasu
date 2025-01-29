@@ -71,11 +71,31 @@ public class TurretSlotsManager : MonoBehaviour
             switch (modificatorData.modificatorType)
             {
                 case ModificatorType.Damage:
-                    returnedValues.damageMultiplier += modificatorData.modificatorImpact * stackAmount;
+                    returnedValues.damageMultiplier += modificatorData.modificatorImpacts[stackAmount - 1];
                     break;
                 
                 case ModificatorType.FireRate:
-                    returnedValues.fireRateMultiplier += modificatorData.modificatorImpact * stackAmount;
+                    returnedValues.fireRateMultiplier += modificatorData.modificatorImpacts[stackAmount - 1];
+                    break;
+                
+                case ModificatorType.ProjectileCount:
+                    returnedValues.addedProjectiles += (int)(modificatorData.modificatorImpacts[stackAmount - 1]);
+                    break;
+                
+                case ModificatorType.ProjectileSpeed:
+                    returnedValues.projectileSpeedMultiplier += modificatorData.modificatorImpacts[stackAmount - 1];
+                    break;
+                
+                case ModificatorType.Size:
+                    returnedValues.projectileSizeMultiplier += modificatorData.modificatorImpacts[stackAmount - 1];
+                    break;
+                
+                case ModificatorType.Slow:
+                    returnedValues.slowStrength += modificatorData.modificatorImpacts[stackAmount - 1] ;
+                    break;
+                
+                case ModificatorType.Burn:
+                    returnedValues.burnStrength += modificatorData.modificatorImpacts[stackAmount - 1];
                     break;
             }
         }
