@@ -10,7 +10,7 @@ public class TurretSlot : MonoBehaviour
     
     [Header("Private Infos")] 
     [SerializeField] private ModificatorData currentModificator;
-    private int currentStackAmount;
+    [SerializeField] private int currentStackAmount;
     private Vector2 modificatorImageScaleSave;
     
     [Header("References")] 

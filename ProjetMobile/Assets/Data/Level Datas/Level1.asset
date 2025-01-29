@@ -17,3 +17,5 @@ MonoBehaviour:
   - {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
   startConstantEnemyDelaySpawn: 1.5
   endConstantEnemyDelaySpawn: 0.75
+  startMoney: 50
+  moneyPerEnemy: 5

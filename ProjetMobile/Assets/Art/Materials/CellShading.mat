@@ -52,7 +52,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _CellShadowIntensity: 0.201
-    - _NoiseImpact: 0.07
+    - _NoiseImpact: 0.03
     - _NoiseScale: 400
     - _NoiseSpeed: 5
     - _QueueControl: 0

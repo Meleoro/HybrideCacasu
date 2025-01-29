@@ -10,4 +10,8 @@ public class LevelData : ScriptableObject
     [Header("Pacing Infos")] 
     public float startConstantEnemyDelaySpawn;
     public float endConstantEnemyDelaySpawn;
+    
+    [Header("Money Infos")] 
+    public int startMoney;
+    public int moneyPerEnemy;
 }

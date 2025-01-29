@@ -6,7 +6,7 @@ public class ModificatorData : ScriptableObject
     [Header("Main Infos")] 
     public ModificatorType modificatorType;
     public Sprite modificatorSprite;
-    public float modificatorImpact;
+    public float[] modificatorImpacts;
     
     [Header("Infos")]
     public string modificatorName;
@@ -16,5 +16,10 @@ public class ModificatorData : ScriptableObject
 public enum ModificatorType
 {
     Damage,
-    FireRate
+    FireRate,
+    ProjectileCount,
+    ProjectileSpeed,
+    Size,
+    Slow,
+    Burn
 }
