@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 
 public class TurretSlot : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class TurretSlot : MonoBehaviour
     
     [Header("Private Infos")] 
     [SerializeField] private ModificatorData currentModificator;
-    [SerializeField] private int currentStackAmount;
+    private int currentStackAmount;
+    private Vector2 modificatorImageScaleSave;
     
     [Header("References")] 
     [SerializeField] private Image slotImage;
@@ -19,6 +21,8 @@ public class TurretSlot : MonoBehaviour
 
     public void InitialiseSlot(TurretSlotsManager mainScript)
     {
+        modificatorImageScaleSave = modificatorImage.rectTransform.localScale;
+        
         this.mainScript = mainScript;
         ActualiseSlot();
     }
@@ -71,6 +75,7 @@ public class TurretSlot : MonoBehaviour
         // If the slot is empty
         if (currentModificator == null)
         {
+            ModificatorAddFeel();
             currentModificator = modificatorData;
             currentStackAmount = 1;
 
@@ -80,6 +85,7 @@ public class TurretSlot : MonoBehaviour
         // If we can merge
         if (currentModificator.modificatorType == modificatorData.modificatorType)
         {
+            ModificatorAddFeel();
             currentStackAmount = modificatorStackAmount + currentStackAmount;
 
             return (null, 0);
@@ -88,6 +94,7 @@ public class TurretSlot : MonoBehaviour
         // If we want to exchange two slots modificators
         if (isExchange)
         {
+            ModificatorAddFeel();
             ModificatorData saveData = currentModificator;
             int saveStack = currentStackAmount;
             
@@ -108,4 +115,10 @@ public class TurretSlot : MonoBehaviour
     }
 
     #endregion
+
+
+    private void ModificatorAddFeel()
+    {
+        modificatorImage.rectTransform.UBounce(0.04f, modificatorImageScaleSave * 0.5f, 0.08f, modificatorImageScaleSave);
+    }
 }

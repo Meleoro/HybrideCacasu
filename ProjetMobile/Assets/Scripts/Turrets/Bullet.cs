@@ -80,7 +80,7 @@ public class Bullet : MonoBehaviour
 
         for (int i = 0; i < hits.Length; i++)
         {
-            hits[i].collider.GetComponentInParent<EnemyMaster>().TakeDamage(damages);
+            hits[i].collider.GetComponentInParent<EnemyMaster>().TakeDamage(damages, transform.position);
         }
 
         Instantiate(explosionVFX, transform.position, Quaternion.Euler(0, 0, 0));
@@ -104,7 +104,7 @@ public class Bullet : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.GetComponentInParent<EnemyMaster>().TakeDamage(damages);
+        other.gameObject.GetComponentInParent<EnemyMaster>().TakeDamage(damages, transform.position);
 
         switch (behaviorBullet)
         {
