@@ -14,6 +14,7 @@ public class TurretData : ScriptableObject
     public float bulletSpeed;
     [Range(1, 10)] public int bulletCount;
     [Range(0.1f, 3f)] public float bulletSize;
+    [Range(0.1f, 3f)] public float explosionRange;
 
     [Header("Others")] 
     public ShootBehavior shootBehavior;
@@ -24,7 +25,6 @@ public enum ShootBehavior
 {
     StraightLine,
     Throw,
-    Laser
 }
 
 public enum BulletBehavior

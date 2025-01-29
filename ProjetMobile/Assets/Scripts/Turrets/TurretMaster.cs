@@ -76,9 +76,7 @@ public class TurretMaster : MonoBehaviour
         for (int i = 0; i < turretData.bulletCount; i++)
         {
             Bullet newBullet = Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
-            newBullet.transform.localScale = Vector3.one * turretData.bulletSize;
-            newBullet.InitialiseBullet(aimedPoint + new Vector3(Random.Range(-turretData.shootDispersion, turretData.shootDispersion), 0, 0), 
-                turretData.bulletSpeed, (int)(turretData.damages * modificatorValues.damageMultiplier));
+            newBullet.InitialiseBullet(aimedPoint + new Vector3(Random.Range(-turretData.shootDispersion, turretData.shootDispersion), 0, 0), turretData);
         }
     }
 
