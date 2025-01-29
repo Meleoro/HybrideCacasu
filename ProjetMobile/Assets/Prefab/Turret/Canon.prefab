@@ -96,10 +96,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Canon
       objectReference: {fileID: 0}
+    - target: {fileID: 4842034304032773444, guid: 16585c816a250ae41a82537c359bc40c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1340ae9ed0ce39740ae909d0670df312, type: 2}
     - target: {fileID: 5988881256312858879, guid: 16585c816a250ae41a82537c359bc40c, type: 3}
       propertyPath: m_Name
       value: Canon
       objectReference: {fileID: 0}
+    - target: {fileID: 7494326664508013997, guid: 16585c816a250ae41a82537c359bc40c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1340ae9ed0ce39740ae909d0670df312, type: 2}
+    - target: {fileID: 8524823538139195233, guid: 16585c816a250ae41a82537c359bc40c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 42c56c499c408594dbdb92a3be17c0cb, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
