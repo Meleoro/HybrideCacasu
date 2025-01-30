@@ -19,12 +19,14 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     [Header("References")] 
     public TurretSlotsManager turretSlotsManager;
     [SerializeField] private GetNewModificatorUI modificatorChoseScript;
+    [SerializeField] private LevelProgressUI proressScript;
     [SerializeField] private Image dragImage;
     private RectTransform canvasRect;
 
 
     private void Start()
     {
+        proressScript.GenerateWavesMarkers(GameManager.Instance.levelData);
         canvasRect = GetComponent<RectTransform>();
     }
 
@@ -32,6 +34,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     private void Update()
     {
         ActualiseDragImage();
+        proressScript.ActualiseFillImage(GameManager.Instance.currentTimer / GameManager.Instance.levelData.levelDuration);
     }
 
 
