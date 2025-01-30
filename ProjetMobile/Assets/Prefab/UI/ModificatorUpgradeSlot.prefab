@@ -566,3 +566,4 @@ MonoBehaviour:
   modificatorNameText: {fileID: 8390972199260055606}
   modificatorDescText: {fileID: 1194022881604844717}
   slotButton: {fileID: 5150182132251467449}
+  mainTr: {fileID: 3091761953049431038}

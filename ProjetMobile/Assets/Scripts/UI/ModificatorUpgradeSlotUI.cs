@@ -19,12 +19,11 @@ public class GetNewModificatorUISlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI modificatorNameText;
     [SerializeField] private TextMeshProUGUI modificatorDescText;
     [SerializeField] private Button slotButton;
-    private RectTransform mainTr;
+    [SerializeField] private RectTransform mainTr;
     private GetNewModificatorUI mainScript;
 
     private void Start()
     {
-        mainTr = GetComponent<RectTransform>();
         mainScript = GetComponentInParent<GetNewModificatorUI>();
     }
 
@@ -60,7 +59,7 @@ public class GetNewModificatorUISlot : MonoBehaviour
         mainTr.UChangeScale(instant ? 0 : openAnimDuration * 0.9f, new Vector3(0, 0, 0));
         mainTr.UChangeLocalRotation(instant ? 0 : openAnimDuration, Quaternion.Euler(0, 0, 0));
         
-        yield return new WaitForSeconds(instant ? 0 : openAnimDuration);
+        yield return new WaitForSeconds(instant ? 0.01f : openAnimDuration);
     }
 
     #endregion

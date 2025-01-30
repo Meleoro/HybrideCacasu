@@ -161,7 +161,7 @@ public class TurretSlotsManager : MonoBehaviour
         }
         else
         {
-            (modificatorData, rank) = currentOverlayedSlot.AddModificator(draggedData, draggedRank, true);
+            (modificatorData, rank) = currentOverlayedSlot.AddModificator(draggedData, draggedRank);
         }
         
         ActualiseSlotsImages();
