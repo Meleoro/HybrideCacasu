@@ -26,12 +26,91 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.122999996, y: 0.09497734, z: -0.06937954}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5777990704898741740}
+  - {fileID: 800129848641827586}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &905250629914907881
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8659115764612851337}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: ad744cc17d5369143aaf2135055195d2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad744cc17d5369143aaf2135055195d2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad744cc17d5369143aaf2135055195d2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad744cc17d5369143aaf2135055195d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.281
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad744cc17d5369143aaf2135055195d2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.078
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad744cc17d5369143aaf2135055195d2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0490342
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad744cc17d5369143aaf2135055195d2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7224713
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad744cc17d5369143aaf2135055195d2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.08786318
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad744cc17d5369143aaf2135055195d2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6855977
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad744cc17d5369143aaf2135055195d2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.016464015
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad744cc17d5369143aaf2135055195d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -8.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad744cc17d5369143aaf2135055195d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -87.422
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad744cc17d5369143aaf2135055195d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 5.612
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ad744cc17d5369143aaf2135055195d2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 825e7304868f41441b43df30d6175171, type: 2}
+    - target: {fileID: 919132149155446097, guid: ad744cc17d5369143aaf2135055195d2, type: 3}
+      propertyPath: m_Name
+      value: SM_Sniper_Support
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ad744cc17d5369143aaf2135055195d2, type: 3}
+--- !u!4 &800129848641827586 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ad744cc17d5369143aaf2135055195d2, type: 3}
+  m_PrefabInstance: {fileID: 905250629914907881}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6315509662187975175
 PrefabInstance:
   m_ObjectHideFlags: 0

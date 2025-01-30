@@ -45,6 +45,18 @@ PrefabInstance:
       value: Soufflet
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16585c816a250ae41a82537c359bc40c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 16585c816a250ae41a82537c359bc40c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 16585c816a250ae41a82537c359bc40c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 16585c816a250ae41a82537c359bc40c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.030733228
       objectReference: {fileID: 0}

@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3979372449387140522
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 9
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CellShading_04
-  m_Shader: {fileID: -6465566751694194690, guid: a3955dc8f8996d44596245b6fff2852a, type: 3}
+  m_Name: OutlineMaterial_01 1
+  m_Shader: {fileID: -6465566751694194690, guid: 56a11012a4104c24f82af02ca143293d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -51,16 +38,24 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CellShadowIntensity: 0.201
-    - _NoiseImpact: 0
-    - _NoiseScale: 400
-    - _NoiseSpeed: 5
+    - _HardCornerObj: 1
+    - _OutlineThickness: 0.3
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ShadowIntensity: 0.369
-    - _Steps: 0.24
-    - _StepsOffset: 1.15
     m_Colors:
-    - _Color: {r: 0.7735849, g: 0.6481664, b: 0.18609823, a: 1}
+    - _OutlineColor: {r: 0.11320752, g: 0.05233178, b: 0.021893905, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
+--- !u!114 &5694791677687644268
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 9
