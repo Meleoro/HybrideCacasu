@@ -55,7 +55,7 @@ public class TurretMaster : MonoBehaviour
 
     private void RotateTurret()
     {
-        aimedPoint = EnemiesManager.Instance.FindNearestEnemy(transform.position);
+        aimedPoint = EnemiesManager.Instance.FindNearestEnemy();
 
         if (aimedPoint != Vector3.zero)
         {
@@ -80,7 +80,7 @@ public class TurretMaster : MonoBehaviour
             yield return new WaitForSeconds(turretData.shootCooldown / modificatorValues.fireRateMultiplier);
 
             if (aimedPoint == Vector3.zero) continue;
-            Shoot(EnemiesManager.Instance.FindNearestEnemy(transform.position));
+            Shoot(EnemiesManager.Instance.FindNearestEnemy());
         }
     }
 

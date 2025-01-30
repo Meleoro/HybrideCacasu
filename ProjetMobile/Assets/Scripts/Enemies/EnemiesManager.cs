@@ -15,7 +15,8 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
     private List<EnemyMaster> currentEnemies = new List<EnemyMaster>();
 
     [Header("References")] 
-    [SerializeField] private Transform[] enemiesSpawns;
+    [SerializeField] private Transform enemySpawnXMinRef;
+    [SerializeField] private Transform enemySpawnXMaxRef;
 
 
     public void InitialiseEnemyManager(LevelData levelData)
@@ -24,6 +25,7 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
 
         currentTimer = 0;
         StartCoroutine(EnemiesConstantSpawnCoroutine());
+        StartCoroutine(ManageEnemyWavesCoroutine());
     }
 
     private void Update()
@@ -32,6 +34,38 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
     }
 
 
+    #region Waves Functions
+
+    private IEnumerator ManageEnemyWavesCoroutine()
+    {
+        int currentWaveIndex = 0;
+
+        while (currentWaveIndex < levelData.waves.Length)
+        {
+            yield return new WaitForSeconds(levelData.waves[currentWaveIndex].waveWaitDuration);
+
+            StartCoroutine(SpawnEnemyWaveCoroutine(levelData.waves[currentWaveIndex]));
+        }
+    }
+
+    private IEnumerator SpawnEnemyWaveCoroutine(WaveStruct currentWave)
+    {
+        for (int i = 0; i < currentWave.waveEnemies.Length; i++)
+        {
+            for (int j = 0; j < currentWave.waveEnemies[i].amount; j++)
+            {
+                SpawnEnemy(currentWave.waveEnemies[i].enemyType);
+
+                yield return new WaitForSeconds(currentWave.waveDelayBetweenSpawn);
+            }
+        }
+    }
+
+    #endregion
+
+
+    #region Constant Spawn
+
     private IEnumerator EnemiesConstantSpawnCoroutine()
     {
         while (true)
@@ -39,12 +73,26 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
             yield return new WaitForSeconds(Mathf.Lerp(levelData.startConstantEnemyDelaySpawn,
                 levelData.endConstantEnemyDelaySpawn, currentTimer / levelData.levelDuration));
 
-            SpawnEnemy();
+            int spawnedEnemyIndex = Random.Range(0, levelData.spawnableEnemies.Length);
+            
+            SpawnEnemy(levelData.spawnableEnemies[spawnedEnemyIndex]);
         }
     }
+    
+    private void SpawnEnemy(EnemyMaster enemy)
+    {
+        Vector3 spawnPos = enemySpawnXMinRef.position + new Vector3(Random.Range(0, Mathf.Abs(enemySpawnXMinRef.position.x - enemySpawnXMaxRef.position.x)), 0, 0);
+
+        EnemyMaster spawnedEnemy = Instantiate(enemy, spawnPos, Quaternion.identity);
+        currentEnemies.Add(spawnedEnemy);
+    }
+
+    #endregion
 
 
-    public Vector3 FindNearestEnemy(Vector3 turretPos)
+    #region Others
+
+    public Vector3 FindNearestEnemy()
     {
         if (currentEnemies.Count == 0) return new Vector3(0, 0, 0);
         
@@ -63,16 +111,6 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
 
         return currentEnemies[bestIndex].transform.position;
     }
-    
-    
-    private void SpawnEnemy()
-    {
-        int spawnedEnemyIndex = Random.Range(0, levelData.spawnableEnemies.Length);
-        Vector3 spawnPos = enemiesSpawns[Random.Range(0, enemiesSpawns.Length)].position;
-
-        EnemyMaster spawnedEnemy = Instantiate(levelData.spawnableEnemies[spawnedEnemyIndex], spawnPos, Quaternion.identity);
-        currentEnemies.Add(spawnedEnemy);
-    }
 
 
     public void KillEnemy(EnemyMaster killedEnemy)
@@ -80,5 +118,6 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
         currentEnemies.Remove(killedEnemy);
         Destroy(killedEnemy.gameObject);
     }
-    
+
+    #endregion
 }
