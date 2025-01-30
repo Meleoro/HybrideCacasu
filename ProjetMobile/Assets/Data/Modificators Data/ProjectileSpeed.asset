@@ -21,3 +21,4 @@ MonoBehaviour:
   - 1
   modificatorName: ProjectileSpeed+
   modificatorDescription: Upgrade the bullets speed by {x}%
+  isPercentDisplay: 1

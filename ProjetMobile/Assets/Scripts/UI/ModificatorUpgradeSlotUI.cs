@@ -16,10 +16,12 @@ public class GetNewModificatorUISlot : MonoBehaviour
 
     [Header("References")] 
     [SerializeField] private Image modificatorImage;
+    [SerializeField] private Image backImage;
     [SerializeField] private TextMeshProUGUI modificatorNameText;
     [SerializeField] private TextMeshProUGUI modificatorDescText;
     [SerializeField] private Button slotButton;
     [SerializeField] private RectTransform mainTr;
+    [SerializeField] private ParticleSystem[] vfxs;
     private GetNewModificatorUI mainScript;
 
     private void Start()
@@ -38,15 +40,58 @@ public class GetNewModificatorUISlot : MonoBehaviour
 
         currentRank = rank;
         modificatorImage.color = HUDManager.Instance.ranksColors[rank];
+        backImage.color = HUDManager.Instance.ranksColors[rank];
+        backImage.color *= new Color(1, 1, 1, 0.2f);
+
+        for (int i = 0; i < vfxs.Length; i++)
+        {
+            ParticleSystem.MainModule main = vfxs[i].main;
+            main.startColor = HUDManager.Instance.ranksColors[rank];
+        }
+
+        ActualiseDescription(data, rank);
     }
+
+    private void ActualiseDescription(ModificatorData data, int rank)
+    {
+        string baseText = data.modificatorDescription;
+        string finalText = "";
+
+        for (int i = 0; i < baseText.Length; i++)
+        {
+            if (baseText[i] == '{')
+            {
+                if(data.isPercentDisplay)
+                    finalText += 100 * data.modificatorImpacts[rank];
+                
+                else
+                    finalText += data.modificatorImpacts[rank];
+                
+                i += 2;
+            }
+            else
+            {
+                finalText += baseText[i];
+            }
+        }
+
+
+        modificatorDescText.text = finalText;
+    }
+    
 
 
     #region Open / Close Animations
 
     public IEnumerator DoOpenAnimCoroutine()
     {
-        mainTr.UChangeScale(openAnimDuration * 0.9f, new Vector3(1, 1, 1));
+        mainTr.UBounce(openAnimDuration * 0.8f, Vector3.one * 1.4f, openAnimDuration * 0.2f, Vector3.one * 1f);
         mainTr.UChangeLocalRotation(openAnimDuration, Quaternion.Euler(0, 359, 0));
+        
+        for (int i = 0; i < vfxs.Length; i++)
+        {
+            vfxs[i].Play();
+        }
         
         yield return new WaitForSeconds(openAnimDuration);
 
@@ -58,6 +103,11 @@ public class GetNewModificatorUISlot : MonoBehaviour
         slotButton.enabled = false;
         mainTr.UChangeScale(instant ? 0 : openAnimDuration * 0.9f, new Vector3(0, 0, 0));
         mainTr.UChangeLocalRotation(instant ? 0 : openAnimDuration, Quaternion.Euler(0, 0, 0));
+        
+        for (int i = 0; i < vfxs.Length; i++)
+        {
+            vfxs[i].Stop();
+        }
         
         yield return new WaitForSeconds(instant ? 0.01f : openAnimDuration);
     }

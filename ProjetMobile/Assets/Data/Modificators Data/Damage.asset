@@ -21,3 +21,4 @@ MonoBehaviour:
   - 0.8
   modificatorName: Damage Boost
   modificatorDescription: 'Multiplies the damage of this turret by {x}%  '
+  isPercentDisplay: 1

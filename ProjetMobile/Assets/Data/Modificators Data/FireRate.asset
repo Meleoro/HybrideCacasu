@@ -21,3 +21,4 @@ MonoBehaviour:
   - 1
   modificatorName: Fire Rate Boost
   modificatorDescription: 'Reduces the fire cooldown by {x}%  '
+  isPercentDisplay: 1

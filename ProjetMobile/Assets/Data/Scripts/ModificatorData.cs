@@ -11,6 +11,7 @@ public class ModificatorData : ScriptableObject
     [Header("Infos")]
     public string modificatorName;
     public string modificatorDescription;
+    public bool isPercentDisplay;
 }
 
 public enum ModificatorType
