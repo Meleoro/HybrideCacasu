@@ -6,18 +6,27 @@ public class HUDManager : GenericSingletonClass<HUDManager>
 {
     [Header("Actions")] 
     public Action OnModificatorDragEndAction;
+    public Action OnModificatorDragSuccessAction;
+
+    [Header("Parameters")] 
+    public Color[] ranksColors;
     
     [Header("Private Infos")] 
     private bool isDragging;
+    private ModificatorData currentDraggedData;
+    private int currentDraggedRank;
 
     [Header("References")] 
     public TurretSlotsManager turretSlotsManager;
+    [SerializeField] private GetNewModificatorUI modificatorChoseScript;
+    [SerializeField] private LevelProgressUI proressScript;
     [SerializeField] private Image dragImage;
     private RectTransform canvasRect;
 
 
     private void Start()
     {
+        proressScript.GenerateWavesMarkers(GameManager.Instance.levelData);
         canvasRect = GetComponent<RectTransform>();
     }
 
@@ -25,20 +34,45 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     private void Update()
     {
         ActualiseDragImage();
+        proressScript.ActualiseFillImage(GameManager.Instance.currentTimer / GameManager.Instance.levelData.levelDuration);
     }
 
 
+    #region Bottom Buttons
+
+    public void ClickMiddleButton()
+    {
+        if (!MoneyManager.Instance.VerifyHasEnoughMoneyMiddleChest(true)) return;
+        
+        modificatorChoseScript.OpenChoseUpgradeUI();
+    }
+
+    public void ClickRightButton()
+    {
+        if (!MoneyManager.Instance.VerifyHasEnoughMoneyChestUpgrade(true)) return;
+        
+        modificatorChoseScript.UpgradeChest();
+    }
+
+    #endregion
+    
+
     #region Drag Fonctions
     
-    public void StartDrag(Sprite draggedSprite)
+    public void StartDrag(ModificatorData draggedData, int draggedRank)
     {
         if (isDragging) return;
         
         isDragging = true;
-        dragImage.sprite = draggedSprite;
+        dragImage.sprite = draggedData.modificatorSprite;
         dragImage.enabled = true;
+        dragImage.color = ranksColors[draggedRank];
+
+        currentDraggedData = draggedData;
+        currentDraggedRank = draggedRank;
     }
 
+    
     private void ActualiseDragImage()
     {
         if (!isDragging) return;
@@ -60,8 +94,11 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     {
         isDragging = false;
         dragImage.enabled = false;
-        
-        turretSlotsManager.EndDrag();
+
+        if (turretSlotsManager.EndDrag(currentDraggedData, currentDraggedRank))
+        {
+            modificatorChoseScript.CloseChoseUpgradeUI();
+        }
         OnModificatorDragEndAction.Invoke();
     }
 

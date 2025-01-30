@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -39,14 +40,18 @@ public class TurretMaster : MonoBehaviour
     [Header("References")] 
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private ParticleSystem shootVFX;
-
+    [SerializeField] private Transform jointToRotate;
     
-    private void Start()
+
+    public void InitialiseTurret(int turretIndex)
     {
+        this.turretIndex = turretIndex;
+        
         HUDManager.Instance.OnModificatorDragEndAction += ActualiseModificators;
         modificatorValues = new TurretModificatorValues(1, 1);
         StartCoroutine(ShootBehaviorCoroutine());
     }
+    
 
     private void Update()
     {
@@ -55,13 +60,13 @@ public class TurretMaster : MonoBehaviour
 
     private void RotateTurret()
     {
-        aimedPoint = EnemiesManager.Instance.FindNearestEnemy(transform.position);
+        aimedPoint = EnemiesManager.Instance.FindNearestEnemy();
 
         if (aimedPoint != Vector3.zero)
         {
-            Vector3 aimedDir = aimedPoint - transform.position;
+            Vector3 aimedDir = aimedPoint - jointToRotate.position;
             float angle = -Mathf.Atan2(aimedDir.z, aimedDir.x) * Mathf.Rad2Deg + 90;
-            transform.rotation = Quaternion.Euler(0, angle, 0);
+            jointToRotate.localRotation = Quaternion.Euler(jointToRotate.eulerAngles.x, angle, jointToRotate.eulerAngles.z);
         }
     }
 
@@ -80,15 +85,15 @@ public class TurretMaster : MonoBehaviour
             yield return new WaitForSeconds(turretData.shootCooldown / modificatorValues.fireRateMultiplier);
 
             if (aimedPoint == Vector3.zero) continue;
-            Shoot(EnemiesManager.Instance.FindNearestEnemy(transform.position));
+            Shoot(EnemiesManager.Instance.FindNearestEnemy());
         }
     }
 
     private void Shoot(Vector3 aimedPoint)
     {
-        for (int i = 0; i < turretData.bulletCount; i++)
+        for (int i = 0; i < turretData.bulletCount + modificatorValues.addedProjectiles; i++)
         {
-            Bullet newBullet = Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
+            Bullet newBullet = Instantiate(bulletPrefab, shootVFX.transform.position, Quaternion.identity);
             newBullet.InitialiseBullet(aimedPoint + new Vector3(Random.Range(-turretData.shootDispersion, turretData.shootDispersion), 0, 0), 
                 turretData, modificatorValues);
         }

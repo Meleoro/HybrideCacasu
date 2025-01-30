@@ -10,7 +10,7 @@ public class TurretSlot : MonoBehaviour
     
     [Header("Private Infos")] 
     [SerializeField] private ModificatorData currentModificator;
-    [SerializeField] private int currentStackAmount;
+    [SerializeField] private int currentRank;
     private Vector2 modificatorImageScaleSave;
     
     [Header("References")] 
@@ -39,14 +39,15 @@ public class TurretSlot : MonoBehaviour
 
         modificatorImage.enabled = true;
         modificatorImage.sprite = currentModificator.modificatorSprite;
-        slotImage.color = dataColor;
+        slotImage.color = HUDManager.Instance.ranksColors[currentRank];
+        //slotImage.color = dataColor;
     }
 
     public (ModificatorData, int) GetCurrentModificator()
     {
         if (currentModificator == null) return (null, 0);
 
-        return (currentModificator, currentStackAmount);
+        return (currentModificator, currentRank);
     }
 
 
@@ -67,26 +68,26 @@ public class TurretSlot : MonoBehaviour
     {
         if (currentModificator == null) return;
         
-        mainScript.StartDrag(currentModificator.modificatorSprite, this);
+        mainScript.StartDrag(currentModificator, currentRank, this);
     }
 
-    public (ModificatorData, int) AddModificator(ModificatorData modificatorData, int modificatorStackAmount, bool isExchange = false)
+    public (ModificatorData, int) AddModificator(ModificatorData modificatorData, int newRank, bool isExchange = false)
     {
         // If the slot is empty
         if (currentModificator == null)
         {
             ModificatorAddFeel();
             currentModificator = modificatorData;
-            currentStackAmount = 1;
+            currentRank = newRank;
 
             return (null, 0);
         }
 
         // If we can merge
-        if (currentModificator.modificatorType == modificatorData.modificatorType)
+        if (currentModificator.modificatorType == modificatorData.modificatorType && currentRank == newRank)
         {
             ModificatorAddFeel();
-            currentStackAmount = modificatorStackAmount + currentStackAmount;
+            currentRank += 1;
 
             return (null, 0);
         }
@@ -96,22 +97,22 @@ public class TurretSlot : MonoBehaviour
         {
             ModificatorAddFeel();
             ModificatorData saveData = currentModificator;
-            int saveStack = currentStackAmount;
+            int saveRank = currentRank;
             
             currentModificator = modificatorData;
-            currentStackAmount = modificatorStackAmount;
+            currentRank = newRank;
             
-            return (saveData, saveStack);
+            return (saveData, saveRank);
         }
         
         // if the slot is not valid
-        return (null, 0);
+        return (null, -1);
     }
 
     public void RemoveModificator()
     {
         currentModificator = null;
-        currentStackAmount = 0;
+        currentRank = 0;
     }
 
     #endregion
