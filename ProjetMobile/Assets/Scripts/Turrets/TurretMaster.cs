@@ -86,7 +86,7 @@ public class TurretMaster : MonoBehaviour
 
     private void Shoot(Vector3 aimedPoint)
     {
-        for (int i = 0; i < turretData.bulletCount; i++)
+        for (int i = 0; i < turretData.bulletCount + modificatorValues.addedProjectiles; i++)
         {
             Bullet newBullet = Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
             newBullet.InitialiseBullet(aimedPoint + new Vector3(Random.Range(-turretData.shootDispersion, turretData.shootDispersion), 0, 0), 

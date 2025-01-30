@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
 
-public class ModificatorUpgradeSlotUI : MonoBehaviour
+public class GetNewModificatorUISlot : MonoBehaviour
 {
     [Header("Parameters")] 
     [SerializeField] private float openAnimDuration;
@@ -20,12 +20,12 @@ public class ModificatorUpgradeSlotUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI modificatorDescText;
     [SerializeField] private Button slotButton;
     private RectTransform mainTr;
-    private ChooseModificatorUI mainScript;
+    private GetNewModificatorUI mainScript;
 
     private void Start()
     {
         mainTr = GetComponent<RectTransform>();
-        mainScript = GetComponentInParent<ChooseModificatorUI>();
+        mainScript = GetComponentInParent<GetNewModificatorUI>();
     }
 
 
@@ -38,7 +38,7 @@ public class ModificatorUpgradeSlotUI : MonoBehaviour
         modificatorImage.sprite = data.modificatorSprite;
 
         currentRank = rank;
-        modificatorImage.color = mainScript.colorsPerRanks[rank];
+        modificatorImage.color = HUDManager.Instance.ranksColors[rank];
     }
 
 
@@ -85,7 +85,7 @@ public class ModificatorUpgradeSlotUI : MonoBehaviour
     
     public void DragSlot()
     {
-        mainScript.StartDrag(currentData, 1);
+        mainScript.StartDrag(currentData, currentRank);
     }
 
     #endregion

@@ -39,7 +39,8 @@ public class TurretSlot : MonoBehaviour
 
         modificatorImage.enabled = true;
         modificatorImage.sprite = currentModificator.modificatorSprite;
-        slotImage.color = dataColor;
+        slotImage.color = HUDManager.Instance.ranksColors[currentRank];
+        //slotImage.color = dataColor;
     }
 
     public (ModificatorData, int) GetCurrentModificator()
@@ -83,7 +84,7 @@ public class TurretSlot : MonoBehaviour
         }
 
         // If we can merge
-        if (currentModificator.modificatorType == modificatorData.modificatorType)
+        if (currentModificator.modificatorType == modificatorData.modificatorType && currentRank == newRank)
         {
             ModificatorAddFeel();
             currentRank = newRank + currentRank;

@@ -1329,7 +1329,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 97a1f8f9c644f6546ba419f0aa785a9c, type: 2}
   - {fileID: 11400000, guid: 85bfd79fbbdb67348b3711579e06f08d, type: 2}
   - {fileID: 11400000, guid: ebd183216041bb94b922bc0a1488c34e, type: 2}
-  maxRankLevel: 4
+  maxRankUpAmount: 0
   rankCurve:
     serializedVersion: 2
     m_Curve:
@@ -1360,11 +1360,6 @@ MonoBehaviour:
   - 0
   - -1
   progressPerUpgrade: 0.1
-  colorsPerRanks:
-  - {r: 0.34039584, g: 1, b: 0.2971698, a: 1}
-  - {r: 0, g: 0.073209524, b: 1, a: 1}
-  - {r: 1, g: 0.5562036, b: 0, a: 1}
-  - {r: 0.5259428, g: 0, b: 1, a: 1}
   currentProgresses: []
   currentProbabilityPerRank: []
   modificatorUpgradeSlotsRectTr:
@@ -2219,6 +2214,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58035bd0f77edc948a517731dd7b52ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ranksColors:
+  - {r: 0.41651833, g: 0.754717, b: 0.44828373, a: 1}
+  - {r: 0.4141153, g: 0.72089815, b: 0.8867924, a: 1}
+  - {r: 0.9433962, g: 0.5929069, b: 0.25364897, a: 1}
+  - {r: 0.7287076, g: 0.3270737, b: 0.9245283, a: 1}
   turretSlotsManager: {fileID: 1076690337}
   modificatorChoseScript: {fileID: 752515496}
   dragImage: {fileID: 1885673585}

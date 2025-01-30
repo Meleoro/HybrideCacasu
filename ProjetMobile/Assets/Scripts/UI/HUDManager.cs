@@ -7,6 +7,9 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     [Header("Actions")] 
     public Action OnModificatorDragEndAction;
     public Action OnModificatorDragSuccessAction;
+
+    [Header("Parameters")] 
+    public Color[] ranksColors;
     
     [Header("Private Infos")] 
     private bool isDragging;
@@ -15,7 +18,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
 
     [Header("References")] 
     public TurretSlotsManager turretSlotsManager;
-    [SerializeField] private ChooseModificatorUI modificatorChoseScript;
+    [SerializeField] private GetNewModificatorUI modificatorChoseScript;
     [SerializeField] private Image dragImage;
     private RectTransform canvasRect;
 
@@ -60,6 +63,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         isDragging = true;
         dragImage.sprite = draggedData.modificatorSprite;
         dragImage.enabled = true;
+        dragImage.color = ranksColors[draggedRank];
 
         currentDraggedData = draggedData;
         currentDraggedRank = draggedRank;

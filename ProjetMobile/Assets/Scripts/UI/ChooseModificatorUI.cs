@@ -2,25 +2,25 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class ChooseModificatorUI : MonoBehaviour
+public class GetNewModificatorUI : MonoBehaviour
 {
     [Header("Parameters")] 
     [SerializeField] private ModificatorData[] possibleModificators;
-    [SerializeField] private int maxRankLevel;
+    [SerializeField] private int maxRankUpAmount;
     [SerializeField] private AnimationCurve rankCurve;
     [SerializeField] private float[] startProgressPerRank;
     [SerializeField] private float progressPerUpgrade;
-    public Color[] colorsPerRanks;
     
     [Header("Private Infos")] 
     [SerializeField] private float[] currentProgresses;
     private bool isOpenned;
     [SerializeField]private float[] currentProbabilityPerRank;
     private float currentProbabilitiesSum;
+    private int currentRankUpAmount;
     
     [Header("References")] 
     [SerializeField] private RectTransform[] modificatorUpgradeSlotsRectTr;
-    [SerializeField] private ModificatorUpgradeSlotUI[] modificatorUpgradeSlotsScripts;
+    [SerializeField] private GetNewModificatorUISlot[] modificatorUpgradeSlotsScripts;
 
 
     private void Start()
@@ -76,10 +76,10 @@ public class ChooseModificatorUI : MonoBehaviour
 
     private void ActualiseRanks()
     {
-        currentProbabilityPerRank = new float[maxRankLevel];
+        currentProbabilityPerRank = new float[startProgressPerRank.Length];
         currentProbabilitiesSum = 0;
         
-        for (int i = 0; i < maxRankLevel; i++)
+        for (int i = 0; i < startProgressPerRank.Length; i++)
         {
             float currentProgress = Mathf.Clamp(Mathf.Sin(currentProgresses[i] * (float)Math.PI * 0.5f), 0, 1);
             currentProbabilityPerRank[i] = rankCurve.Evaluate(currentProgress);
@@ -90,11 +90,14 @@ public class ChooseModificatorUI : MonoBehaviour
     
     public void UpgradeChest()
     {
-        for (int i = 0; i < maxRankLevel; i++)
+        if (currentRankUpAmount > maxRankUpAmount) return;
+        
+        for (int i = 0; i < startProgressPerRank.Length; i++)
         {
             currentProgresses[i] += progressPerUpgrade;
         }
 
+        currentRankUpAmount++;
         ActualiseRanks();
     }
     

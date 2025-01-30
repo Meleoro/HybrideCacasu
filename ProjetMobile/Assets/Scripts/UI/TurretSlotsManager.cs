@@ -71,37 +71,37 @@ public class TurretSlotsManager : MonoBehaviour
 
         for (int i = 0; i < slots.Length; i++)
         {
-            (ModificatorData modificatorData, int stackAmount) = slots[i].GetCurrentModificator();
+            (ModificatorData modificatorData, int rank) = slots[i].GetCurrentModificator();
             if (modificatorData == null) continue;
 
             switch (modificatorData.modificatorType)
             {
                 case ModificatorType.Damage:
-                    returnedValues.damageMultiplier += modificatorData.modificatorImpacts[stackAmount - 1];
+                    returnedValues.damageMultiplier += modificatorData.modificatorImpacts[rank];
                     break;
                 
                 case ModificatorType.FireRate:
-                    returnedValues.fireRateMultiplier += modificatorData.modificatorImpacts[stackAmount - 1];
+                    returnedValues.fireRateMultiplier += modificatorData.modificatorImpacts[rank];
                     break;
                 
                 case ModificatorType.ProjectileCount:
-                    returnedValues.addedProjectiles += (int)(modificatorData.modificatorImpacts[stackAmount - 1]);
+                    returnedValues.addedProjectiles += (int)(modificatorData.modificatorImpacts[rank]);
                     break;
                 
                 case ModificatorType.ProjectileSpeed:
-                    returnedValues.projectileSpeedMultiplier += modificatorData.modificatorImpacts[stackAmount - 1];
+                    returnedValues.projectileSpeedMultiplier += modificatorData.modificatorImpacts[rank];
                     break;
                 
                 case ModificatorType.Size:
-                    returnedValues.projectileSizeMultiplier += modificatorData.modificatorImpacts[stackAmount - 1];
+                    returnedValues.projectileSizeMultiplier += modificatorData.modificatorImpacts[rank];
                     break;
                 
                 case ModificatorType.Slow:
-                    returnedValues.slowStrength += modificatorData.modificatorImpacts[stackAmount - 1] ;
+                    returnedValues.slowStrength += modificatorData.modificatorImpacts[rank] ;
                     break;
                 
                 case ModificatorType.Burn:
-                    returnedValues.burnStrength += modificatorData.modificatorImpacts[stackAmount - 1];
+                    returnedValues.burnStrength += modificatorData.modificatorImpacts[rank];
                     break;
             }
         }
