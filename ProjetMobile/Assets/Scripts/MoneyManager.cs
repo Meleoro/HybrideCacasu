@@ -5,6 +5,10 @@ using Utilities;
 
 public class MoneyManager : GenericSingletonClass<MoneyManager>
 {
+    [Header("Parameters")] 
+    [SerializeField] private int middleChestCost;
+    [SerializeField] private int chestUpgradeCost;
+    
     [Header("Private Infos")] 
     private int currentMoney;
 
@@ -41,9 +45,43 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
         ActualiseText();
     }
 
+    public bool VerifyHasEnoughMoneyMiddleChest(bool buyIfGood = false)
+    {
+        if (buyIfGood)
+        {
+            if (currentMoney >= middleChestCost)
+            {
+                UseMoney(middleChestCost);
+                
+                return true;
+            }
+
+            return false;
+        }
+        
+        return currentMoney >= middleChestCost;
+    }
+    
+    public bool VerifyHasEnoughMoneyChestUpgrade(bool buyIfGood = false)
+    {
+        if (buyIfGood)
+        {
+            if (currentMoney >= chestUpgradeCost)
+            {
+                UseMoney(chestUpgradeCost);
+                
+                return true;
+            }
+
+            return false;
+        }
+        
+        return currentMoney >= chestUpgradeCost;
+    }
+    
     public bool VerifyHasEnoughMoney(int moneyAmount)
     {
-        return currentMoney < moneyAmount;
+        return currentMoney >= moneyAmount;
     }
     
     #endregion

@@ -6,12 +6,16 @@ public class HUDManager : GenericSingletonClass<HUDManager>
 {
     [Header("Actions")] 
     public Action OnModificatorDragEndAction;
+    public Action OnModificatorDragSuccessAction;
     
     [Header("Private Infos")] 
     private bool isDragging;
+    private ModificatorData currentDraggedData;
+    private int currentDraggedRank;
 
     [Header("References")] 
     public TurretSlotsManager turretSlotsManager;
+    [SerializeField] private ChooseModificatorUI modificatorChoseScript;
     [SerializeField] private Image dragImage;
     private RectTransform canvasRect;
 
@@ -28,17 +32,40 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     }
 
 
+    #region Bottom Buttons
+
+    public void ClickMiddleButton()
+    {
+        if (!MoneyManager.Instance.VerifyHasEnoughMoneyMiddleChest(true)) return;
+        
+        modificatorChoseScript.OpenChoseUpgradeUI();
+    }
+
+    public void ClickRightButton()
+    {
+        if (!MoneyManager.Instance.VerifyHasEnoughMoneyChestUpgrade(true)) return;
+        
+        modificatorChoseScript.UpgradeChest();
+    }
+
+    #endregion
+    
+
     #region Drag Fonctions
     
-    public void StartDrag(Sprite draggedSprite)
+    public void StartDrag(ModificatorData draggedData, int draggedRank)
     {
         if (isDragging) return;
         
         isDragging = true;
-        dragImage.sprite = draggedSprite;
+        dragImage.sprite = draggedData.modificatorSprite;
         dragImage.enabled = true;
+
+        currentDraggedData = draggedData;
+        currentDraggedRank = draggedRank;
     }
 
+    
     private void ActualiseDragImage()
     {
         if (!isDragging) return;
@@ -60,8 +87,11 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     {
         isDragging = false;
         dragImage.enabled = false;
-        
-        turretSlotsManager.EndDrag();
+
+        if (turretSlotsManager.EndDrag(currentDraggedData, currentDraggedRank))
+        {
+            modificatorChoseScript.CloseChoseUpgradeUI();
+        }
         OnModificatorDragEndAction.Invoke();
     }
 
