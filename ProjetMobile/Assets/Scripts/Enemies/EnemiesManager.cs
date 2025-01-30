@@ -39,12 +39,15 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
     private IEnumerator ManageEnemyWavesCoroutine()
     {
         int currentWaveIndex = 0;
+        float timerSpent = 0;
 
         while (currentWaveIndex < levelData.waves.Length)
         {
-            yield return new WaitForSeconds(levelData.waves[currentWaveIndex].waveWaitDuration);
+            yield return new WaitForSeconds(levelData.waves[currentWaveIndex].waveWaitDuration - timerSpent);
 
             StartCoroutine(SpawnEnemyWaveCoroutine(levelData.waves[currentWaveIndex]));
+            currentWaveIndex++;
+            timerSpent += levelData.waves[currentWaveIndex].waveWaitDuration;
         }
     }
 

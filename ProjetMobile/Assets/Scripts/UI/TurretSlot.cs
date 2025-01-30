@@ -87,7 +87,7 @@ public class TurretSlot : MonoBehaviour
         if (currentModificator.modificatorType == modificatorData.modificatorType && currentRank == newRank)
         {
             ModificatorAddFeel();
-            currentRank = newRank + currentRank;
+            currentRank = newRank + 1;
 
             return (null, 0);
         }
