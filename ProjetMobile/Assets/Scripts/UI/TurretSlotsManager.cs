@@ -162,7 +162,7 @@ public class TurretSlotsManager : MonoBehaviour
             dragSlotOrigin.RemoveModificator();
             if (capSave is not null)
             {
-                dragSlotOrigin.AddModificator(cap);
+                dragSlotOrigin.AddModificator(capSave);
             }
 
             dragSlotOrigin = null;
@@ -183,7 +183,7 @@ public class TurretSlotsManager : MonoBehaviour
         
         if (dragSlotOrigin is not null)
         {
-            dragSlotOrigin.RemoveModificator();
+            dragSlotOrigin.RemoveModificator(true);
             dragSlotOrigin = null;
         }
         

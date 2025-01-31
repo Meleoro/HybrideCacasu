@@ -10,7 +10,7 @@ public class TurretSlot : MonoBehaviour
     [SerializeField] private Color dataColor; 
     [SerializeField] private Color compatibleColor; 
     [SerializeField] private Color incompatibleColor;
-
+    
     [Header("Private Infos")] 
     private Cap currentCap;
     private bool isShowingCompatibleColor;
@@ -189,18 +189,20 @@ public class TurretSlot : MonoBehaviour
         {
             ModificatorAddFeel();
             Cap saveCap = currentCap;
-
             currentCap = cap;
             
             return (saveCap, true);
         }
         
         // if the slot is not valid
-        return (null, false);;
+        return (null, true);;
     }
 
-    public void RemoveModificator()
+    public void RemoveModificator(bool destroy = false)
     {
+        if(destroy)
+            Destroy(currentCap);
+        
         currentCap = null;
     }
 

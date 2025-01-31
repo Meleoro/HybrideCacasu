@@ -52,6 +52,7 @@ public class GetNewModificatorUISlot : MonoBehaviour
         currentCap.ChangeWantedRot(transform.rotation * Quaternion.Euler(-90f, 0, 0f));
         currentCap.transform.localScale = new Vector3(0, 0, 0);
         currentCap.transform.UChangeScale(0.5f, Vector3.one * 1f, CurveType.EaseOutBack, true);
+        currentCap.ActualiseCap();
         
         ActualiseDescription(data, rank);
     }
