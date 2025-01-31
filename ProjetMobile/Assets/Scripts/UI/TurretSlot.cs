@@ -69,7 +69,9 @@ public class TurretSlot : MonoBehaviour
         if (isCompatible)
         {
             slotImage.UStopLerpImageColor();
-            slotImage.rectTransform.UChangeScale(0.15f, Vector3.one * 1f, CurveType.EaseInOutSin, true);
+
+            
+            slotImage.rectTransform.localScale = Vector3.one * 1f;
             StopCoroutine(compatibleEffectCoroutine);
 
             if(!isPause)  
@@ -139,7 +141,7 @@ public class TurretSlot : MonoBehaviour
 
         if (isCompatible)
         {
-            HUDManager.Instance.PauseDrag(this);
+            HUDManager.Instance.PauseDrag();
             
             slotImage.rectTransform.UChangeScale(0.1f, Vector3.one * 1.1f, CurveType.EaseOutBack, true);
             slotImage.ULerpImageColor(0.1f, slotImage.color * new Color(1.25f, 1.25f, 1.25f), CurveType.EaseOutBack, true);

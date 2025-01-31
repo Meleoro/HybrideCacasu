@@ -118,8 +118,6 @@ public class TurretSlotsManager : MonoBehaviour
         return returnedValues;
     }
 
-
-
     #endregion
 
     
@@ -180,6 +178,21 @@ public class TurretSlotsManager : MonoBehaviour
         return false;
     }
 
+
+    public void EndDragSell(ModificatorData draggedData, int draggedRank)
+    {
+        MoneyManager.Instance.AddMoney(draggedData.sellValues[draggedRank]);
+        
+        if (dragSlotOrigin is not null)
+        {
+            dragSlotOrigin.RemoveModificator();
+            dragSlotOrigin = null;
+        }
+        
+        ActualiseSlotsImages();
+    }
+    
+    
     public void ShowPossibleSlots(ModificatorData draggedData, int draggedRank)
     {
         for (int i = 0; i < turretSlots.Length; i++)

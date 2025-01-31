@@ -19,5 +19,11 @@ MonoBehaviour:
   - 2
   - 4
   - 8
+  sellValues:
+  - 10
+  - 20
+  - 30
+  - 40
   modificatorName: Projectile+
   modificatorDescription: Add +{x} projectiles per shot
+  isPercentDisplay: 0

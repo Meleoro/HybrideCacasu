@@ -7,6 +7,7 @@ public class ModificatorData : ScriptableObject
     public ModificatorType modificatorType;
     public Sprite modificatorSprite;
     public float[] modificatorImpacts;
+    public int[] sellValues;
     
     [Header("Infos")]
     public string modificatorName;

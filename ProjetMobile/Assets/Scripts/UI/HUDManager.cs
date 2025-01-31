@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.UI;
+using Utilities;
 using TouchPhase = UnityEngine.TouchPhase;
 
 public class HUDManager : GenericSingletonClass<HUDManager>
@@ -16,6 +17,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     
     [Header("Private Infos")] 
     private bool isDragging;
+    private bool isOverlayingSell;
     private ModificatorData currentDraggedData;
     private int currentDraggedRank;
 
@@ -24,6 +26,10 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     [SerializeField] private GetNewModificatorUI modificatorChoseScript;
     [SerializeField] private LevelProgressUI proressScript;
     [SerializeField] private Image dragImage;
+    [SerializeField] private RectTransform sellRectTr;
+    [SerializeField] private RectTransform baseButtonsRectTr;
+    [SerializeField] private RectTransform upButtonPosRefRectTr;
+    [SerializeField] private RectTransform downButtonPosRefRectTr;
     private RectTransform canvasRect;
 
 
@@ -58,6 +64,33 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     }
 
     #endregion
+
+
+    #region Sell Button
+
+    private void DisplaySellButton()
+    {
+        sellRectTr.UChangePosition(0.45f, upButtonPosRefRectTr.position, CurveType.EaseInCubic, true);
+        baseButtonsRectTr.UChangePosition(0.45f, downButtonPosRefRectTr.position, CurveType.EaseInCubic, true);
+    }
+
+    private void HideSellButton()
+    {
+        sellRectTr.UChangePosition(0.45f, downButtonPosRefRectTr.position, CurveType.EaseInCubic, true);
+        baseButtonsRectTr.UChangePosition(0.45f, upButtonPosRefRectTr.position, CurveType.EaseInCubic, true);
+    }
+
+    public void OverlaySellButton()
+    {
+        isOverlayingSell = true;
+    }
+
+    public void QuitOverlaySell()
+    {
+        isOverlayingSell = false;
+    }
+
+    #endregion
     
 
     #region Drag Fonctions
@@ -65,6 +98,8 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     public void StartDrag(ModificatorData draggedData, int draggedRank)
     {
         if (isDragging) return;
+        
+        DisplaySellButton();
         
         isDragging = true;
         dragImage.sprite = draggedData.modificatorSprite;
@@ -82,7 +117,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         dragImage.rectTransform.localPosition = dragPos;
     }
 
-    public void PauseDrag(TurretSlot overlayedSlot)
+    public void PauseDrag()
     {
         turretSlotsManager.HidePossibleSlots(true);
     }
@@ -111,16 +146,28 @@ public class HUDManager : GenericSingletonClass<HUDManager>
 
     private void EndDrag()
     {
+        HideSellButton();
+        
         isDragging = false;
         dragImage.enabled = false;
         
         turretSlotsManager.HidePossibleSlots(false);
 
-        if (turretSlotsManager.EndDrag(currentDraggedData, currentDraggedRank))
+        if (isOverlayingSell)
         {
+            turretSlotsManager.EndDragSell(currentDraggedData, currentDraggedRank);
             modificatorChoseScript.CloseChoseUpgradeUI();
+            
+            OnModificatorDragEndAction.Invoke();
         }
-        OnModificatorDragEndAction.Invoke();
+        else
+        {
+            if (turretSlotsManager.EndDrag(currentDraggedData, currentDraggedRank))
+            {
+                modificatorChoseScript.CloseChoseUpgradeUI();
+            }
+            OnModificatorDragEndAction.Invoke();
+        }
     }
 
     #endregion

@@ -19,6 +19,11 @@ MonoBehaviour:
   - 0.2
   - 0.4
   - 0.8
+  sellValues:
+  - 10
+  - 20
+  - 30
+  - 40
   modificatorName: Damage Boost
   modificatorDescription: 'Multiplies the damage of this turret by {x}%  '
   isPercentDisplay: 1
