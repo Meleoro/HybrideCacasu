@@ -10314,6 +10314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openAnimDuration: 0.15
+  capPrefab: {fileID: 3338145270612707978, guid: ad72d5a3bf80d77479bd2ef79aec7949, type: 3}
   modificatorImage: {fileID: 3006409869001831691}
   backImage: {fileID: 4824750236024046578}
   modificatorNameText: {fileID: 8390972199260055606}

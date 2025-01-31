@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6755199184177392848}
+  - component: {fileID: 3338145270612707978}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -32,6 +33,25 @@ Transform:
   - {fileID: 5064872515790003593}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3338145270612707978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6284079577104702414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d170d238c3efe0c42806216bd602e5c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  capRankMaterials:
+  - {fileID: 2100000, guid: e3137aa61b4ef4c41af953200d5f20b6, type: 2}
+  - {fileID: 2100000, guid: 204adce71a08a7c489a86009a443b60c, type: 2}
+  - {fileID: 2100000, guid: 4c76efcdf22598842bc9dc267227e473, type: 2}
+  - {fileID: 2100000, guid: f8adb19a1061d1343bf33f5bc82aa1c9, type: 2}
+  capModificatorData: {fileID: 0}
+  meshRenderer: {fileID: 3083296321567572605}
 --- !u!1001 &4737984490825071202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42,15 +62,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e205de96413d2b947a5e55b83cba5fc3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.76803756
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e205de96413d2b947a5e55b83cba5fc3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.03575428
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e205de96413d2b947a5e55b83cba5fc3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.33790478
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e205de96413d2b947a5e55b83cba5fc3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -141,6 +161,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e205de96413d2b947a5e55b83cba5fc3, type: 3}
+--- !u!23 &3083296321567572605 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7713155852521043999, guid: e205de96413d2b947a5e55b83cba5fc3, type: 3}
+  m_PrefabInstance: {fileID: 4737984490825071202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5064872515790003593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e205de96413d2b947a5e55b83cba5fc3, type: 3}
