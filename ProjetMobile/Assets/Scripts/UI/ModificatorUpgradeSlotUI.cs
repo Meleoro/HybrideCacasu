@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Xml;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,11 +10,13 @@ public class GetNewModificatorUISlot : MonoBehaviour
 {
     [Header("Parameters")] 
     [SerializeField] private float openAnimDuration;
+    [SerializeField] private Cap capPrefab;
 
     [Header("Private Infos")] 
     private ModificatorData currentData;
     private int currentRank;
-
+    private Cap currentCap;
+    
     [Header("References")] 
     [SerializeField] private Image modificatorImage;
     [SerializeField] private Image backImage;
@@ -24,6 +27,7 @@ public class GetNewModificatorUISlot : MonoBehaviour
     [SerializeField] private ParticleSystem[] vfxs;
     private GetNewModificatorUI mainScript;
 
+    
     private void Start()
     {
         mainScript = GetComponentInParent<GetNewModificatorUI>();
@@ -49,6 +53,11 @@ public class GetNewModificatorUISlot : MonoBehaviour
             main.startColor = HUDManager.Instance.ranksColors[rank];
         }
 
+        currentCap = Instantiate(capPrefab, transform.position, transform.rotation);
+        currentCap.SetData(data, rank);
+        currentCap.ChangeWantedPos(transform.position);
+        currentCap.ChangeWantedRot(transform.rotation * Quaternion.Euler(-90f, 0, 0f));
+        
         ActualiseDescription(data, rank);
     }
 
