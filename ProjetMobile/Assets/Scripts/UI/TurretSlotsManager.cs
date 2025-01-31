@@ -183,9 +183,11 @@ public class TurretSlotsManager : MonoBehaviour
         
         if (dragSlotOrigin is not null)
         {
-            dragSlotOrigin.RemoveModificator(true);
+            dragSlotOrigin.RemoveModificator();
             dragSlotOrigin = null;
         }
+        
+        Destroy(draggedCap.gameObject);
         
         ActualiseSlotsImages();
     }

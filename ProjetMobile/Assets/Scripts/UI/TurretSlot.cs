@@ -198,11 +198,8 @@ public class TurretSlot : MonoBehaviour
         return (null, false);;
     }
 
-    public void RemoveModificator(bool destroy = false)
+    public void RemoveModificator()
     {
-        if(destroy)
-            Destroy(currentCap.gameObject);
-        
         currentCap = null;
     }
 
