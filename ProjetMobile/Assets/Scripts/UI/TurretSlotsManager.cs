@@ -152,6 +152,7 @@ public class TurretSlotsManager : MonoBehaviour
     public bool EndDrag(ModificatorData draggedData, int draggedRank)
     {
         if (currentOverlayedSlot is null) return false;
+        if (currentOverlayedSlot == dragSlotOrigin) return false;
 
         ModificatorData modificatorData = null;
         int rank = 0;
@@ -183,15 +184,15 @@ public class TurretSlotsManager : MonoBehaviour
     {
         for (int i = 0; i < turretSlots.Length; i++)
         {
-            turretSlots[i].DisplayIsCompatible(draggedData, draggedRank);
+            turretSlots[i].DisplayIsCompatible(draggedData, draggedRank, dragSlotOrigin);
         }
     }
 
-    public void HidePossibleSlots()
+    public void HidePossibleSlots(bool isPause)
     {
         for (int i = 0; i < turretSlots.Length; i++)
         {
-            turretSlots[i].HideIsCompatible();
+            turretSlots[i].HideIsCompatible(isPause);
         }
     }
 

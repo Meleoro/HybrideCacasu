@@ -75,8 +75,22 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         currentDraggedRank = draggedRank;
         
         turretSlotsManager.ShowPossibleSlots(currentDraggedData, currentDraggedRank);
+        
+        Vector2 dragPos = new Vector2(Mathf.Lerp(0, canvasRect.rect.width, Touchscreen.current.touches[0].position.x.value / Screen.width), 
+                              Mathf.Lerp(0, canvasRect.rect.height, Touchscreen.current.touches[0].position.y.value / Screen.height)) 
+                          - new Vector2(canvasRect.rect.width * 0.5f, canvasRect.rect.height * 0.5f);
+        dragImage.rectTransform.localPosition = dragPos;
     }
 
+    public void PauseDrag(TurretSlot overlayedSlot)
+    {
+        turretSlotsManager.HidePossibleSlots(true);
+    }
+
+    public void RestartDrag()
+    {
+        turretSlotsManager.ShowPossibleSlots(currentDraggedData, currentDraggedRank);
+    }
     
     private void ActualiseDragImage()
     {
@@ -92,7 +106,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
             Mathf.Lerp(0, canvasRect.rect.height, Touchscreen.current.touches[0].position.y.value / Screen.height)) 
                           - new Vector2(canvasRect.rect.width * 0.5f, canvasRect.rect.height * 0.5f);
         
-        dragImage.rectTransform.localPosition = new Vector3(dragPos.x, dragPos.y, 0);
+        dragImage.rectTransform.localPosition = Vector3.Lerp(dragImage.rectTransform.localPosition, new Vector3(dragPos.x, dragPos.y, 0), Time.unscaledDeltaTime * 10f);
     }
 
     private void EndDrag()
@@ -100,7 +114,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         isDragging = false;
         dragImage.enabled = false;
         
-        turretSlotsManager.HidePossibleSlots();
+        turretSlotsManager.HidePossibleSlots(false);
 
         if (turretSlotsManager.EndDrag(currentDraggedData, currentDraggedRank))
         {

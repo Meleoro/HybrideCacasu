@@ -34,8 +34,19 @@ public class TurretSlot : MonoBehaviour
     }
 
 
-    public void DisplayIsCompatible(ModificatorData draggedModificator, int draggedRank)
+    #region Compatibility Functions
+
+    public void DisplayIsCompatible(ModificatorData draggedModificator, int draggedRank, TurretSlot originSlot)
     {
+        if (originSlot == this)
+        {
+            isShowingCompatibleColor = true;
+            isCompatible = false;
+                    
+            ActualiseSlot();
+            return;
+        }
+        
         isShowingCompatibleColor = true;
         isCompatible = false;
         
@@ -53,7 +64,7 @@ public class TurretSlot : MonoBehaviour
         ActualiseSlot();
     }
 
-    public void HideIsCompatible()
+    public void HideIsCompatible(bool isPause)
     {
         if (isCompatible)
         {
@@ -61,10 +72,13 @@ public class TurretSlot : MonoBehaviour
             slotImage.rectTransform.UChangeScale(0.15f, Vector3.one * 1f, CurveType.EaseInOutSin, true);
             StopCoroutine(compatibleEffectCoroutine);
 
-            isCompatible = false;
+            if(!isPause)  
+                isCompatible = false;
         }
         
-        isShowingCompatibleColor = false;
+        if(!isPause)  
+            isShowingCompatibleColor = false;
+        
         ActualiseSlot();
     }
 
@@ -85,6 +99,8 @@ public class TurretSlot : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.52f);
         }
     }
+
+    #endregion
     
     
     public void ActualiseSlot()
@@ -120,11 +136,24 @@ public class TurretSlot : MonoBehaviour
     public void StartOverlayButton()
     {
         mainScript.StartOverlaySlot(this);
+
+        if (isCompatible)
+        {
+            HUDManager.Instance.PauseDrag(this);
+            
+            slotImage.rectTransform.UChangeScale(0.2f, Vector3.one * 1.25f, CurveType.EaseOutBack, true);
+            slotImage.ULerpImageColor(0.2f, slotImage.color * new Color(1.2f, 1.2f, 1.2f), CurveType.EaseOutBack, true);
+        }
     }
 
     public void EndOverlayButton()
     {
         mainScript.EndOverlaySlot(this);
+        
+        if (isCompatible)
+        {
+            HUDManager.Instance.RestartDrag();
+        }
     }
     
     
