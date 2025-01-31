@@ -46,7 +46,7 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
             yield return new WaitForSeconds(levelData.waves[currentWaveIndex].waveWaitDuration - timerSpent);
 
             StartCoroutine(SpawnEnemyWaveCoroutine(levelData.waves[currentWaveIndex]));
-            timerSpent += levelData.waves[currentWaveIndex].waveWaitDuration;
+            timerSpent = levelData.waves[currentWaveIndex].waveWaitDuration;
             currentWaveIndex++;
         }
     }

@@ -85,8 +85,8 @@ public class GetNewModificatorUISlot : MonoBehaviour
 
     public IEnumerator DoOpenAnimCoroutine()
     {
-        mainTr.UBounce(openAnimDuration * 0.8f, Vector3.one * 1.4f, openAnimDuration * 0.2f, Vector3.one * 1f);
-        mainTr.UChangeLocalRotation(openAnimDuration, Quaternion.Euler(0, 359, 0));
+        mainTr.UBounce(openAnimDuration * 0.8f, Vector3.one * 1.4f, openAnimDuration * 0.2f, Vector3.one * 1f, CurveType.None, true);
+        mainTr.UChangeLocalRotation(openAnimDuration, Quaternion.Euler(0, 359, 0), CurveType.None, true);
         
         for (int i = 0; i < vfxs.Length; i++)
         {
@@ -101,8 +101,8 @@ public class GetNewModificatorUISlot : MonoBehaviour
     public IEnumerator DoCloseAnimCoroutine(bool instant)
     {
         slotButton.enabled = false;
-        mainTr.UChangeScale(instant ? 0 : openAnimDuration * 0.9f, new Vector3(0, 0, 0));
-        mainTr.UChangeLocalRotation(instant ? 0 : openAnimDuration, Quaternion.Euler(0, 0, 0));
+        mainTr.UChangeScale(instant ? 0 : openAnimDuration * 0.9f, new Vector3(0, 0, 0), CurveType.EaseOutBack, true);
+        mainTr.UChangeLocalRotation(instant ? 0 : openAnimDuration, Quaternion.Euler(0, 0, 0), CurveType.None, true);
         
         for (int i = 0; i < vfxs.Length; i++)
         {
