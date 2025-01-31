@@ -8,6 +8,7 @@ public class TurretSlotsManager : MonoBehaviour
     [Header("Private Infos")] 
     private TurretSlot currentOverlayedSlot;
     private TurretSlot dragSlotOrigin;
+    private TurretSlot[] turretSlots;
 
     [Header("References")] 
     [SerializeField] private TurretSlot[] turret1Slots;
@@ -19,18 +20,26 @@ public class TurretSlotsManager : MonoBehaviour
     private void Start()
     {
         dragSlotOrigin = null;
+        turretSlots = new TurretSlot[9];
+        int currentIndex = 0;
         
         for (int i = 0; i < turret1Slots.Length; i++)
         {
             turret1Slots[i].InitialiseSlot(this);
+            turretSlots[currentIndex] = turret1Slots[i];
+            currentIndex++;
         }
         for (int i = 0; i < turret2Slots.Length; i++)
         {
             turret2Slots[i].InitialiseSlot(this);
+            turretSlots[currentIndex] = turret2Slots[i];
+            currentIndex++;
         }
         for (int i = 0; i < turret3Slots.Length; i++)
         {
             turret3Slots[i].InitialiseSlot(this);
+            turretSlots[currentIndex] = turret3Slots[i];
+            currentIndex++;
         }
     }
     
@@ -168,6 +177,22 @@ public class TurretSlotsManager : MonoBehaviour
         
         if (rank == 0) return true;
         return false;
+    }
+
+    public void ShowPossibleSlots(ModificatorData draggedData, int draggedRank)
+    {
+        for (int i = 0; i < turretSlots.Length; i++)
+        {
+            turretSlots[i].DisplayIsCompatible(draggedData, draggedRank);
+        }
+    }
+
+    public void HidePossibleSlots()
+    {
+        for (int i = 0; i < turretSlots.Length; i++)
+        {
+            turretSlots[i].HideIsCompatible();
+        }
     }
 
     #endregion

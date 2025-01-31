@@ -106,9 +106,11 @@ public class GetNewModificatorUI : MonoBehaviour
     {
         ModificatorData[] chosenModificators = new ModificatorData[3];
         int[] chosenRanks = new int[3];
-
+        
         if (isOpenned) return;
         isOpenned = true;
+        
+        Time.timeScale = 0.05f;
         
         for (int i = 0; i < 3; i++)
         {
@@ -126,6 +128,8 @@ public class GetNewModificatorUI : MonoBehaviour
     {
         if (!isOpenned) return;
         isOpenned = false;
+        
+        Time.timeScale = 1f;
         
         for (int i = 0; i < modificatorUpgradeSlotsScripts.Length; i++)
         {

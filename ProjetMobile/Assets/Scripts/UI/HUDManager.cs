@@ -1,6 +1,9 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.UI;
+using TouchPhase = UnityEngine.TouchPhase;
 
 public class HUDManager : GenericSingletonClass<HUDManager>
 {
@@ -70,6 +73,8 @@ public class HUDManager : GenericSingletonClass<HUDManager>
 
         currentDraggedData = draggedData;
         currentDraggedRank = draggedRank;
+        
+        turretSlotsManager.ShowPossibleSlots(currentDraggedData, currentDraggedRank);
     }
 
     
@@ -77,14 +82,14 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     {
         if (!isDragging) return;
         
-        if(Input.touchCount == 0)
+        if(Touchscreen.current.touches.Count == 0)
             EndDrag();
 
-        if(Input.touches[0].phase == TouchPhase.Ended)
+        if(Touchscreen.current.touches[0].phase.value == UnityEngine.InputSystem.TouchPhase.Ended)
             EndDrag();
 
-        Vector2 dragPos = new Vector2(Mathf.Lerp(0, canvasRect.rect.width, Input.GetTouch(0).position.x / Screen.width), 
-            Mathf.Lerp(0, canvasRect.rect.height, Input.GetTouch(0).position.y / Screen.height)) 
+        Vector2 dragPos = new Vector2(Mathf.Lerp(0, canvasRect.rect.width, Touchscreen.current.touches[0].position.x.value / Screen.width), 
+            Mathf.Lerp(0, canvasRect.rect.height, Touchscreen.current.touches[0].position.y.value / Screen.height)) 
                           - new Vector2(canvasRect.rect.width * 0.5f, canvasRect.rect.height * 0.5f);
         
         dragImage.rectTransform.localPosition = new Vector3(dragPos.x, dragPos.y, 0);
@@ -94,6 +99,8 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     {
         isDragging = false;
         dragImage.enabled = false;
+        
+        turretSlotsManager.HidePossibleSlots();
 
         if (turretSlotsManager.EndDrag(currentDraggedData, currentDraggedRank))
         {
