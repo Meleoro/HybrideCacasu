@@ -9,26 +9,22 @@ public class TurretSlot : MonoBehaviour
     [SerializeField] private Color noDataColor; 
     [SerializeField] private Color dataColor; 
     [SerializeField] private Color compatibleColor; 
-    [SerializeField] private Color incompatibleColor; 
-    
+    [SerializeField] private Color incompatibleColor;
+
     [Header("Private Infos")] 
-    [SerializeField] private ModificatorData currentModificator;
-    [SerializeField] private int currentRank;
-    private Vector2 modificatorImageScaleSave;
+    private Cap currentCap;
     private bool isShowingCompatibleColor;
     private bool isCompatible;
     private Coroutine compatibleEffectCoroutine;
     
     [Header("References")] 
     [SerializeField] private Image slotImage;
-    [SerializeField] private Image modificatorImage;
     private TurretSlotsManager mainScript;
 
 
     public void InitialiseSlot(TurretSlotsManager mainScript)
     {
-        modificatorImageScaleSave = modificatorImage.rectTransform.localScale;
-        
+        currentCap = null;
         this.mainScript = mainScript;
         ActualiseSlot();
     }
@@ -50,12 +46,12 @@ public class TurretSlot : MonoBehaviour
         isShowingCompatibleColor = true;
         isCompatible = false;
         
-        if (currentModificator == null)
+        if (currentCap == null)
         {
             isCompatible = true;
             compatibleEffectCoroutine = StartCoroutine(CompatibleEffectCoroutine());
         }
-        else if (currentModificator == draggedModificator && currentRank == draggedRank)
+        else if (currentCap.capModificatorData == draggedModificator && currentCap.capRank == draggedRank)
         {
             isCompatible = true;
             compatibleEffectCoroutine = StartCoroutine(CompatibleEffectCoroutine());
@@ -107,17 +103,14 @@ public class TurretSlot : MonoBehaviour
     
     public void ActualiseSlot()
     {
-        if (currentModificator == null)
+        if (currentCap is null)
         {
-            modificatorImage.enabled = false;
-            modificatorImage.sprite = null;
             slotImage.color = noDataColor;
             return;
         }
-
-        modificatorImage.enabled = true;
-        modificatorImage.sprite = currentModificator.modificatorSprite;
-        slotImage.color = HUDManager.Instance.ranksColors[currentRank];
+        
+        currentCap.ChangeWantedPos(transform.position - transform.forward * 0.2f);
+        currentCap.ChangeWantedRot(transform.rotation * Quaternion.Euler(-90, 0, 0));
 
         if (isShowingCompatibleColor && !isCompatible)
         {
@@ -129,9 +122,9 @@ public class TurretSlot : MonoBehaviour
     
     public (ModificatorData, int) GetCurrentModificator()
     {
-        if (currentModificator == null) return (null, 0);
+        if (currentCap is null) return (null, 0);
 
-        return (currentModificator, currentRank);
+        return (currentCap.capModificatorData, currentCap.capRank);
     }
 
 
@@ -163,53 +156,50 @@ public class TurretSlot : MonoBehaviour
 
     public void StartDrag()
     {
-        if (currentModificator == null) return;
+        if (currentCap == null) return;
         
-        mainScript.StartDrag(currentModificator, currentRank, this);
+        mainScript.StartDrag(currentCap, this);
     }
 
-    public (ModificatorData, int) AddModificator(ModificatorData modificatorData, int newRank, bool isExchange = false)
+    public (Cap, bool) AddModificator(Cap cap, bool isExchange = false)
     {
         // If the slot is empty
-        if (currentModificator == null)
+        if (currentCap == null)
         {
             ModificatorAddFeel();
-            currentModificator = modificatorData;
-            currentRank = newRank;
+            currentCap = cap;
 
-            return (null, 0);
+            return (null, true);
         }
 
         // If we can merge
-        if (currentModificator.modificatorType == modificatorData.modificatorType && currentRank == newRank)
+        if (currentCap.capModificatorData.modificatorType == cap.capModificatorData.modificatorType && currentCap.capRank == cap.capRank)
         {
             ModificatorAddFeel();
-            currentRank += 1;
+            currentCap.capRank += 1;
+            currentCap.ActualiseCap();
 
-            return (null, 0);
+            return (null, true);
         }
 
         // If we want to exchange two slots modificators
         if (isExchange)
         {
             ModificatorAddFeel();
-            ModificatorData saveData = currentModificator;
-            int saveRank = currentRank;
+            Cap saveCap = currentCap;
+
+            currentCap = cap;
             
-            currentModificator = modificatorData;
-            currentRank = newRank;
-            
-            return (saveData, saveRank);
+            return (saveCap, true);
         }
         
         // if the slot is not valid
-        return (null, -1);
+        return (null, false);;
     }
 
     public void RemoveModificator()
     {
-        currentModificator = null;
-        currentRank = 0;
+        currentCap = null;
     }
 
     #endregion
@@ -217,6 +207,6 @@ public class TurretSlot : MonoBehaviour
 
     private void ModificatorAddFeel()
     {
-        modificatorImage.rectTransform.UBounce(0.04f, modificatorImageScaleSave * 0.5f, 0.08f, modificatorImageScaleSave);
+
     }
 }

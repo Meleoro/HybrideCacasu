@@ -13,12 +13,10 @@ public class GetNewModificatorUISlot : MonoBehaviour
     [SerializeField] private Cap capPrefab;
 
     [Header("Private Infos")] 
-    private ModificatorData currentData;
-    private int currentRank;
     private Cap currentCap;
+    private bool isDragged;
     
     [Header("References")] 
-    [SerializeField] private Image modificatorImage;
     [SerializeField] private Image backImage;
     [SerializeField] private TextMeshProUGUI modificatorNameText;
     [SerializeField] private TextMeshProUGUI modificatorDescText;
@@ -36,14 +34,8 @@ public class GetNewModificatorUISlot : MonoBehaviour
 
     public void SetCurrentData(ModificatorData data, int rank)
     {
-        currentData = data;
-
         modificatorNameText.text = data.modificatorName;
         modificatorDescText.text = data.modificatorDescription;
-        modificatorImage.sprite = data.modificatorSprite;
-
-        currentRank = rank;
-        modificatorImage.color = HUDManager.Instance.ranksColors[rank];
         backImage.color = HUDManager.Instance.ranksColors[rank];
         backImage.color *= new Color(1, 1, 1, 0.2f);
 
@@ -57,6 +49,8 @@ public class GetNewModificatorUISlot : MonoBehaviour
         currentCap.SetData(data, rank);
         currentCap.ChangeWantedPos(transform.position);
         currentCap.ChangeWantedRot(transform.rotation * Quaternion.Euler(-90f, 0, 0f));
+        currentCap.transform.localScale = new Vector3(0, 0, 0);
+        currentCap.transform.UChangeScale(0.5f, Vector3.one * 1f, CurveType.EaseOutBack, true);
         
         ActualiseDescription(data, rank);
     }
@@ -72,7 +66,6 @@ public class GetNewModificatorUISlot : MonoBehaviour
             {
                 if(data.isPercentDisplay)
                     finalText += 100 * data.modificatorImpacts[rank];
-                
                 else
                     finalText += data.modificatorImpacts[rank];
                 
@@ -112,6 +105,12 @@ public class GetNewModificatorUISlot : MonoBehaviour
         slotButton.enabled = false;
         mainTr.UChangeScale(instant ? 0 : openAnimDuration * 0.9f, new Vector3(0, 0, 0), CurveType.EaseOutBack, true);
         mainTr.UChangeLocalRotation(instant ? 0 : openAnimDuration, Quaternion.Euler(0, 0, 0), CurveType.None, true);
+
+        if (!isDragged && !instant)
+        {
+            currentCap.transform.UChangeScale(0.5f, Vector3.one * 0f, CurveType.EaseOutBack, true);
+            Destroy(currentCap.gameObject, 0.5f);
+        }
         
         for (int i = 0; i < vfxs.Length; i++)
         {
@@ -143,7 +142,14 @@ public class GetNewModificatorUISlot : MonoBehaviour
     
     public void DragSlot()
     {
-        mainScript.StartDrag(currentData, currentRank);
+        isDragged = true;
+        mainScript.StartDrag(currentCap);
+    }
+
+    public void StopDrag()
+    {
+        isDragged = false;
+        currentCap.ChangeWantedPos(transform.position);
     }
 
     #endregion

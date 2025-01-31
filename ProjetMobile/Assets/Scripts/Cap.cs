@@ -1,12 +1,16 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Cap : MonoBehaviour
 {
     [Header("Parameters")]
     [SerializeField] private Material[] capRankMaterials;
-    [SerializeField] private ModificatorData capModificatorData;
 
+    [Header("Public Infos")] 
+    public ModificatorData capModificatorData;
+    public int capRank;
+    
     [Header("Private Infos")] 
     private Vector3 wantedPos;
     private Quaternion wantedRot;
@@ -22,8 +26,15 @@ public class Cap : MonoBehaviour
 
     public void SetData(ModificatorData data, int rank)
     {
-        capModificatorData = data;
         meshRenderer.materials[0] = capRankMaterials[rank];
+        
+        capModificatorData = data;
+        capRank = rank;
+    }
+
+    public void ActualiseCap()
+    {
+        meshRenderer.materials[0] = capRankMaterials[capRank];
     }
     
     

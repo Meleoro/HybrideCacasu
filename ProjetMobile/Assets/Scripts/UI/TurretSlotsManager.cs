@@ -141,47 +141,45 @@ public class TurretSlotsManager : MonoBehaviour
 
     #region Drag Functions
 
-    public void StartDrag(ModificatorData draggedData, int draggedRank, TurretSlot dragOrigin)
+    public void StartDrag(Cap cap, TurretSlot dragOrigin)
     {
         dragSlotOrigin = dragOrigin;
-        HUDManager.Instance.StartDrag(draggedData, draggedRank);
+        HUDManager.Instance.StartDrag(cap);
     }
     
-    public bool EndDrag(ModificatorData draggedData, int draggedRank)
+    public bool EndDrag(Cap cap)
     {
         if (currentOverlayedSlot is null) return false;
         if (currentOverlayedSlot == dragSlotOrigin) return false;
 
-        ModificatorData modificatorData = null;
-        int rank = 0;
+        Cap capSave = null;
+        bool succedded = false;
 
         if (dragSlotOrigin is not null)
         {
-            (modificatorData, rank) = currentOverlayedSlot.AddModificator(draggedData, draggedRank, true);
+            (capSave, succedded) = currentOverlayedSlot.AddModificator(cap, true);
         
             dragSlotOrigin.RemoveModificator();
-            if (modificatorData is not null)
+            if (capSave is not null)
             {
-                dragSlotOrigin.AddModificator(modificatorData, rank);
+                dragSlotOrigin.AddModificator(cap);
             }
 
             dragSlotOrigin = null;
         }
         else
         {
-            (modificatorData, rank) = currentOverlayedSlot.AddModificator(draggedData, draggedRank);
+            (capSave, succedded) = currentOverlayedSlot.AddModificator(cap);
         }
         
         ActualiseSlotsImages();
-        
-        if (rank == 0) return true;
-        return false;
+        return succedded;
     }
 
 
-    public void EndDragSell(ModificatorData draggedData, int draggedRank)
+    public void EndDragSell(Cap draggedCap)
     {
-        MoneyManager.Instance.AddMoney(draggedData.sellValues[draggedRank]);
+        MoneyManager.Instance.AddMoney(draggedCap.capModificatorData.sellValues[draggedCap.capRank]);
         
         if (dragSlotOrigin is not null)
         {
@@ -193,11 +191,11 @@ public class TurretSlotsManager : MonoBehaviour
     }
     
     
-    public void ShowPossibleSlots(ModificatorData draggedData, int draggedRank)
+    public void ShowPossibleSlots(Cap draggedCap)
     {
         for (int i = 0; i < turretSlots.Length; i++)
         {
-            turretSlots[i].DisplayIsCompatible(draggedData, draggedRank, dragSlotOrigin);
+            turretSlots[i].DisplayIsCompatible(draggedCap.capModificatorData, draggedCap.capRank, dragSlotOrigin);
         }
     }
 

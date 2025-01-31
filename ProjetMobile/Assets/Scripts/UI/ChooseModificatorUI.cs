@@ -137,8 +137,16 @@ public class GetNewModificatorUI : MonoBehaviour
         }
     }
 
-    public void StartDrag(ModificatorData draggedData, int draggedRank)
+    public void StartDrag(Cap draggedCap)
     {
-        HUDManager.Instance.StartDrag(draggedData, draggedRank);
+        HUDManager.Instance.StartDrag(draggedCap);
+    }
+
+    public void EndDrag()
+    {
+        for (int i = 0; i < modificatorUpgradeSlotsScripts.Length; i++)
+        {
+            modificatorUpgradeSlotsScripts[i].StopDrag();
+        }
     }
 }

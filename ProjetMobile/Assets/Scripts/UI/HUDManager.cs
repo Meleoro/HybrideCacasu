@@ -18,8 +18,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     [Header("Private Infos")] 
     private bool isDragging;
     private bool isOverlayingSell;
-    private ModificatorData currentDraggedData;
-    private int currentDraggedRank;
+    private Cap currentDraggedCap;
 
     [Header("References")] 
     public TurretSlotsManager turretSlotsManager;
@@ -42,7 +41,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
 
     private void Update()
     {
-        ActualiseDragImage();
+        ActualiseDrag();
         proressScript.ActualiseFillImage(GameManager.Instance.currentTimer / GameManager.Instance.levelData.levelDuration);
     }
 
@@ -95,26 +94,24 @@ public class HUDManager : GenericSingletonClass<HUDManager>
 
     #region Drag Fonctions
     
-    public void StartDrag(ModificatorData draggedData, int draggedRank)
+    public void StartDrag(Cap draggedCap)
     {
         if (isDragging) return;
         
         DisplaySellButton();
+
+        currentDraggedCap = draggedCap;
         
         isDragging = true;
-        dragImage.sprite = draggedData.modificatorSprite;
+        dragImage.sprite = currentDraggedCap.capModificatorData.modificatorSprite;
         dragImage.enabled = true;
-        dragImage.color = ranksColors[draggedRank];
-
-        currentDraggedData = draggedData;
-        currentDraggedRank = draggedRank;
+        dragImage.color = ranksColors[currentDraggedCap.capRank];
         
-        turretSlotsManager.ShowPossibleSlots(currentDraggedData, currentDraggedRank);
+        turretSlotsManager.ShowPossibleSlots(currentDraggedCap);
         
         Vector2 dragPos = new Vector2(Mathf.Lerp(0, canvasRect.rect.width, Touchscreen.current.touches[0].position.x.value / Screen.width), 
                               Mathf.Lerp(0, canvasRect.rect.height, Touchscreen.current.touches[0].position.y.value / Screen.height)) 
                           - new Vector2(canvasRect.rect.width * 0.5f, canvasRect.rect.height * 0.5f);
-        dragImage.rectTransform.localPosition = dragPos;
     }
 
     public void PauseDrag()
@@ -124,24 +121,32 @@ public class HUDManager : GenericSingletonClass<HUDManager>
 
     public void RestartDrag()
     {
-        turretSlotsManager.ShowPossibleSlots(currentDraggedData, currentDraggedRank);
+        turretSlotsManager.ShowPossibleSlots(currentDraggedCap);
     }
     
-    private void ActualiseDragImage()
+    private void ActualiseDrag()
     {
         if (!isDragging) return;
-        
-        if(Touchscreen.current.touches.Count == 0)
-            EndDrag();
 
-        if(Touchscreen.current.touches[0].phase.value == UnityEngine.InputSystem.TouchPhase.Ended)
+        if (Touchscreen.current.touches.Count == 0)
+        {
             EndDrag();
+            return;
+        }
+
+        if (Touchscreen.current.touches[0].phase.value == UnityEngine.InputSystem.TouchPhase.Ended)
+        {
+            EndDrag();
+            return;
+        }
 
         Vector2 dragPos = new Vector2(Mathf.Lerp(0, canvasRect.rect.width, Touchscreen.current.touches[0].position.x.value / Screen.width), 
             Mathf.Lerp(0, canvasRect.rect.height, Touchscreen.current.touches[0].position.y.value / Screen.height)) 
                           - new Vector2(canvasRect.rect.width * 0.5f, canvasRect.rect.height * 0.5f);
         
         dragImage.rectTransform.localPosition = Vector3.Lerp(dragImage.rectTransform.localPosition, new Vector3(dragPos.x, dragPos.y, 0), Time.unscaledDeltaTime * 10f);
+        
+        currentDraggedCap.ChangeWantedPos(dragImage.rectTransform.position);
     }
 
     private void EndDrag()
@@ -155,17 +160,22 @@ public class HUDManager : GenericSingletonClass<HUDManager>
 
         if (isOverlayingSell)
         {
-            turretSlotsManager.EndDragSell(currentDraggedData, currentDraggedRank);
+            turretSlotsManager.EndDragSell(currentDraggedCap);
             modificatorChoseScript.CloseChoseUpgradeUI();
             
             OnModificatorDragEndAction.Invoke();
         }
         else
         {
-            if (turretSlotsManager.EndDrag(currentDraggedData, currentDraggedRank))
+            if (turretSlotsManager.EndDrag(currentDraggedCap))
             {
                 modificatorChoseScript.CloseChoseUpgradeUI();
             }
+            else
+            {
+                modificatorChoseScript.EndDrag();
+            }
+            
             OnModificatorDragEndAction.Invoke();
         }
     }
