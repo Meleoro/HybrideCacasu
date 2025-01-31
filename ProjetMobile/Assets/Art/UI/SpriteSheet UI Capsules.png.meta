@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -34,27 +34,27 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 500
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -106,14 +106,370 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: SpriteSheet UI Capsules_1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 727
+        width: 199
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71b26e091b9db1a419c23f9f4055d345
+      internalID: -1245751197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteSheet UI Capsules_6
+      rect:
+        serializedVersion: 2
+        x: 1159
+        y: 727
+        width: 202
+        height: 217
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 836d8e606c83e104c94496055af55758
+      internalID: -834665993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteSheet UI Capsules_7
+      rect:
+        serializedVersion: 2
+        x: 1465
+        y: 703
+        width: 200
+        height: 237
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbc506b21fcecab449629833ab54c0f7
+      internalID: -1405273834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteSheet UI Capsules_15
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 733
+        width: 220
+        height: 217
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0356a520cc6f3ed47968ce88dd119bdb
+      internalID: 1519708674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteSheet UI Capsules_17
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 740
+        width: 219
+        height: 196
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9374888e46920043a1e2ee4de637ddd
+      internalID: 261101934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteSheet UI Capsules_20
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 434
+        width: 226
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93d290a5b702e70488e4cf4493a68784
+      internalID: 102395023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteSheet UI Capsules_24
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 377
+        width: 214
+        height: 248
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea3937d26ab9ceb438f9dccd324d0f23
+      internalID: -1393756620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteSheet UI Capsules_30
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 471
+        width: 264
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c92cce94e6dacd547a26b98cdd6d05fa
+      internalID: 1673247044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteSheet UI Capsules_39
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 429
+        width: 211
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d437e7573b32a0f4abea70b8101f5b1c
+      internalID: 1163560073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteSheet UI Capsules_46
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 414
+        width: 217
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a58067f60f97414fa8faec2716c8962
+      internalID: -912134448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteSheet UI Capsules_47
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 87
+        width: 224
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdd09a478b08a384f950fa08edef0afb
+      internalID: -83004342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteSheet UI Capsules_48
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 87
+        width: 267
+        height: 246
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23f0b187b2f2f5d479f56872dca44264
+      internalID: -1808860609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteSheet UI Capsules_49
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 144
+        width: 238
+        height: 135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1ce6643802b0e245b9a8c346525dfec
+      internalID: 2068129552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteSheet UI Capsules_50
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 77
+        width: 119
+        height: 243
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6173074f102e074390447d1650f70fc
+      internalID: -1870234881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteSheet UI Capsules_51
+      rect:
+        serializedVersion: 2
+        x: 1462
+        y: 73
+        width: 165
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a3365acb065f64e831d02df726baed
+      internalID: -359795229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -122,7 +478,59 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SpriteSheet UI Capsules_0: 1266153098
+      SpriteSheet UI Capsules_1: -1245751197
+      SpriteSheet UI Capsules_10: 1081055394
+      SpriteSheet UI Capsules_11: 993080174
+      SpriteSheet UI Capsules_12: -495967717
+      SpriteSheet UI Capsules_13: 1572625674
+      SpriteSheet UI Capsules_14: -1364504580
+      SpriteSheet UI Capsules_15: 1519708674
+      SpriteSheet UI Capsules_16: -994611034
+      SpriteSheet UI Capsules_17: 261101934
+      SpriteSheet UI Capsules_18: 1511834761
+      SpriteSheet UI Capsules_19: 1722009382
+      SpriteSheet UI Capsules_2: 331536232
+      SpriteSheet UI Capsules_20: 102395023
+      SpriteSheet UI Capsules_21: 857727428
+      SpriteSheet UI Capsules_22: -2005110920
+      SpriteSheet UI Capsules_23: -526031191
+      SpriteSheet UI Capsules_24: -1393756620
+      SpriteSheet UI Capsules_25: 719041622
+      SpriteSheet UI Capsules_26: 317563870
+      SpriteSheet UI Capsules_27: -923374259
+      SpriteSheet UI Capsules_28: 1910981905
+      SpriteSheet UI Capsules_29: 2025229520
+      SpriteSheet UI Capsules_3: 285490614
+      SpriteSheet UI Capsules_30: 1673247044
+      SpriteSheet UI Capsules_31: -1896552294
+      SpriteSheet UI Capsules_32: -1730513461
+      SpriteSheet UI Capsules_33: 270976622
+      SpriteSheet UI Capsules_34: -932298029
+      SpriteSheet UI Capsules_35: -1950822145
+      SpriteSheet UI Capsules_36: 28521652
+      SpriteSheet UI Capsules_37: -662783480
+      SpriteSheet UI Capsules_38: -533182898
+      SpriteSheet UI Capsules_39: 1163560073
+      SpriteSheet UI Capsules_4: -822450017
+      SpriteSheet UI Capsules_40: -1552186040
+      SpriteSheet UI Capsules_41: 1226971431
+      SpriteSheet UI Capsules_42: 1695024226
+      SpriteSheet UI Capsules_43: -1966199874
+      SpriteSheet UI Capsules_44: -2034374529
+      SpriteSheet UI Capsules_45: 2130125961
+      SpriteSheet UI Capsules_46: -912134448
+      SpriteSheet UI Capsules_47: -83004342
+      SpriteSheet UI Capsules_48: -1808860609
+      SpriteSheet UI Capsules_49: 2068129552
+      SpriteSheet UI Capsules_5: 1161355187
+      SpriteSheet UI Capsules_50: -1870234881
+      SpriteSheet UI Capsules_51: -359795229
+      SpriteSheet UI Capsules_6: -834665993
+      SpriteSheet UI Capsules_7: -1405273834
+      SpriteSheet UI Capsules_8: -1923429048
+      SpriteSheet UI Capsules_9: 1723554317
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

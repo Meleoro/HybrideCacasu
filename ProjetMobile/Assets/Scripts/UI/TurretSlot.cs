@@ -175,6 +175,8 @@ public class TurretSlot : MonoBehaviour
         // If we can merge
         if (currentCap.capModificatorData.modificatorType == cap.capModificatorData.modificatorType && currentCap.capRank == cap.capRank)
         {
+            Destroy(cap.gameObject);
+            
             ModificatorAddFeel();
             currentCap.capRank += 1;
             currentCap.ActualiseCap();

@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Cap : MonoBehaviour
@@ -17,6 +19,7 @@ public class Cap : MonoBehaviour
 
     [Header("References")] 
     [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private SpriteRenderer iconSpriteRenderer;
 
 
     private void Start()
@@ -27,6 +30,7 @@ public class Cap : MonoBehaviour
     public void SetData(ModificatorData data, int rank)
     {
         meshRenderer.materials[0] = capRankMaterials[rank];
+        iconSpriteRenderer.sprite = data.modificatorSprite;
         
         capModificatorData = data;
         capRank = rank;
@@ -34,7 +38,9 @@ public class Cap : MonoBehaviour
 
     public void ActualiseCap()
     {
-        meshRenderer.materials[0] = capRankMaterials[capRank];
+        Material[] materials = meshRenderer.materials;
+        materials[0] = capRankMaterials[capRank];
+        meshRenderer.SetMaterials(materials.ToList());
     }
     
     

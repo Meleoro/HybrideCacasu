@@ -144,6 +144,8 @@ public class GetNewModificatorUI : MonoBehaviour
 
     public void EndDrag()
     {
+        if (!isOpenned) return;
+        
         for (int i = 0; i < modificatorUpgradeSlotsScripts.Length; i++)
         {
             modificatorUpgradeSlotsScripts[i].StopDrag();

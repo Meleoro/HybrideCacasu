@@ -34,6 +34,7 @@ public class GetNewModificatorUISlot : MonoBehaviour
 
     public void SetCurrentData(ModificatorData data, int rank)
     {
+        isDragged = false;
         modificatorNameText.text = data.modificatorName;
         modificatorDescText.text = data.modificatorDescription;
         backImage.color = HUDManager.Instance.ranksColors[rank];
@@ -111,6 +112,7 @@ public class GetNewModificatorUISlot : MonoBehaviour
             currentCap.transform.UChangeScale(0.5f, Vector3.one * 0f, CurveType.EaseOutBack, true);
             Destroy(currentCap.gameObject, 0.5f);
         }
+        currentCap = null;
         
         for (int i = 0; i < vfxs.Length; i++)
         {

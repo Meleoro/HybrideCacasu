@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd8a03dc95a690e4b82046b6f71d1ea3, type: 3}
-  m_Name: Damage
+  m_Name: Size
   m_EditorClassIdentifier: 
-  modificatorType: 0
-  modificatorSprite: {fileID: -1245751197, guid: 09250cc9065b6a54c9b920dbb487768b, type: 3}
+  modificatorType: 4
+  modificatorSprite: {fileID: 261101934, guid: 09250cc9065b6a54c9b920dbb487768b, type: 3}
   modificatorImpacts:
   - 0.1
   - 0.2
-  - 0.4
-  - 0.8
+  - 0.5
+  - 1
   sellValues: 0a000000140000001e00000028000000
-  modificatorName: Damage Boost
-  modificatorDescription: 'Multiplies the damage of this turret by {x}%  '
+  modificatorName: Size+
+  modificatorDescription: Upgrade the bullets size by {x}%
   isPercentDisplay: 1

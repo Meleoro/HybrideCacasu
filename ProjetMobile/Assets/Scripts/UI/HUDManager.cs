@@ -24,7 +24,6 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     public TurretSlotsManager turretSlotsManager;
     [SerializeField] private GetNewModificatorUI modificatorChoseScript;
     [SerializeField] private LevelProgressUI proressScript;
-    [SerializeField] private Image dragImage;
     [SerializeField] private RectTransform sellRectTr;
     [SerializeField] private RectTransform baseButtonsRectTr;
     [SerializeField] private RectTransform upButtonPosRefRectTr;
@@ -103,10 +102,6 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         currentDraggedCap = draggedCap;
         
         isDragging = true;
-        dragImage.sprite = currentDraggedCap.capModificatorData.modificatorSprite;
-        dragImage.enabled = true;
-        dragImage.color = ranksColors[currentDraggedCap.capRank];
-        
         turretSlotsManager.ShowPossibleSlots(currentDraggedCap);
         
         Vector2 dragPos = new Vector2(Mathf.Lerp(0, canvasRect.rect.width, Touchscreen.current.touches[0].position.x.value / Screen.width), 
@@ -143,10 +138,8 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         Vector2 dragPos = new Vector2(Mathf.Lerp(0, canvasRect.rect.width, Touchscreen.current.touches[0].position.x.value / Screen.width), 
             Mathf.Lerp(0, canvasRect.rect.height, Touchscreen.current.touches[0].position.y.value / Screen.height)) 
                           - new Vector2(canvasRect.rect.width * 0.5f, canvasRect.rect.height * 0.5f);
-        
-        dragImage.rectTransform.localPosition = Vector3.Lerp(dragImage.rectTransform.localPosition, new Vector3(dragPos.x, dragPos.y, 0), Time.unscaledDeltaTime * 10f);
-        
-        currentDraggedCap.ChangeWantedPos(dragImage.rectTransform.position);
+        //dragImage.rectTransform.localPosition = Vector3.Lerp(dragImage.rectTransform.localPosition, new Vector3(dragPos.x, dragPos.y, 0), Time.unscaledDeltaTime * 10f);
+        currentDraggedCap.ChangeWantedPos(canvasRect.TransformPoint(dragPos));
     }
 
     private void EndDrag()
@@ -154,7 +147,6 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         HideSellButton();
         
         isDragging = false;
-        dragImage.enabled = false;
         
         turretSlotsManager.HidePossibleSlots(false);
 

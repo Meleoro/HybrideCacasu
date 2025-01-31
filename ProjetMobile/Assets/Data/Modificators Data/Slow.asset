@@ -13,17 +13,13 @@ MonoBehaviour:
   m_Name: Slow
   m_EditorClassIdentifier: 
   modificatorType: 5
-  modificatorSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  modificatorSprite: {fileID: -1405273834, guid: 09250cc9065b6a54c9b920dbb487768b, type: 3}
   modificatorImpacts:
   - 0.2
   - 0.5
   - 0.75
   - 1
-  sellValues:
-  - 10
-  - 20
-  - 30
-  - 40
+  sellValues: 0a000000140000001e00000028000000
   modificatorName: Slow
-  modificatorDescription: Flemme
+  modificatorDescription: Ca ralenti quoi
   isPercentDisplay: 0
