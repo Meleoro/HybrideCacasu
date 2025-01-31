@@ -22,7 +22,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
 
     [Header("References")] 
     public TurretSlotsManager turretSlotsManager;
-    [SerializeField] private GetNewModificatorUI modificatorChoseScript;
+    public GetNewModificatorUI modificatorChooseScript;
     [SerializeField] private LevelProgressUI proressScript;
     [SerializeField] private RectTransform sellRectTr;
     [SerializeField] private RectTransform baseButtonsRectTr;
@@ -51,14 +51,14 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     {
         if (!MoneyManager.Instance.VerifyHasEnoughMoneyMiddleChest(true)) return;
         
-        modificatorChoseScript.OpenChoseUpgradeUI();
+        modificatorChooseScript.OpenChoseUpgradeUI();
     }
 
     public void ClickRightButton()
     {
         if (!MoneyManager.Instance.VerifyHasEnoughMoneyChestUpgrade(true)) return;
         
-        modificatorChoseScript.UpgradeChest();
+        modificatorChooseScript.UpgradeChest();
     }
 
     #endregion
@@ -153,7 +153,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         if (isOverlayingSell)
         {
             turretSlotsManager.EndDragSell(currentDraggedCap);
-            modificatorChoseScript.CloseChoseUpgradeUI();
+            modificatorChooseScript.CloseChoseUpgradeUI();
             
             OnModificatorDragEndAction.Invoke();
         }
@@ -161,11 +161,11 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         {
             if (turretSlotsManager.EndDrag(currentDraggedCap))
             {
-                modificatorChoseScript.CloseChoseUpgradeUI();
+                modificatorChooseScript.CloseChoseUpgradeUI();
             }
             else
             {
-                modificatorChoseScript.EndDrag();
+                modificatorChooseScript.EndDrag();
             }
             
             OnModificatorDragEndAction.Invoke();

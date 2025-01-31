@@ -157,6 +157,7 @@ public class TurretSlot : MonoBehaviour
     public void StartDrag()
     {
         if (currentCap == null) return;
+        if (HUDManager.Instance.modificatorChooseScript.isOpenned) return;
         
         mainScript.StartDrag(currentCap, this);
     }

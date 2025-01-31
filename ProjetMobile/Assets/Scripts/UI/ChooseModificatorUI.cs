@@ -11,9 +11,11 @@ public class GetNewModificatorUI : MonoBehaviour
     [SerializeField] private float[] startProgressPerRank;
     [SerializeField] private float progressPerUpgrade;
     
+    [Header("Public Infos")]
+    public bool isOpenned;
+    
     [Header("Private Infos")] 
     [SerializeField] private float[] currentProgresses;
-    private bool isOpenned;
     [SerializeField]private float[] currentProbabilityPerRank;
     private float currentProbabilitiesSum;
     private int currentRankUpAmount;

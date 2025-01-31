@@ -1484,6 +1484,7 @@ MonoBehaviour:
   - 0
   - -1
   progressPerUpgrade: 0.1
+  isOpenned: 0
   currentProgresses: []
   currentProbabilityPerRank: []
   modificatorUpgradeSlotsRectTr:
@@ -2372,7 +2373,7 @@ MonoBehaviour:
   - {r: 0.9433962, g: 0.5929069, b: 0.25364897, a: 1}
   - {r: 0.7287076, g: 0.3270737, b: 0.9245283, a: 1}
   turretSlotsManager: {fileID: 1076690337}
-  modificatorChoseScript: {fileID: 752515496}
+  modificatorChooseScript: {fileID: 752515496}
   proressScript: {fileID: 149964794}
   sellRectTr: {fileID: 457860064}
   baseButtonsRectTr: {fileID: 117800562}
