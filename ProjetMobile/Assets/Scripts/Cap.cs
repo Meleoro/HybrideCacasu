@@ -54,6 +54,20 @@ public class Cap : MonoBehaviour
         wantedRot = newRot;
     }
 
+    public IEnumerator DoRotationEntranceCoroutine()
+    {
+        float timer = 0;
+
+        while (timer < 0.5f)
+        {
+            timer += Time.unscaledDeltaTime;
+            wantedRot.eulerAngles = new Vector3(wantedRot.eulerAngles.x, wantedRot.eulerAngles.y, Mathf.Lerp(0, 360*2, timer / 0.5f));
+            transform.rotation = Quaternion.Lerp(transform.rotation, wantedRot, Time.unscaledDeltaTime * 7.5f);
+            
+            yield return new WaitForSecondsRealtime(Time.unscaledDeltaTime);
+        }
+    }
+
     private void Update()
     {
         transform.position = Vector3.Lerp(transform.position, wantedPos, Time.unscaledDeltaTime * 8f);

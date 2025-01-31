@@ -53,6 +53,7 @@ public class GetNewModificatorUISlot : MonoBehaviour
         currentCap.transform.localScale = new Vector3(0, 0, 0);
         currentCap.transform.UChangeScale(0.5f, Vector3.one * 1f, CurveType.EaseOutBack, true);
         currentCap.ActualiseCap();
+        StartCoroutine(currentCap.DoRotationEntranceCoroutine());
         
         ActualiseDescription(data, rank);
     }
