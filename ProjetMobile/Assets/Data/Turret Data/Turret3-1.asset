@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretName: Turret 3
   turretDescription: Macron, explosion
-  damages: 2
-  shootCooldown: 0.8
+  damages: 3
+  shootCooldown: 1.5
   shootDispersion: 0.5
-  bulletSpeed: 10
+  bulletSpeed: 15
   bulletCount: 1
   bulletSize: 0.2
   explosionRange: 1
