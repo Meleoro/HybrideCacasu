@@ -32,7 +32,7 @@ public class EnemyMaster : MonoBehaviour
     
     private void Update()
     {
-        transform.position += Time.deltaTime * currentSpeed * new Vector3(moveDir.x, 0, moveDir.y) + currentKnockback;
+        transform.position += Time.deltaTime * currentSpeed * (new Vector3(moveDir.x, 0, moveDir.y) + currentKnockback);
     }
     
     #endregion
@@ -75,7 +75,7 @@ public class EnemyMaster : MonoBehaviour
         else
         {
             meshTr.UShakeLocalPosition(0.1f, 0.5f, false, true, false);
-            StartCoroutine(KnockbackCoroutine(0.05f, 3f, new Vector3(0, 0, 1)));
+            StartCoroutine(KnockbackCoroutine(0.05f, 1f, new Vector3(0, 0, 1)));
         }
     }
 
@@ -88,7 +88,7 @@ public class EnemyMaster : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            currentKnockback = Time.deltaTime * Mathf.Lerp(0, strength, timer / duration) * direction;
+            currentKnockback = Mathf.Lerp(0, strength, timer / duration) * direction;
             
             yield return new WaitForSeconds(Time.deltaTime);
         }

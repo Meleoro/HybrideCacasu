@@ -195,13 +195,13 @@ public class TurretSlot : MonoBehaviour
         }
         
         // if the slot is not valid
-        return (null, true);;
+        return (null, false);;
     }
 
     public void RemoveModificator(bool destroy = false)
     {
         if(destroy)
-            Destroy(currentCap);
+            Destroy(currentCap.gameObject);
         
         currentCap = null;
     }
