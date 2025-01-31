@@ -88,15 +88,15 @@ public class TurretSlot : MonoBehaviour
         
         while (true)
         {
-            slotImage.rectTransform.UChangeScale(0.5f, Vector3.one * 1.1f, CurveType.EaseInOutSin, true);
+            slotImage.rectTransform.UChangeScale(0.5f, Vector3.one * 1.05f, CurveType.EaseInOutSin, true);
             slotImage.ULerpImageColor(0.5f, saveColor * new Color(1.15f, 1.15f, 1.15f), CurveType.EaseInOutSin, true);
         
-            yield return new WaitForSecondsRealtime(0.52f);
+            yield return new WaitForSecondsRealtime(0.55f);
         
             slotImage.rectTransform.UChangeScale(0.5f, Vector3.one * 1f, CurveType.EaseInOutSin, true);
             slotImage.ULerpImageColor(0.5f, saveColor, CurveType.EaseInOutSin, true);
         
-            yield return new WaitForSecondsRealtime(0.52f);
+            yield return new WaitForSecondsRealtime(0.55f);
         }
     }
 
@@ -141,8 +141,8 @@ public class TurretSlot : MonoBehaviour
         {
             HUDManager.Instance.PauseDrag(this);
             
-            slotImage.rectTransform.UChangeScale(0.2f, Vector3.one * 1.25f, CurveType.EaseOutBack, true);
-            slotImage.ULerpImageColor(0.2f, slotImage.color * new Color(1.2f, 1.2f, 1.2f), CurveType.EaseOutBack, true);
+            slotImage.rectTransform.UChangeScale(0.1f, Vector3.one * 1.1f, CurveType.EaseOutBack, true);
+            slotImage.ULerpImageColor(0.1f, slotImage.color * new Color(1.25f, 1.25f, 1.25f), CurveType.EaseOutBack, true);
         }
     }
 
