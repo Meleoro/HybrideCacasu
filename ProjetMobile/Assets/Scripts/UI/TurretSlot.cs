@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
@@ -7,11 +8,16 @@ public class TurretSlot : MonoBehaviour
     [Header("Parameters")] 
     [SerializeField] private Color noDataColor; 
     [SerializeField] private Color dataColor; 
+    [SerializeField] private Color compatibleColor; 
+    [SerializeField] private Color incompatibleColor; 
     
     [Header("Private Infos")] 
     [SerializeField] private ModificatorData currentModificator;
     [SerializeField] private int currentRank;
     private Vector2 modificatorImageScaleSave;
+    private bool isShowingCompatibleColor;
+    private bool isCompatible;
+    private Coroutine compatibleEffectCoroutine;
     
     [Header("References")] 
     [SerializeField] private Image slotImage;
@@ -26,6 +32,60 @@ public class TurretSlot : MonoBehaviour
         this.mainScript = mainScript;
         ActualiseSlot();
     }
+
+
+    public void DisplayIsCompatible(ModificatorData draggedModificator, int draggedRank)
+    {
+        isShowingCompatibleColor = true;
+        isCompatible = false;
+        
+        if (currentModificator == null)
+        {
+            isCompatible = true;
+            compatibleEffectCoroutine = StartCoroutine(CompatibleEffectCoroutine());
+        }
+        else if (currentModificator == draggedModificator && currentRank == draggedRank)
+        {
+            isCompatible = true;
+            compatibleEffectCoroutine = StartCoroutine(CompatibleEffectCoroutine());
+        }
+        
+        ActualiseSlot();
+    }
+
+    public void HideIsCompatible()
+    {
+        if (isCompatible)
+        {
+            slotImage.UStopLerpImageColor();
+            slotImage.rectTransform.UChangeScale(0.15f, Vector3.one * 1f, CurveType.EaseInOutSin, true);
+            StopCoroutine(compatibleEffectCoroutine);
+
+            isCompatible = false;
+        }
+        
+        isShowingCompatibleColor = false;
+        ActualiseSlot();
+    }
+
+    private IEnumerator CompatibleEffectCoroutine()
+    {
+        Color saveColor = slotImage.color;
+        
+        while (true)
+        {
+            slotImage.rectTransform.UChangeScale(0.5f, Vector3.one * 1.1f, CurveType.EaseInOutSin, true);
+            slotImage.ULerpImageColor(0.5f, saveColor * new Color(1.15f, 1.15f, 1.15f), CurveType.EaseInOutSin, true);
+        
+            yield return new WaitForSecondsRealtime(0.52f);
+        
+            slotImage.rectTransform.UChangeScale(0.5f, Vector3.one * 1f, CurveType.EaseInOutSin, true);
+            slotImage.ULerpImageColor(0.5f, saveColor, CurveType.EaseInOutSin, true);
+        
+            yield return new WaitForSecondsRealtime(0.52f);
+        }
+    }
+    
     
     public void ActualiseSlot()
     {
@@ -40,9 +100,15 @@ public class TurretSlot : MonoBehaviour
         modificatorImage.enabled = true;
         modificatorImage.sprite = currentModificator.modificatorSprite;
         slotImage.color = HUDManager.Instance.ranksColors[currentRank];
-        //slotImage.color = dataColor;
+
+        if (isShowingCompatibleColor && !isCompatible)
+        {
+            slotImage.color *= incompatibleColor;
+        }
     }
 
+    
+    
     public (ModificatorData, int) GetCurrentModificator()
     {
         if (currentModificator == null) return (null, 0);

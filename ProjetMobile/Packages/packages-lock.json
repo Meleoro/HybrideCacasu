@@ -9,6 +9,15 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.adaptiveperformance.google.android": {
+      "version": "1.3.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.adaptiveperformance": "5.1.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.burst": {
       "version": "1.8.18",
       "depth": 2,
@@ -243,7 +252,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "651ecc5224d43d638cf70c5881f42eb0f42977b1"
+      "hash": "1231a4ce0a2ec8fdbdf6a19db73d8d88869b38b5"
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
