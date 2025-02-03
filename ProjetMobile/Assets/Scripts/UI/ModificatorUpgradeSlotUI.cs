@@ -22,7 +22,8 @@ public class GetNewModificatorUISlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI modificatorDescText;
     [SerializeField] private Button slotButton;
     [SerializeField] private RectTransform mainTr;
-    [SerializeField] private ParticleSystem[] vfxs;
+    [SerializeField] private ParticleSystem constantVFX;
+    [SerializeField] private ParticleSystem explosionVFX;
     private GetNewModificatorUI mainScript;
 
     
@@ -38,22 +39,16 @@ public class GetNewModificatorUISlot : MonoBehaviour
         modificatorNameText.text = data.modificatorName;
         modificatorDescText.text = data.modificatorDescription;
         backImage.color = HUDManager.Instance.ranksColors[rank];
-        backImage.color *= new Color(1, 1, 1, 0.2f);
+        backImage.color *= new Color(1, 1, 1, 0);
 
-        for (int i = 0; i < vfxs.Length; i++)
-        {
-            ParticleSystem.MainModule main = vfxs[i].main;
-            main.startColor = HUDManager.Instance.ranksColors[rank];
-        }
+        ParticleSystem.MainModule main = constantVFX.main;
+        main.startColor = HUDManager.Instance.ranksColors[rank];
+        main = explosionVFX.main;
+        main.startColor = HUDManager.Instance.ranksColors[rank];
 
         currentCap = Instantiate(capPrefab, transform.position, transform.rotation);
         currentCap.SetData(data, rank);
         currentCap.ChangeWantedPos(transform.position);
-        currentCap.ChangeWantedRot(transform.rotation * Quaternion.Euler(-90f, 0, 0f));
-        currentCap.transform.localScale = new Vector3(0, 0, 0);
-        currentCap.transform.UChangeScale(0.5f, Vector3.one * 1f, CurveType.EaseOutBack, true);
-        currentCap.ActualiseCap();
-        StartCoroutine(currentCap.DoRotationEntranceCoroutine());
         
         ActualiseDescription(data, rank);
     }
@@ -90,16 +85,27 @@ public class GetNewModificatorUISlot : MonoBehaviour
 
     public IEnumerator DoOpenAnimCoroutine()
     {
-        mainTr.UBounce(openAnimDuration * 0.8f, Vector3.one * 1.4f, openAnimDuration * 0.2f, Vector3.one * 1f, CurveType.None, true);
-        mainTr.UChangeLocalRotation(openAnimDuration, Quaternion.Euler(0, 359, 0), CurveType.None, true);
+        mainTr.UBounce(openAnimDuration * 0.7f, Vector3.one * 1.2f, 
+            openAnimDuration * 0.3f, Vector3.one * 1f, CurveType.None, true);
         
-        for (int i = 0; i < vfxs.Length; i++)
-        {
-            vfxs[i].Play();
-        }
+        backImage.UFadeImage(openAnimDuration * 0.7f, 0.6f, CurveType.None, true);
         
-        yield return new WaitForSeconds(openAnimDuration);
-
+        backImage.rectTransform.UBounce(openAnimDuration * 0.7f, backImage.rectTransform.localScale * 1.1f, 
+            openAnimDuration * 0.3f, backImage.rectTransform.localScale, CurveType.None, true);
+        
+        constantVFX.Play();
+        
+        currentCap.transform.rotation = transform.rotation * Quaternion.Euler(-90f, 0, 0f);
+        currentCap.ActualiseCap();
+        currentCap.DoRotationEntrance(openAnimDuration);
+        
+        yield return new WaitForSecondsRealtime(openAnimDuration * 0.7f);
+        
+        backImage.UFadeImage(openAnimDuration * 0.3f, 0.4f, CurveType.None, true);
+        explosionVFX.Play();
+        
+        yield return new WaitForSecondsRealtime(openAnimDuration * 0.3f);
+        
         slotButton.enabled = true;
     }
 
@@ -107,7 +113,6 @@ public class GetNewModificatorUISlot : MonoBehaviour
     {
         slotButton.enabled = false;
         mainTr.UChangeScale(instant ? 0 : openAnimDuration * 0.9f, new Vector3(0, 0, 0), CurveType.EaseOutBack, true);
-        mainTr.UChangeLocalRotation(instant ? 0 : openAnimDuration, Quaternion.Euler(0, 0, 0), CurveType.None, true);
 
         if (!isDragged && !instant)
         {
@@ -116,10 +121,7 @@ public class GetNewModificatorUISlot : MonoBehaviour
         }
         currentCap = null;
         
-        for (int i = 0; i < vfxs.Length; i++)
-        {
-            vfxs[i].Stop();
-        }
+        constantVFX.Stop();
         
         yield return new WaitForSeconds(instant ? 0.01f : openAnimDuration);
     }

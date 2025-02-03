@@ -74,7 +74,7 @@ public class EnemyMaster : MonoBehaviour
         }
         else
         {
-            meshTr.UShakeLocalPosition(0.1f, 0.5f, false, true, false);
+            meshTr.UShakeLocalPosition(0.1f, 0.5f);
             StartCoroutine(KnockbackCoroutine(0.05f, 1f, new Vector3(0, 0, 1)));
         }
     }
