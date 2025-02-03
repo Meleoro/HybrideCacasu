@@ -162,9 +162,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1159
-        y: 727
-        width: 202
-        height: 217
+        y: 701
+        width: 201
+        height: 257
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,10 +205,10 @@ TextureImporter:
       name: SpriteSheet UI Capsules_15
       rect:
         serializedVersion: 2
-        x: 809
-        y: 733
-        width: 220
-        height: 217
+        x: 779
+        y: 698
+        width: 252
+        height: 254
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,10 +227,10 @@ TextureImporter:
       name: SpriteSheet UI Capsules_17
       rect:
         serializedVersion: 2
-        x: 453
-        y: 740
-        width: 219
-        height: 196
+        x: 446
+        y: 736
+        width: 232
+        height: 208
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -315,10 +315,10 @@ TextureImporter:
       name: SpriteSheet UI Capsules_39
       rect:
         serializedVersion: 2
-        x: 1121
+        x: 1101
         y: 429
-        width: 211
-        height: 197
+        width: 256
+        height: 187
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -359,10 +359,10 @@ TextureImporter:
       name: SpriteSheet UI Capsules_47
       rect:
         serializedVersion: 2
-        x: 115
+        x: 109
         y: 87
-        width: 224
-        height: 213
+        width: 230
+        height: 232
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -381,10 +381,10 @@ TextureImporter:
       name: SpriteSheet UI Capsules_48
       rect:
         serializedVersion: 2
-        x: 407
+        x: 429
         y: 87
-        width: 267
-        height: 246
+        width: 245
+        height: 242
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
