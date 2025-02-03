@@ -8,9 +8,14 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
     [Header("Parameters")] 
     [SerializeField] private int middleChestCost;
     [SerializeField] private int chestUpgradeCost;
+    [SerializeField] private int middleChestCostAddedPerMiddleChest;
+    [SerializeField] private int middleChestCostAddedPerChestUpgrade;
+    [SerializeField] private int chestUpgradeCostAddedPerChestUpgrade;
     
     [Header("Private Infos")] 
     private int currentMoney;
+    private int currentMiddleChestCost;
+    private int currentRankUpgradeCost;
 
     [Header("References")] 
     [SerializeField] private TextMeshProUGUI moneyText;
@@ -18,6 +23,9 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
 
     private void Start()
     {
+        currentMiddleChestCost = middleChestCost;
+        currentRankUpgradeCost = chestUpgradeCost;
+        
         ActualiseText();
     }
     
@@ -49,9 +57,10 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
     {
         if (buyIfGood)
         {
-            if (currentMoney >= middleChestCost)
+            if (currentMoney >= currentMiddleChestCost)
             {
-                UseMoney(middleChestCost);
+                UseMoney(currentMiddleChestCost);
+                currentMiddleChestCost += middleChestCostAddedPerMiddleChest;
                 
                 return true;
             }
@@ -59,16 +68,18 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
             return false;
         }
         
-        return currentMoney >= middleChestCost;
+        return currentMoney >= currentMiddleChestCost;
     }
     
     public bool VerifyHasEnoughMoneyChestUpgrade(bool buyIfGood = false)
     {
         if (buyIfGood)
         {
-            if (currentMoney >= chestUpgradeCost)
+            if (currentMoney >= currentRankUpgradeCost)
             {
-                UseMoney(chestUpgradeCost);
+                UseMoney(currentRankUpgradeCost);
+                currentRankUpgradeCost += chestUpgradeCostAddedPerChestUpgrade;
+                currentMiddleChestCost += middleChestCostAddedPerChestUpgrade;
                 
                 return true;
             }
@@ -76,7 +87,7 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
             return false;
         }
         
-        return currentMoney >= chestUpgradeCost;
+        return currentMoney >= currentRankUpgradeCost;
     }
     
     public bool VerifyHasEnoughMoney(int moneyAmount)
