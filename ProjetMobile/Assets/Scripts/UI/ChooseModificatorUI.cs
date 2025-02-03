@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+using Utilities;
 using Random = UnityEngine.Random;
 
 public class GetNewModificatorUI : MonoBehaviour
@@ -24,6 +26,7 @@ public class GetNewModificatorUI : MonoBehaviour
     [Header("References")] 
     [SerializeField] private RectTransform[] modificatorUpgradeSlotsRectTr;
     [SerializeField] private GetNewModificatorUISlot[] modificatorUpgradeSlotsScripts;
+    [SerializeField] private Image backImage;
 
 
     private void Start()
@@ -115,6 +118,8 @@ public class GetNewModificatorUI : MonoBehaviour
         
         Time.timeScale = 0.05f;
         
+        backImage.UFadeImage(0.5f, 0.5f, CurveType.None, true);
+        
         for (int i = 0; i < 3; i++)
         {
             (chosenModificators[i], chosenRanks[i]) = PickAModificator(chosenModificators);
@@ -133,6 +138,8 @@ public class GetNewModificatorUI : MonoBehaviour
     {
         if (!isOpenned) return;
         isOpenned = false;
+        
+        backImage.UFadeImage(0.5f, 0f, CurveType.None, true);
         
         Time.timeScale = 1f;
         
