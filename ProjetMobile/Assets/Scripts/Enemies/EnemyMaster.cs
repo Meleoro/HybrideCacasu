@@ -8,6 +8,8 @@ public class EnemyMaster : MonoBehaviour
     [Header("Parameters")] 
     [SerializeField] private int enemyHealth;
     [SerializeField] private float enemySpeed;
+    [SerializeField] private float cooldownBetweenAttacks = 0.1f;
+    [SerializeField] private int attackDamages = 1;
     [SerializeField] private Vector2 moveDir;
     [SerializeField] private float moneyDropMultiplicator = 1f;
 
@@ -15,6 +17,7 @@ public class EnemyMaster : MonoBehaviour
     private float currentHealth;
     private float currentSpeed;
     private Vector3 currentKnockback;
+    private bool stopMove;
 
     [Header("References")] 
     [SerializeField] private Transform meshTr;
@@ -32,6 +35,19 @@ public class EnemyMaster : MonoBehaviour
     
     private void Update()
     {
+        ManageMovement();
+    }
+    
+    public void StopMovement()
+    {
+        stopMove = true;
+        StartCoroutine(StartAttackCoroutine());
+    }
+    
+    private void ManageMovement()
+    {
+        if (stopMove) return;
+        
         transform.position += Time.deltaTime * currentSpeed * (new Vector3(moveDir.x, 0, moveDir.y) + currentKnockback);
     }
     
@@ -102,6 +118,21 @@ public class EnemyMaster : MonoBehaviour
         Instantiate(deathVFX, transform.position, Quaternion.Euler(0, 0, 0));
         
         EnemiesManager.Instance.KillEnemy(this);
+    }
+
+    #endregion
+
+
+    #region Attack Functions
+
+    private IEnumerator StartAttackCoroutine()
+    {
+        while (true)
+        {
+            HealthManager.Instance.LoseHealth(attackDamages);
+        
+            yield return new WaitForSeconds(cooldownBetweenAttacks);
+        }
     }
 
     #endregion

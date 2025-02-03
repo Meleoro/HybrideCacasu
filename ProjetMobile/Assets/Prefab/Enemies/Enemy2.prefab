@@ -134,6 +134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 15
   enemySpeed: 0.75
+  cooldownBetweenAttacks: 1
+  attackDamages: 1
   moveDir: {x: 0, y: -1}
   moneyDropMultiplicator: 8
   meshTr: {fileID: 2185732613092237412}
