@@ -90,8 +90,8 @@ public class EnemyMaster : MonoBehaviour
         }
         else
         {
-            meshTr.UShakeLocalPosition(0.1f, 0.5f);
-            StartCoroutine(KnockbackCoroutine(0.05f, 1f, new Vector3(0, 0, 1)));
+            meshTr.UShakeLocalPosition(0.1f, 0.3f, 0.025f);
+            StartCoroutine(KnockbackCoroutine(0.1f, 4f, new Vector3(0, 0, 1)));
         }
     }
 
