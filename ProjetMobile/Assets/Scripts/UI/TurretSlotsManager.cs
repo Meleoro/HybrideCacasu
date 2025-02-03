@@ -149,8 +149,16 @@ public class TurretSlotsManager : MonoBehaviour
     
     public bool EndDrag(Cap cap)
     {
-        if (currentOverlayedSlot is null) return false;
-        if (currentOverlayedSlot == dragSlotOrigin) return false;
+        if (currentOverlayedSlot is null)
+        {
+            dragSlotOrigin = null;
+            return false;
+        }
+        if (currentOverlayedSlot == dragSlotOrigin)
+        {
+            dragSlotOrigin = null;
+            return false;
+        }
 
         Cap capSave = null;
         bool succedded = false;

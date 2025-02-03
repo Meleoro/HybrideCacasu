@@ -30,15 +30,16 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     [SerializeField] private RectTransform downButtonPosRefRectTr;
     [SerializeField] private RectTransform openChestButtonRectTr;
     [SerializeField] private ParticleSystem upgradeChestVFX;
+    [SerializeField] private LevelTransition transitionScript;
     private RectTransform canvasRect;
 
 
-    private void Start()
+    public void InitialiseHUD()
     {
         proressScript.GenerateWavesMarkers(GameManager.Instance.levelData);
         canvasRect = GetComponent<RectTransform>();
+        transitionScript.ExitTransitionCoroutine();
     }
-
 
     private void Update()
     {
@@ -108,10 +109,6 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         
         isDragging = true;
         turretSlotsManager.ShowPossibleSlots(currentDraggedCap);
-        
-        Vector2 dragPos = new Vector2(Mathf.Lerp(0, canvasRect.rect.width, Touchscreen.current.touches[0].position.x.value / Screen.width), 
-                              Mathf.Lerp(0, canvasRect.rect.height, Touchscreen.current.touches[0].position.y.value / Screen.height)) 
-                          - new Vector2(canvasRect.rect.width * 0.5f, canvasRect.rect.height * 0.5f);
     }
 
     public void PauseDrag()

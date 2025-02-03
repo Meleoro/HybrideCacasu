@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameManager : GenericSingletonClass<GameManager>
 {
-    [Header("Parameters")] 
+    [Header("Public Infos")] 
     public LevelData levelData;
 
     [Header("Public Infos")] 
@@ -12,8 +12,14 @@ public class GameManager : GenericSingletonClass<GameManager>
         
     private void Start()
     {
+        if (DontDestroyOnLoadObject.Instance != null)
+        {
+            levelData = DontDestroyOnLoadObject.Instance.levelData;
+        }
+        
         EnemiesManager.Instance.InitialiseEnemyManager(levelData);
         MoneyManager.Instance.AddMoney(levelData.startMoney);
+        HUDManager.Instance.InitialiseHUD();
     }
 
     private void Update()
