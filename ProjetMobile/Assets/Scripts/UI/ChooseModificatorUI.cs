@@ -117,7 +117,6 @@ public class GetNewModificatorUI : MonoBehaviour
         isOpenned = true;
         
         Time.timeScale = 0.05f;
-        
         backImage.UFadeImage(0.5f, 0.5f, CurveType.None, true);
         
         for (int i = 0; i < 3; i++)

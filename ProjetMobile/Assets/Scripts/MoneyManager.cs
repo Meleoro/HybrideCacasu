@@ -11,6 +11,9 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
     [SerializeField] private int middleChestCostAddedPerMiddleChest;
     [SerializeField] private int middleChestCostAddedPerChestUpgrade;
     [SerializeField] private int chestUpgradeCostAddedPerChestUpgrade;
+    [SerializeField] private float middleChestCostMultiplierPerMiddleChest = 1f;
+    [SerializeField] private float middleChestCostMultiplierPerChestUpgrade = 1f;
+    [SerializeField] private float chestUpgradeCostMultiplierPerChestUpgrade = 1f;
     
     [Header("Private Infos")] 
     private int currentMoney;
@@ -61,6 +64,7 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
             {
                 UseMoney(currentMiddleChestCost);
                 currentMiddleChestCost += middleChestCostAddedPerMiddleChest;
+                currentMiddleChestCost = (int)(currentMiddleChestCost * middleChestCostMultiplierPerMiddleChest);
                 
                 return true;
             }
@@ -79,7 +83,9 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
             {
                 UseMoney(currentRankUpgradeCost);
                 currentRankUpgradeCost += chestUpgradeCostAddedPerChestUpgrade;
+                currentRankUpgradeCost = (int)(currentRankUpgradeCost * chestUpgradeCostMultiplierPerChestUpgrade);
                 currentMiddleChestCost += middleChestCostAddedPerChestUpgrade;
+                currentMiddleChestCost = (int)(currentMiddleChestCost * middleChestCostMultiplierPerChestUpgrade);
                 
                 return true;
             }

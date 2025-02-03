@@ -28,6 +28,8 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     [SerializeField] private RectTransform baseButtonsRectTr;
     [SerializeField] private RectTransform upButtonPosRefRectTr;
     [SerializeField] private RectTransform downButtonPosRefRectTr;
+    [SerializeField] private RectTransform openChestButtonRectTr;
+    [SerializeField] private ParticleSystem upgradeChestVFX;
     private RectTransform canvasRect;
 
 
@@ -57,6 +59,9 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     public void ClickRightButton()
     {
         if (!MoneyManager.Instance.VerifyHasEnoughMoneyChestUpgrade(true)) return;
+        
+        upgradeChestVFX.Play();
+        openChestButtonRectTr.UBounce(0.1f, Vector3.one * 1.4f, 0.3f, Vector3.one, CurveType.None, true);
         
         modificatorChooseScript.UpgradeChest();
     }
