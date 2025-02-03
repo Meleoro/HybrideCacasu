@@ -34,7 +34,9 @@ public class SagaMapManager : MonoBehaviour
 
     private void GenerateSagaMap()
     {
-        Vector2 currentPos = new Vector2(0, 0);
+        Vector2 currentPos = new Vector2(0, offsetBetweenLevelsY);
+        
+        levelParentTr.sizeDelta = new Vector2(500, offsetBetweenLevelsY + levels.Length * offsetBetweenLevelsY);
 
         for (int i = 0; i < levels.Length; i++)
         {

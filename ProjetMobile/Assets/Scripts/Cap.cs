@@ -16,18 +16,11 @@ public class Cap : MonoBehaviour
     
     [Header("Private Infos")] 
     private Vector3 wantedPos;
-    private Quaternion wantedRot;
-    private bool disableRot;
 
     [Header("References")] 
     [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] private SpriteRenderer iconSpriteRenderer;
-
-
-    private void Start()
-    {
-        wantedRot = Quaternion.identity;
-    }
+    
 
     public void SetData(ModificatorData data, int rank)
     {
@@ -65,7 +58,6 @@ public class Cap : MonoBehaviour
         
         transform.UBounce(duration * 0.7f, Vector3.one * 1.4f, duration * 0.3f, Vector3.one, CurveType.EaseOutBack, true);
         transform.UChangeRotation(duration * 1f, transform.eulerAngles + new Vector3(0, 0, 720), CurveType.EaseOutCubic, true);
-        disableRot = true;
     }
     
     public void FuseCaps()

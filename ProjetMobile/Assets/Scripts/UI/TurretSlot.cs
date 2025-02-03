@@ -203,7 +203,6 @@ public class TurretSlot : MonoBehaviour
     public void RemoveModificator()
     {
         currentCap = null;
-        Debug.Log(12);
     }
 
     #endregion
@@ -211,6 +210,6 @@ public class TurretSlot : MonoBehaviour
 
     private void ModificatorAddFeel()
     {
-
+        
     }
 }
