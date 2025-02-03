@@ -51,7 +51,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     {
         if (!MoneyManager.Instance.VerifyHasEnoughMoneyMiddleChest(true)) return;
         
-        modificatorChooseScript.OpenChoseUpgradeUI();
+        StartCoroutine(modificatorChooseScript.OpenChoseUpgradeUICoroutine());
     }
 
     public void ClickRightButton()

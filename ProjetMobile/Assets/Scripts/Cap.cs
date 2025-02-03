@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Utilities;
 
 public class Cap : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Cap : MonoBehaviour
     [Header("Private Infos")] 
     private Vector3 wantedPos;
     private Quaternion wantedRot;
+    private bool disableRot;
 
     [Header("References")] 
     [SerializeField] private MeshRenderer meshRenderer;
@@ -49,28 +51,28 @@ public class Cap : MonoBehaviour
         wantedPos = newPos;
     }
 
-    public void ChangeWantedRot(Quaternion newRot)
-    {
-        wantedRot = newRot;
-    }
-
-    public IEnumerator DoRotationEntranceCoroutine()
-    {
-        float timer = 0;
-
-        while (timer < 0.5f)
-        {
-            timer += Time.unscaledDeltaTime;
-            wantedRot.eulerAngles = new Vector3(wantedRot.eulerAngles.x, wantedRot.eulerAngles.y, Mathf.Lerp(0, 360*2, timer / 0.5f));
-            transform.rotation = Quaternion.Lerp(transform.rotation, wantedRot, Time.unscaledDeltaTime * 7.5f);
-            
-            yield return new WaitForSecondsRealtime(Time.unscaledDeltaTime);
-        }
-    }
-
     private void Update()
     {
         transform.position = Vector3.Lerp(transform.position, wantedPos, Time.unscaledDeltaTime * 8f);
-        transform.rotation = Quaternion.Lerp(transform.rotation, wantedRot, Time.unscaledDeltaTime * 7.5f);
     }
+
+
+    #region Feel Functions
+    
+    public void DoRotationEntrance(float duration)
+    {
+        transform.localScale = new Vector3(0, 0, 0);
+        
+        transform.UBounce(duration * 0.7f, Vector3.one * 1.4f, duration * 0.3f, Vector3.one, CurveType.EaseOutBack, true);
+        transform.UChangeRotation(duration * 1f, transform.eulerAngles + new Vector3(0, 0, 720), CurveType.EaseOutCubic, true);
+        disableRot = true;
+    }
+    
+    public void FuseCaps()
+    {
+        transform.UChangeRotation(0.5f, transform.eulerAngles + new Vector3(720, 0, 0), CurveType.EaseOutCubic, true);
+        transform.UBounce(0.15f, transform.localScale * 2f, 0.35f, transform.localScale, CurveType.None, true);
+    }
+    
+    #endregion
 }

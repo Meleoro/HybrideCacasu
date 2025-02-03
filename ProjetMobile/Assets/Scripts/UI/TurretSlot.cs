@@ -109,8 +109,8 @@ public class TurretSlot : MonoBehaviour
             return;
         }
         
-        currentCap.ChangeWantedPos(transform.position - transform.forward * 0.2f);
-        currentCap.ChangeWantedRot(transform.rotation * Quaternion.Euler(-90, 0, 0));
+        currentCap.ChangeWantedPos(transform.position - transform.forward * 0.3f);
+        currentCap.transform.rotation = transform.rotation * Quaternion.Euler(-90, 0, 0);
 
         if (isShowingCompatibleColor && !isCompatible)
         {
@@ -181,6 +181,7 @@ public class TurretSlot : MonoBehaviour
             ModificatorAddFeel();
             currentCap.capRank += 1;
             currentCap.ActualiseCap();
+            currentCap.FuseCaps();
 
             return (null, true);
         }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -104,12 +105,12 @@ public class GetNewModificatorUI : MonoBehaviour
     }
     
     
-    public void OpenChoseUpgradeUI()
+    public IEnumerator OpenChoseUpgradeUICoroutine()
     {
         ModificatorData[] chosenModificators = new ModificatorData[3];
         int[] chosenRanks = new int[3];
         
-        if (isOpenned) return;
+        if (isOpenned) yield break;
         isOpenned = true;
         
         Time.timeScale = 0.05f;
@@ -123,6 +124,8 @@ public class GetNewModificatorUI : MonoBehaviour
         {
             modificatorUpgradeSlotsScripts[i].SetCurrentData(chosenModificators[i], chosenRanks[i]);
             StartCoroutine(modificatorUpgradeSlotsScripts[i].DoOpenAnimCoroutine());
+
+            yield return new WaitForSecondsRealtime(0.4f);
         }
     }
     
