@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CellShading_01
+  m_Name: CellShading_01 2
   m_Shader: {fileID: -6465566751694194690, guid: a3955dc8f8996d44596245b6fff2852a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -61,6 +61,6 @@ Material:
     - _Steps: 0.24
     - _StepsOffset: 1.15
     m_Colors:
-    - _Color: {r: 0.7372549, g: 0.20395711, b: 0.13333333, a: 1}
+    - _Color: {r: 0.6320754, g: 0.16229771, b: 0.11031505, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
