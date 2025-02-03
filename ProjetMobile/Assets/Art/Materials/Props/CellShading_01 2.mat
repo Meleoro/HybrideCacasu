@@ -61,6 +61,6 @@ Material:
     - _Steps: 0.24
     - _StepsOffset: 1.15
     m_Colors:
-    - _Color: {r: 0.6320754, g: 0.16229771, b: 0.11031505, a: 1}
+    - _Color: {r: 0.6313726, g: 0.46563265, b: 0.1098039, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
