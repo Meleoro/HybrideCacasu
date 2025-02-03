@@ -12,7 +12,7 @@ public class TurretSlot : MonoBehaviour
     [SerializeField] private Color incompatibleColor;
     
     [Header("Private Infos")] 
-    private Cap currentCap;
+    [SerializeField] private Cap currentCap;
     private bool isShowingCompatibleColor;
     private bool isCompatible;
     private Coroutine compatibleEffectCoroutine;
@@ -165,7 +165,7 @@ public class TurretSlot : MonoBehaviour
     public (Cap, bool) AddModificator(Cap cap, bool isExchange = false)
     {
         // If the slot is empty
-        if (currentCap == null)
+        if (currentCap == null && cap != null)
         {
             ModificatorAddFeel();
             currentCap = cap;
@@ -187,7 +187,7 @@ public class TurretSlot : MonoBehaviour
         }
 
         // If we want to exchange two slots modificators
-        if (isExchange)
+        if (isExchange && cap != null)
         {
             ModificatorAddFeel();
             Cap saveCap = currentCap;
@@ -203,6 +203,7 @@ public class TurretSlot : MonoBehaviour
     public void RemoveModificator()
     {
         currentCap = null;
+        Debug.Log(12);
     }
 
     #endregion
