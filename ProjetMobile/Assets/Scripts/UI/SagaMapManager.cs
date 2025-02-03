@@ -11,8 +11,8 @@ public class SagaMapManager : MonoBehaviour
     [SerializeField] private float offsetBetweenLevelsY;
     [SerializeField] private SagaMapLevel levelPrefab;
 
-    [Header("Private Infos")] 
-    private LevelData currentLevel;
+    [Header("Public Infos")] 
+    public bool isDoingTransition;
 
     [Header("References")] 
     [SerializeField] private LevelTransition transitionScript;
@@ -53,8 +53,6 @@ public class SagaMapManager : MonoBehaviour
 
     public void OpenDetails(LevelData data)
     {
-        currentLevel = data;
-        
         detailsParentTr.gameObject.SetActive(true);
         levelName.text = data.levelName;
     }
@@ -66,6 +64,9 @@ public class SagaMapManager : MonoBehaviour
 
     public void StartLevel()
     {
+        if (isDoingTransition) return;
+        
+        isDoingTransition = true;
         StartCoroutine(transitionScript.EnterTransitionCoroutine("LevelScene"));
     }
 }

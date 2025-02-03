@@ -35,4 +35,7 @@ public class LevelData : ScriptableObject
     public int startMoney;
     public int moneyPerEnemy;
     public int softCurrencyWon;
+
+    [Header("Objectives infos")] 
+    public int[] durationObjectives;
 }
