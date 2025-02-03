@@ -30,15 +30,16 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     [SerializeField] private RectTransform downButtonPosRefRectTr;
     [SerializeField] private RectTransform openChestButtonRectTr;
     [SerializeField] private ParticleSystem upgradeChestVFX;
+    [SerializeField] private LevelTransition transitionScript;
     private RectTransform canvasRect;
 
 
-    private void Start()
+    public void InitialiseHUD()
     {
         proressScript.GenerateWavesMarkers(GameManager.Instance.levelData);
         canvasRect = GetComponent<RectTransform>();
+        transitionScript.ExitTransitionCoroutine();
     }
-
 
     private void Update()
     {
