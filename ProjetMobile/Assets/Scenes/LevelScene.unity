@@ -8060,18 +8060,23 @@ MonoBehaviour:
   turretFireRateMultiplierPerUpgrade: 2
   turretBulletSpeedMultiplierPerUpgrade: 2
   turretBulletSizeMultiplierPerUpgrade: 2
+  availableButtonColor: {r: 1, g: 1, b: 1, a: 1}
+  notAvailableButtonColor: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
   turretSlotsManager: {fileID: 1076690337}
   modificatorChooseScript: {fileID: 752515496}
   endScreen: {fileID: 1819124736}
-  proressScript: {fileID: 149964794}
+  progressScript: {fileID: 0}
+  upgradeChestVFX: {fileID: 601721135}
+  transitionScript: {fileID: 969346585}
+  turretScripts: []
   sellRectTr: {fileID: 457860064}
   baseButtonsRectTr: {fileID: 117800562}
   upButtonPosRefRectTr: {fileID: 1098372539}
   downButtonPosRefRectTr: {fileID: 418709584}
   openChestButtonRectTr: {fileID: 762996408}
-  upgradeChestVFX: {fileID: 601721135}
-  transitionScript: {fileID: 969346585}
-  turretScripts: []
+  upgradeTowerButtonImage: {fileID: 1826522401}
+  openChestButtonImage: {fileID: 1798679003}
+  upgradeChestButtonImage: {fileID: 1067245341}
 --- !u!1 &1381635608
 GameObject:
   m_ObjectHideFlags: 0

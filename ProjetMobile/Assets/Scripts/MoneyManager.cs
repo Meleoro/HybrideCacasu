@@ -50,6 +50,8 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
         AddMoneyFeel();
         
         ActualiseText();
+        
+        HUDManager.Instance.ActualiseButtonColors();
     }
 
     public void UseMoney(int moneyAmount)
@@ -58,6 +60,8 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
         RemoveMoneyFeel();
         
         ActualiseText();
+        
+        HUDManager.Instance.ActualiseButtonColors();
     }
 
     public bool VerifyHasEnoughMoneyMiddleChest(bool buyIfGood = false)

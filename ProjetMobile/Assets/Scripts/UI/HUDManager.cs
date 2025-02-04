@@ -10,7 +10,6 @@ public class HUDManager : GenericSingletonClass<HUDManager>
 {
     [Header("Actions")] 
     public Action OnModificatorDragEndAction;
-    public Action OnModificatorDragSuccessAction;
 
     [Header("Parameters")] 
     public Color[] ranksColors;
@@ -18,6 +17,8 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     [SerializeField][Range(1f, 2f)] private float turretFireRateMultiplierPerUpgrade;
     [SerializeField][Range(1f, 2f)] private float turretBulletSpeedMultiplierPerUpgrade;
     [SerializeField][Range(1f, 2f)] private float turretBulletSizeMultiplierPerUpgrade;
+    [SerializeField] private Color availableButtonColor = new Color(1, 1, 1);
+    [SerializeField] private Color notAvailableButtonColor = new Color(0.5f, 0.5f, 0.5f);
     
     [Header("Private Infos")] 
     private bool isDragging;
@@ -29,21 +30,26 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     public TurretSlotsManager turretSlotsManager;
     public GetNewModificatorUI modificatorChooseScript;
     public EndScreen endScreen;
-    [SerializeField] private LevelProgressUI proressScript;
+    [SerializeField] private LevelProgressUI progressScript;
+    [SerializeField] private ParticleSystem upgradeChestVFX;
+    [SerializeField] private LevelTransition transitionScript;
+    [SerializeField] private TurretMaster[] turretScripts;
+    private RectTransform canvasRect;
+    
+    [Header("Bottom Buttons References")]
     [SerializeField] private RectTransform sellRectTr;
     [SerializeField] private RectTransform baseButtonsRectTr;
     [SerializeField] private RectTransform upButtonPosRefRectTr;
     [SerializeField] private RectTransform downButtonPosRefRectTr;
     [SerializeField] private RectTransform openChestButtonRectTr;
-    [SerializeField] private ParticleSystem upgradeChestVFX;
-    [SerializeField] private LevelTransition transitionScript;
-    [SerializeField] private TurretMaster[] turretScripts;
-    private RectTransform canvasRect;
+    [SerializeField] private Image upgradeTowerButtonImage;
+    [SerializeField] private Image openChestButtonImage;
+    [SerializeField] private Image upgradeChestButtonImage;
 
 
     public void InitialiseHUD()
     {
-        proressScript.GenerateWavesMarkers(GameManager.Instance.levelData);
+        progressScript.GenerateWavesMarkers(GameManager.Instance.levelData);
         canvasRect = GetComponent<RectTransform>();
         transitionScript.ExitTransitionCoroutine();
     }
@@ -51,12 +57,27 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     private void Update()
     {
         ActualiseDrag();
-        proressScript.ActualiseFillImage(GameManager.Instance.currentTimer / GameManager.Instance.levelData.levelDuration);
+        progressScript.ActualiseFillImage(GameManager.Instance.currentTimer / GameManager.Instance.levelData.levelDuration);
     }
 
 
     #region Bottom Buttons
 
+    public void ActualiseButtonColors()
+    {
+        upgradeTowerButtonImage.color = MoneyManager.Instance.VerifyHasEnoughMoneyTowerUpgrade()
+            ? availableButtonColor
+            : notAvailableButtonColor;
+        
+        openChestButtonImage.color = MoneyManager.Instance.VerifyHasEnoughMoneyMiddleChest()
+            ? availableButtonColor
+            : notAvailableButtonColor;
+        
+        upgradeChestButtonImage.color = MoneyManager.Instance.VerifyHasEnoughMoneyChestUpgrade()
+            ? availableButtonColor
+            : notAvailableButtonColor;
+    }
+    
     public void ClickMiddleButton()
     {
         if (!MoneyManager.Instance.VerifyHasEnoughMoneyMiddleChest(true)) return;
