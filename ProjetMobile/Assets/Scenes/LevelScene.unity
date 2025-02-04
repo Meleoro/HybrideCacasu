@@ -8230,7 +8230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690e215e537545c41b45b6f95bbcdcb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deadZoneHeight: 6.5
+  deadZoneHeight: 9
   enemySpawnXMinRef: {fileID: 2005453242}
   enemySpawnXMaxRef: {fileID: 984903340}
 --- !u!114 &1517287776
@@ -8260,14 +8260,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   middleChestCost: 50
-  chestUpgradeCost: 25
-  towerUpgradeCost: 100
+  chestUpgradeCost: 75
+  towerUpgradeCost: 20
   middleChestCostAddedPerMiddleChest: 0
   middleChestCostAddedPerChestUpgrade: 0
   chestUpgradeCostAddedPerChestUpgrade: 0
-  middleChestCostMultiplierPerMiddleChest: 1
+  middleChestCostMultiplierPerMiddleChest: 1.1
   middleChestCostMultiplierPerChestUpgrade: 1
-  chestUpgradeCostMultiplierPerChestUpgrade: 1
+  chestUpgradeCostMultiplierPerChestUpgrade: 1.2
   towerUpgradeCostMultiplierPerTowerUpgrade: 1.5
   moneyText: {fileID: 341030034}
 --- !u!114 &1517287778
