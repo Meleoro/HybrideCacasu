@@ -12,18 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822bf2e7adda8bb438cf5ce89273541b, type: 3}
   m_Name: Level5
   m_EditorClassIdentifier: 
-  levelName: Level2
-  levelDuration: 160
+  levelName: Level5
+  levelDuration: 300
   spawnableEnemies:
   - {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
+  - {fileID: 3464992193447295867, guid: d3c5208b7cfd93b42ac9d26e834872f4, type: 3}
   waves:
-  - waveWaitDuration: 30
+  - waveWaitDuration: 35
     waveDelayBetweenSpawn: 2
     waveEnemies:
     - enemyType: {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
-      amount: 10
+      amount: 15
+    - enemyType: {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
+      amount: 15
   startConstantEnemyDelaySpawn: 3
   endConstantEnemyDelaySpawn: 1
-  startMoney: 15000
-  moneyPerEnemy: 1
+  startMoney: 180
+  moneyPerEnemy: 2
   softCurrencyWon: 0
+  durationObjectives: 
