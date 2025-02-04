@@ -8056,6 +8056,10 @@ MonoBehaviour:
   - {r: 0.4141153, g: 0.72089815, b: 0.8867924, a: 1}
   - {r: 0.9433962, g: 0.5929069, b: 0.25364897, a: 1}
   - {r: 0.7287076, g: 0.3270737, b: 0.9245283, a: 1}
+  turretDamageMultiplierPerUpgrade: 2
+  turretFireRateMultiplierPerUpgrade: 2
+  turretBulletSpeedMultiplierPerUpgrade: 2
+  turretBulletSizeMultiplierPerUpgrade: 2
   turretSlotsManager: {fileID: 1076690337}
   modificatorChooseScript: {fileID: 752515496}
   endScreen: {fileID: 1819124736}
@@ -8067,6 +8071,7 @@ MonoBehaviour:
   openChestButtonRectTr: {fileID: 762996408}
   upgradeChestVFX: {fileID: 601721135}
   transitionScript: {fileID: 969346585}
+  turretScripts: []
 --- !u!1 &1381635608
 GameObject:
   m_ObjectHideFlags: 0
@@ -8250,12 +8255,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   middleChestCost: 50
   chestUpgradeCost: 25
+  towerUpgradeCost: 100
   middleChestCostAddedPerMiddleChest: 0
   middleChestCostAddedPerChestUpgrade: 0
   chestUpgradeCostAddedPerChestUpgrade: 0
   middleChestCostMultiplierPerMiddleChest: 1
   middleChestCostMultiplierPerChestUpgrade: 1
   chestUpgradeCostMultiplierPerChestUpgrade: 1
+  towerUpgradeCostMultiplierPerTowerUpgrade: 1.5
   moneyText: {fileID: 341030034}
 --- !u!114 &1517287778
 MonoBehaviour:
@@ -9311,7 +9318,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1308511265}
         m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
-        m_MethodName: ClickRightButton
+        m_MethodName: ClickLeftButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

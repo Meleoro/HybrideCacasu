@@ -27,16 +27,16 @@ public class Bullet : MonoBehaviour
     private float burnStrength;
     
     
-    public void InitialiseBullet(Vector3 aimedPoint, TurretData data, TurretModificatorValues modificatorValues)
+    public void InitialiseBullet(Vector3 aimedPoint, TurretData data, TurretModificatorValues modificatorValues, TurretModificatorValues upgradesValues)
     {
         Destroy(gameObject, 10f);
         
         moveDir = (aimedPoint - transform.position).normalized;
         moveDir.y = 0;
 
-        transform.localScale = Vector3.one * (data.bulletSize * modificatorValues.projectileSizeMultiplier);
-        speed = data.bulletSpeed * modificatorValues.projectileSpeedMultiplier;
-        damages = (int)(data.damages * modificatorValues.damageMultiplier);
+        transform.localScale = Vector3.one * (data.bulletSize * modificatorValues.projectileSizeMultiplier * upgradesValues.projectileSizeMultiplier);
+        speed = data.bulletSpeed * modificatorValues.projectileSpeedMultiplier * upgradesValues.projectileSpeedMultiplier;
+        damages = (int)(data.damages * modificatorValues.damageMultiplier * upgradesValues.damageMultiplier);
         behaviorBullet = data.bulletBehavior;
         behaviorShoot = data.shootBehavior;
 

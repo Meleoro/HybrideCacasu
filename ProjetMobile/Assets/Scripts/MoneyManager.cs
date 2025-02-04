@@ -8,17 +8,20 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
     [Header("Parameters")] 
     [SerializeField] private int middleChestCost;
     [SerializeField] private int chestUpgradeCost;
+    [SerializeField] private int towerUpgradeCost;
     [SerializeField] private int middleChestCostAddedPerMiddleChest;
     [SerializeField] private int middleChestCostAddedPerChestUpgrade;
     [SerializeField] private int chestUpgradeCostAddedPerChestUpgrade;
     [SerializeField] private float middleChestCostMultiplierPerMiddleChest = 1f;
     [SerializeField] private float middleChestCostMultiplierPerChestUpgrade = 1f;
     [SerializeField] private float chestUpgradeCostMultiplierPerChestUpgrade = 1f;
+    [SerializeField] private float towerUpgradeCostMultiplierPerTowerUpgrade = 1f;
     
     [Header("Private Infos")] 
     private int currentMoney;
     private int currentMiddleChestCost;
     private int currentRankUpgradeCost;
+    private int currentTowerUpgradeCost;
 
     [Header("References")] 
     [SerializeField] private TextMeshProUGUI moneyText;
@@ -28,6 +31,7 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
     {
         currentMiddleChestCost = middleChestCost;
         currentRankUpgradeCost = chestUpgradeCost;
+        currentTowerUpgradeCost = towerUpgradeCost;
         
         ActualiseText();
     }
@@ -94,6 +98,24 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
         }
         
         return currentMoney >= currentRankUpgradeCost;
+    }
+    
+    public bool VerifyHasEnoughMoneyTowerUpgrade(bool buyIfGood = false)
+    {
+        if (buyIfGood)
+        {
+            if (currentMoney >= currentTowerUpgradeCost)
+            {
+                UseMoney(currentTowerUpgradeCost);
+                currentTowerUpgradeCost = (int)(currentTowerUpgradeCost * towerUpgradeCostMultiplierPerTowerUpgrade);
+                
+                return true;
+            }
+
+            return false;
+        }
+        
+        return currentMoney >= currentTowerUpgradeCost;
     }
     
     public bool VerifyHasEnoughMoney(int moneyAmount)
