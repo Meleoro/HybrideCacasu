@@ -319,11 +319,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 888182c64540fd347a7aa984ff388809, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.6579001
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 888182c64540fd347a7aa984ff388809, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.6579001
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 888182c64540fd347a7aa984ff388809, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 888182c64540fd347a7aa984ff388809, type: 3}
       propertyPath: m_LocalPosition.x
@@ -331,7 +335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 888182c64540fd347a7aa984ff388809, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.052
+      value: -0.022
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 888182c64540fd347a7aa984ff388809, type: 3}
       propertyPath: m_LocalPosition.z
@@ -365,10 +369,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 888182c64540fd347a7aa984ff388809, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 10221b5cf72f9b841a051e52421f8210, type: 2}
+    - target: {fileID: -6274929396922702861, guid: 888182c64540fd347a7aa984ff388809, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 825e7304868f41441b43df30d6175171, type: 2}
+    - target: {fileID: -6177161396460216325, guid: 888182c64540fd347a7aa984ff388809, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2fc82ce50e828e547a80572b6cba2441, type: 2}
+    - target: {fileID: -2244445316107466353, guid: 888182c64540fd347a7aa984ff388809, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3dd93911cc8542f49b938625a9772214, type: 2}
+    - target: {fileID: -1484712919768115177, guid: 888182c64540fd347a7aa984ff388809, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3dd93911cc8542f49b938625a9772214, type: 2}
+    - target: {fileID: -1260090796535073037, guid: 888182c64540fd347a7aa984ff388809, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 825e7304868f41441b43df30d6175171, type: 2}
     - target: {fileID: 919132149155446097, guid: 888182c64540fd347a7aa984ff388809, type: 3}
       propertyPath: m_Name
       value: anim puceron
       objectReference: {fileID: 0}
+    - target: {fileID: 2730591856568532263, guid: 888182c64540fd347a7aa984ff388809, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 825e7304868f41441b43df30d6175171, type: 2}
+    - target: {fileID: 4140074386593546103, guid: 888182c64540fd347a7aa984ff388809, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 825e7304868f41441b43df30d6175171, type: 2}
+    - target: {fileID: 7275840133594109515, guid: 888182c64540fd347a7aa984ff388809, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2fc82ce50e828e547a80572b6cba2441, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

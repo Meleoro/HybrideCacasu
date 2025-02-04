@@ -7,6 +7,9 @@ using Random = UnityEngine.Random;
 
 public class EnemiesManager : GenericSingletonClass<EnemiesManager>
 {
+    [Header("Parameters")] 
+    [SerializeField] private float deadZoneHeight;
+    
     [Header("Private Infos")]
     private LevelData levelData;
     private List<EnemyMaster> currentEnemies = new List<EnemyMaster>();
@@ -119,8 +122,8 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
     {
         if (currentEnemies.Count == 0) return new Vector3(0, 0, 0);
         
-        float bestDist = Mathf.Infinity;
-        int bestIndex = 0;
+        float bestDist = deadZoneHeight;
+        int bestIndex = -1;
         for (int i = 0; i < currentEnemies.Count; i++)
         {
             float dist = currentEnemies[i].transform.position.z;
@@ -131,6 +134,8 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
                 bestIndex = i;
             }
         }
+        
+        if(bestIndex == -1) return new Vector3(0, 0, 0);
 
         return currentEnemies[bestIndex].transform.position;
     }
