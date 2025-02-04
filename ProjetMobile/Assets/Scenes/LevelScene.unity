@@ -8230,7 +8230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690e215e537545c41b45b6f95bbcdcb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deadZoneHeight: 6.5
+  deadZoneHeight: 9
   enemySpawnXMinRef: {fileID: 2005453242}
   enemySpawnXMaxRef: {fileID: 984903340}
 --- !u!114 &1517287776
