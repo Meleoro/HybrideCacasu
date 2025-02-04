@@ -13,17 +13,32 @@ MonoBehaviour:
   m_Name: Level2
   m_EditorClassIdentifier: 
   levelName: Level2
-  levelDuration: 160
-  spawnableEnemies:
-  - {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
+  levelDuration: 80
+  spawnableEnemies: []
   waves:
-  - waveWaitDuration: 30
+  - waveWaitDuration: 3
+    waveDelayBetweenSpawn: 1
+    waveEnemies:
+    - enemyType: {fileID: 3464992193447295867, guid: 73e4bf4f71e31ce45a1a08faa07b13aa, type: 3}
+      amount: 12
+  - waveWaitDuration: 17
+    waveDelayBetweenSpawn: 2
+    waveEnemies:
+    - enemyType: {fileID: 3464992193447295867, guid: d3c5208b7cfd93b42ac9d26e834872f4, type: 3}
+      amount: 11
+  - waveWaitDuration: 42
     waveDelayBetweenSpawn: 2
     waveEnemies:
     - enemyType: {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
+      amount: 20
+  - waveWaitDuration: 43
+    waveDelayBetweenSpawn: 4
+    waveEnemies:
+    - enemyType: {fileID: 3464992193447295867, guid: 73e4bf4f71e31ce45a1a08faa07b13aa, type: 3}
       amount: 10
   startConstantEnemyDelaySpawn: 3
   endConstantEnemyDelaySpawn: 1
-  startMoney: 15000
+  startMoney: 100
   moneyPerEnemy: 1
-  softCurrencyWon: 0
+  softCurrencyWon: 150
+  durationObjectives: 
