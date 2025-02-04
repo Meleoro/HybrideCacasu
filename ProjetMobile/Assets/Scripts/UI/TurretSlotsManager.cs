@@ -144,7 +144,7 @@ public class TurretSlotsManager : MonoBehaviour
     public void StartDrag(Cap cap, TurretSlot dragOrigin)
     {
         dragSlotOrigin = dragOrigin;
-        HUDManager.Instance.StartDrag(cap);
+        HUDManager.Instance.StartDrag(cap, false);
     }
     
     public bool EndDrag(Cap cap)

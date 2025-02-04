@@ -157,7 +157,7 @@ public class TurretSlot : MonoBehaviour
     public void StartDrag()
     {
         if (currentCap == null) return;
-        if (HUDManager.Instance.modificatorChooseScript.isOpenned) return;
+        //if (HUDManager.Instance.modificatorChooseScript.isOpenned) return;
         
         mainScript.StartDrag(currentCap, this);
     }
@@ -174,7 +174,7 @@ public class TurretSlot : MonoBehaviour
         }
 
         // If we can merge
-        if (currentCap.capModificatorData.modificatorType == cap.capModificatorData.modificatorType && currentCap.capRank == cap.capRank)
+        if (currentCap.capModificatorData.modificatorType == cap.capModificatorData.modificatorType && currentCap.capRank == cap.capRank && currentCap.capRank < 3)
         {
             Destroy(cap.gameObject);
             
