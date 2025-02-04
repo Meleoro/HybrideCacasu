@@ -35,7 +35,12 @@ public class TurretMaster : MonoBehaviour
 
     [Header("Private Infos")] 
     private TurretModificatorValues modificatorValues = new TurretModificatorValues(1, 1);
+    private TurretModificatorValues upgradeValues = new TurretModificatorValues(1, 1);
     private Vector3 aimedPoint;
+    private float upgradeDamageMutliplier;
+    private float upgradeFireRateMutliplier;
+    private float upgradeProjectileSizeMutliplier;
+    private float upgradeProjectileSpeedMutliplier;
 
     [Header("References")] 
     [SerializeField] private Bullet bulletPrefab;
@@ -46,6 +51,7 @@ public class TurretMaster : MonoBehaviour
     public void InitialiseTurret(int turretIndex)
     {
         this.turretIndex = turretIndex;
+        upgradeValues = new TurretModificatorValues(1);
         
         HUDManager.Instance.OnModificatorDragEndAction += ActualiseModificators;
         modificatorValues = new TurretModificatorValues(1, 1);
@@ -75,6 +81,14 @@ public class TurretMaster : MonoBehaviour
         modificatorValues = HUDManager.Instance.turretSlotsManager.GetTurretModificators(turretIndex);
     }
 
+    public void UpgradeTurret(float damage, float fireRate, float size, float speed)
+    {
+        upgradeValues.damageMultiplier += damage;
+        upgradeValues.fireRateMultiplier += fireRate;
+        upgradeValues.projectileSizeMultiplier += size;
+        upgradeValues.projectileSpeedMultiplier += speed;
+    }
+
 
     #region Shoot Functions
 
@@ -82,7 +96,7 @@ public class TurretMaster : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(turretData.shootCooldown / modificatorValues.fireRateMultiplier);
+            yield return new WaitForSeconds(turretData.shootCooldown / (modificatorValues.fireRateMultiplier + upgradeValues.fireRateMultiplier - 1));
 
             if (aimedPoint == Vector3.zero) continue;
             Shoot(EnemiesManager.Instance.FindNearestEnemy());
@@ -95,7 +109,7 @@ public class TurretMaster : MonoBehaviour
         {
             Bullet newBullet = Instantiate(bulletPrefab, shootVFX.transform.position, Quaternion.identity);
             newBullet.InitialiseBullet(aimedPoint + new Vector3(Random.Range(-turretData.shootDispersion, turretData.shootDispersion), 0, 0), 
-                turretData, modificatorValues);
+                turretData, modificatorValues, upgradeValues);
         }
         
         shootVFX.Play();

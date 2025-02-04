@@ -14,6 +14,10 @@ public class HUDManager : GenericSingletonClass<HUDManager>
 
     [Header("Parameters")] 
     public Color[] ranksColors;
+    [SerializeField][Range(1f, 2f)] private float turretDamageMultiplierPerUpgrade;
+    [SerializeField][Range(1f, 2f)] private float turretFireRateMultiplierPerUpgrade;
+    [SerializeField][Range(1f, 2f)] private float turretBulletSpeedMultiplierPerUpgrade;
+    [SerializeField][Range(1f, 2f)] private float turretBulletSizeMultiplierPerUpgrade;
     
     [Header("Private Infos")] 
     private bool isDragging;
@@ -32,6 +36,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     [SerializeField] private RectTransform openChestButtonRectTr;
     [SerializeField] private ParticleSystem upgradeChestVFX;
     [SerializeField] private LevelTransition transitionScript;
+    [SerializeField] private TurretMaster[] turretScripts;
     private RectTransform canvasRect;
 
 
@@ -66,6 +71,17 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         openChestButtonRectTr.UBounce(0.1f, Vector3.one * 1.4f, 0.3f, Vector3.one, CurveType.None, true);
         
         modificatorChooseScript.UpgradeChest();
+    }
+
+    public void ClickLeftButton()
+    {
+        if (!MoneyManager.Instance.VerifyHasEnoughMoneyTowerUpgrade(true)) return;
+        
+        for (int i = 0; i < turretScripts.Length; i++)
+        {
+            turretScripts[i].UpgradeTurret(turretDamageMultiplierPerUpgrade, turretFireRateMultiplierPerUpgrade, 
+                turretBulletSpeedMultiplierPerUpgrade, turretBulletSizeMultiplierPerUpgrade);
+        }
     }
 
     #endregion
