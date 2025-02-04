@@ -150,7 +150,7 @@ public class GetNewModificatorUI : MonoBehaviour
 
     public void StartDrag(Cap draggedCap)
     {
-        HUDManager.Instance.StartDrag(draggedCap);
+        HUDManager.Instance.StartDrag(draggedCap , true);
     }
 
     public void EndDrag()

@@ -32,7 +32,7 @@ public class EndScreen : MonoBehaviour
     public IEnumerator DisplayLoseCoroutine()
     {
         AppearEffect(1.5f);
-
+        
         mainText.text = "GAME OVER";
         for(int i = 0; i < objectivesText.Length; i++)
         {
@@ -43,15 +43,25 @@ public class EndScreen : MonoBehaviour
         
         int score = (int)(GameManager.Instance.levelData.softCurrencyWon * GameManager.Instance.currentTimer / GameManager.Instance.levelData.levelDuration);
         
+        bool[] wonObjectives = new bool[3];
         for (int i = 0; i < starsImages.Length; i++)
         {
+            wonObjectives[i] = false;
+            
             if (GameManager.Instance.levelData.durationObjectives[i] > GameManager.Instance.currentTimer) continue;
 
             starsImages[i].sprite = fullStarSprite;
             starsImages[i].rectTransform.UBounce(0.2f, starsImages[i].rectTransform.localScale * 1.4f, 
                 0.4f, starsImages[i].rectTransform.localScale);
             
+            wonObjectives[i] = true;
+            
             yield return new WaitForSecondsRealtime(0.5f);
+        }
+
+        if (DontDestroyOnLoadObject.Instance != null)
+        {
+            DontDestroyOnLoadObject.Instance.SaveLevelFinishedObjectives(wonObjectives);
         }
         
         StartCoroutine(CurrencyFeelCoroutine(score, 2f));
@@ -70,16 +80,23 @@ public class EndScreen : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
         
         int score = GameManager.Instance.levelData.softCurrencyWon;
-        
+        bool[] wonObjectives = new bool[3];
         for (int i = 0; i < starsImages.Length; i++)
         {
+            wonObjectives[i] = true;
+            
             starsImages[i].sprite = fullStarSprite;
             starsImages[i].rectTransform.UBounce(0.2f, starsImages[i].rectTransform.localScale * 1.4f, 
                 0.4f, starsImages[i].rectTransform.localScale, CurveType.None, true);
             
             yield return new WaitForSecondsRealtime(0.5f);
         }
-
+        
+        if (DontDestroyOnLoadObject.Instance != null)
+        {
+            DontDestroyOnLoadObject.Instance.SaveLevelFinishedObjectives(wonObjectives);
+        }
+        
         StartCoroutine(CurrencyFeelCoroutine(score, 2f));
     }
 

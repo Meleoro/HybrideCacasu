@@ -27,3 +27,4 @@ MonoBehaviour:
   startMoney: 15000
   moneyPerEnemy: 1
   softCurrencyWon: 0
+  durationObjectives: 3c00000064000000a0000000

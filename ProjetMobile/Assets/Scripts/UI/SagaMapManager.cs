@@ -10,6 +10,8 @@ public class SagaMapManager : MonoBehaviour
     [SerializeField] private LevelData[] levels;
     [SerializeField] private float offsetBetweenLevelsY;
     [SerializeField] private SagaMapLevel levelPrefab;
+    [SerializeField] private Sprite fullStarSprite;
+    [SerializeField] private Sprite emptyStarSprite;
 
     [Header("Public Infos")] 
     public bool isDoingTransition;
@@ -27,8 +29,9 @@ public class SagaMapManager : MonoBehaviour
     [SerializeField] private Image objective3Image;
     
     
-    private void Awake()
+    private void Start()
     {
+        SaveManager.Instance.LoadGame();
         GenerateSagaMap();
     }
 
@@ -51,10 +54,18 @@ public class SagaMapManager : MonoBehaviour
     }
 
 
-    public void OpenDetails(LevelData data)
+    public void OpenDetails(LevelData data, int levelIndex)
     {
         detailsParentTr.gameObject.SetActive(true);
         levelName.text = data.levelName;
+
+        objective1Text.text = "SURVIVE " + data.durationObjectives[0] + " SECONDS";
+        objective2Text.text = "SURVIVE " + data.durationObjectives[1] + " SECONDS";
+        objective3Text.text = "SURVIVE " + data.durationObjectives[2] + " SECONDS";
+
+        objective1Image.sprite = DontDestroyOnLoadObject.Instance.wonObjectives[levelIndex * 3] ? fullStarSprite : emptyStarSprite;
+        objective2Image.sprite = DontDestroyOnLoadObject.Instance.wonObjectives[1 + levelIndex * 3] ? fullStarSprite : emptyStarSprite;
+        objective3Image.sprite = DontDestroyOnLoadObject.Instance.wonObjectives[2 + levelIndex * 3] ? fullStarSprite : emptyStarSprite;
     }
 
     public void CloseDetails()

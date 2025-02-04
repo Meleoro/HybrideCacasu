@@ -23,6 +23,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     private bool isDragging;
     private bool isOverlayingSell;
     private Cap currentDraggedCap;
+    private bool isDraggingNewCap;
 
     [Header("References")] 
     public TurretSlotsManager turretSlotsManager;
@@ -116,12 +117,13 @@ public class HUDManager : GenericSingletonClass<HUDManager>
 
     #region Drag Fonctions
     
-    public void StartDrag(Cap draggedCap)
+    public void StartDrag(Cap draggedCap, bool isNewCap)
     {
         if (isDragging) return;
         
         DisplaySellButton();
 
+        isDraggingNewCap = isNewCap;
         currentDraggedCap = draggedCap;
         
         isDragging = true;
@@ -172,13 +174,15 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         if (isOverlayingSell)
         {
             turretSlotsManager.EndDragSell(currentDraggedCap);
-            modificatorChooseScript.CloseChoseUpgradeUI();
+            
+            if(isDraggingNewCap)
+                modificatorChooseScript.CloseChoseUpgradeUI();
             
             OnModificatorDragEndAction.Invoke();
         }
         else
         {
-            if (turretSlotsManager.EndDrag(currentDraggedCap))
+            if (turretSlotsManager.EndDrag(currentDraggedCap) && isDraggingNewCap)
             {
                 modificatorChooseScript.CloseChoseUpgradeUI();
             }

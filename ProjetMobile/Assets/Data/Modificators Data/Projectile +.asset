@@ -16,9 +16,9 @@ MonoBehaviour:
   modificatorSprite: {fileID: 102395023, guid: 09250cc9065b6a54c9b920dbb487768b, type: 3}
   modificatorImpacts:
   - 1
-  - 2
-  - 4
-  - 8
+  - 1
+  - 1
+  - 3
   sellValues: 0a000000140000001e00000028000000
   modificatorName: Projectile+
   modificatorDescription: Add +{x} projectiles per shot
