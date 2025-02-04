@@ -48,8 +48,8 @@ MonoBehaviour:
       amount: 15
     - enemyType: {fileID: 3464992193447295867, guid: d3c5208b7cfd93b42ac9d26e834872f4, type: 3}
       amount: 5
-  startConstantEnemyDelaySpawn: 0.2
-  endConstantEnemyDelaySpawn: 0.2
+  startConstantEnemyDelaySpawn: 3
+  endConstantEnemyDelaySpawn: 1
   startMoney: 15000
   moneyPerEnemy: 1
   softCurrencyWon: 150
