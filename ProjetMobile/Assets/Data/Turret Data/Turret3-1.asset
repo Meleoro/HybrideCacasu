@@ -15,7 +15,7 @@ MonoBehaviour:
   turretName: Turret 3
   turretDescription: Macron, explosion
   damages: 50
-  shootCooldown: 4
+  shootCooldown: 3
   shootDispersion: 0.25
   bulletSpeed: 10
   bulletCount: 1
