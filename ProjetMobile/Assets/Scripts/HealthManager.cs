@@ -33,5 +33,11 @@ public class HealthManager : GenericSingletonClass<HealthManager>
         ActualiseHealthText();
         
         CameraManager.Instance.DoHurtEffect();
+
+        if (currentHealth <= 0)
+        {
+            StartCoroutine(HUDManager.Instance.endScreen.DisplayLoseCoroutine());
+            Time.timeScale = 0;
+        }
     }
 }

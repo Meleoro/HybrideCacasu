@@ -23,6 +23,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     [Header("References")] 
     public TurretSlotsManager turretSlotsManager;
     public GetNewModificatorUI modificatorChooseScript;
+    public EndScreen endScreen;
     [SerializeField] private LevelProgressUI proressScript;
     [SerializeField] private RectTransform sellRectTr;
     [SerializeField] private RectTransform baseButtonsRectTr;

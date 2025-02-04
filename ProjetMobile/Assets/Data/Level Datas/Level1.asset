@@ -52,4 +52,5 @@ MonoBehaviour:
   endConstantEnemyDelaySpawn: 1
   startMoney: 15000
   moneyPerEnemy: 1
-  softCurrencyWon: 0
+  softCurrencyWon: 150
+  durationObjectives: 2800000050000000a0000000

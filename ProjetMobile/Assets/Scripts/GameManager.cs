@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : GenericSingletonClass<GameManager>
@@ -12,6 +13,8 @@ public class GameManager : GenericSingletonClass<GameManager>
         
     private void Start()
     {
+        Time.timeScale = 1;
+        
         if (DontDestroyOnLoadObject.Instance != null)
         {
             levelData = DontDestroyOnLoadObject.Instance.levelData;
@@ -20,10 +23,20 @@ public class GameManager : GenericSingletonClass<GameManager>
         EnemiesManager.Instance.InitialiseEnemyManager(levelData);
         MoneyManager.Instance.AddMoney(levelData.startMoney);
         HUDManager.Instance.InitialiseHUD();
-    }
 
-    private void Update()
-    {
-        currentTimer += Time.deltaTime;
+        StartCoroutine(ActualiseTimerCoroutine());
+    }
+    
+    
+    private IEnumerator ActualiseTimerCoroutine(){
+
+        while (currentTimer < levelData.levelDuration)
+        {
+            currentTimer += Time.deltaTime;
+
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        EnemiesManager.Instance.EndGame();
     }
 }
