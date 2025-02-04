@@ -102,8 +102,8 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         
         for (int i = 0; i < turretScripts.Count; i++)
         {
-            turretScripts[i].UpgradeTurret(turretDamageMultiplierPerUpgrade, turretFireRateMultiplierPerUpgrade, 
-                turretBulletSizeMultiplierPerUpgrade, turretBulletSpeedMultiplierPerUpgrade);
+            turretScripts[i].UpgradeTurret(turretDamageMultiplierPerUpgrade-1, turretFireRateMultiplierPerUpgrade-1, 
+                turretBulletSizeMultiplierPerUpgrade-1, turretBulletSpeedMultiplierPerUpgrade-1);
         }
     }
 
