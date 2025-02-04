@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -33,7 +34,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     [SerializeField] private LevelProgressUI progressScript;
     [SerializeField] private ParticleSystem upgradeChestVFX;
     [SerializeField] private LevelTransition transitionScript;
-    [SerializeField] private TurretMaster[] turretScripts;
+    public List<TurretMaster> turretScripts = new();
     private RectTransform canvasRect;
     
     [Header("Bottom Buttons References")]
@@ -99,10 +100,10 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     {
         if (!MoneyManager.Instance.VerifyHasEnoughMoneyTowerUpgrade(true)) return;
         
-        for (int i = 0; i < turretScripts.Length; i++)
+        for (int i = 0; i < turretScripts.Count; i++)
         {
             turretScripts[i].UpgradeTurret(turretDamageMultiplierPerUpgrade, turretFireRateMultiplierPerUpgrade, 
-                turretBulletSpeedMultiplierPerUpgrade, turretBulletSizeMultiplierPerUpgrade);
+                turretBulletSizeMultiplierPerUpgrade, turretBulletSpeedMultiplierPerUpgrade);
         }
     }
 

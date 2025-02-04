@@ -56,6 +56,8 @@ public class TurretMaster : MonoBehaviour
         HUDManager.Instance.OnModificatorDragEndAction += ActualiseModificators;
         modificatorValues = new TurretModificatorValues(1, 1);
         StartCoroutine(ShootBehaviorCoroutine());
+
+        HUDManager.Instance.turretScripts.Add(this);
     }
     
 
