@@ -86,9 +86,9 @@ public class EndScreen : MonoBehaviour
 
     private void AppearEffect(float duration)
     {
-        transform.localScale = Vector3.one * 10f;
+        transform.localScale = Vector3.one * 20f;
         
-        transform.UChangeScale(duration, Vector3.one, CurveType.EaseOutBack, true);
+        transform.UChangeScale(duration, Vector3.one, CurveType.EaseInBack, true);
     }
     
     private IEnumerator CurrencyFeelCoroutine(int wonCurrency, float duration)
