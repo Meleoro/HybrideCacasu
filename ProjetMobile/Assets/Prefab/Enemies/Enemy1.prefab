@@ -132,12 +132,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67cfba5b4429de542a9c4b76612852c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 8
-  enemySpeed: 1
+  enemyHealth: 45
+  enemySpeed: 2
   cooldownBetweenAttacks: 1
   attackDamages: 1
   moveDir: {x: 0, y: -1}
-  moneyDropMultiplicator: 3
+  moneyDropMultiplicator: 5
   meshTr: {fileID: 2185732613092237412}
   deathVFX: {fileID: 7700623489847457882, guid: 29dd55f22d185b84b95d2d27a69b2871, type: 3}
 --- !u!135 &2397181390777811555
