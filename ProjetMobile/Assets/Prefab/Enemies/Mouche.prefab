@@ -130,10 +130,42 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 145eebad957546e4cadcc96e9e9c9e66, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 10221b5cf72f9b841a051e52421f8210, type: 2}
+    - target: {fileID: -5797149305878930846, guid: 145eebad957546e4cadcc96e9e9c9e66, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3dd93911cc8542f49b938625a9772214, type: 2}
+    - target: {fileID: -2025692731156279676, guid: 145eebad957546e4cadcc96e9e9c9e66, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2fc82ce50e828e547a80572b6cba2441, type: 2}
+    - target: {fileID: -1629119931924628933, guid: 145eebad957546e4cadcc96e9e9c9e66, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3dd93911cc8542f49b938625a9772214, type: 2}
     - target: {fileID: 919132149155446097, guid: 145eebad957546e4cadcc96e9e9c9e66, type: 3}
       propertyPath: m_Name
       value: anim mouche
       objectReference: {fileID: 0}
+    - target: {fileID: 3936303242645221470, guid: 145eebad957546e4cadcc96e9e9c9e66, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2fc82ce50e828e547a80572b6cba2441, type: 2}
+    - target: {fileID: 4779856933882671902, guid: 145eebad957546e4cadcc96e9e9c9e66, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 825e7304868f41441b43df30d6175171, type: 2}
+    - target: {fileID: 5066059334282026394, guid: 145eebad957546e4cadcc96e9e9c9e66, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 825e7304868f41441b43df30d6175171, type: 2}
+    - target: {fileID: 8281101531759349870, guid: 145eebad957546e4cadcc96e9e9c9e66, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 825e7304868f41441b43df30d6175171, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

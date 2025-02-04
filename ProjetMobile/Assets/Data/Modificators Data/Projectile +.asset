@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Projectile +
   m_EditorClassIdentifier: 
   modificatorType: 2
-  modificatorSprite: {fileID: 1519708674, guid: 09250cc9065b6a54c9b920dbb487768b, type: 3}
+  modificatorSprite: {fileID: 102395023, guid: 09250cc9065b6a54c9b920dbb487768b, type: 3}
   modificatorImpacts:
   - 1
   - 1
