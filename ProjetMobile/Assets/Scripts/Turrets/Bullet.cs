@@ -53,6 +53,8 @@ public class Bullet : MonoBehaviour
         {
             explosionRange = data.explosionRange;
         }
+
+        transform.forward = moveDir;
     }   
     
     private void Update()

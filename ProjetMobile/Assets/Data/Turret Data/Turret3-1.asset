@@ -19,7 +19,7 @@ MonoBehaviour:
   shootDispersion: 0.25
   bulletSpeed: 10
   bulletCount: 1
-  bulletSize: 0.2
+  bulletSize: 0.25
   explosionRange: 1
   shootBehavior: 0
   bulletBehavior: 1

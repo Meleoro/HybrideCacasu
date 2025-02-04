@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretData: {fileID: 11400000, guid: 47d3e1aca442d5e468d730e15d10f4bd, type: 2}
   turretIndex: 1
-  bulletPrefab: {fileID: 4396909250406413095, guid: 39fad7126537ea94895cb8615f4bfb90, type: 3}
+  bulletPrefab: {fileID: 4396909250406413095, guid: 8285df29d042d2448b3aade2331afa22, type: 3}
   shootVFX: {fileID: 902954315258310986}
   jointToRotate: {fileID: 3553793842496159296}
 --- !u!1001 &2697949289845662190
