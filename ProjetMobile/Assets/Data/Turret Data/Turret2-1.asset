@@ -17,7 +17,7 @@ MonoBehaviour:
   damages: 25
   shootCooldown: 2
   shootDispersion: 0.5
-  bulletSpeed: 10
+  bulletSpeed: 13
   bulletCount: 1
   bulletSize: 0.5
   explosionRange: 1
