@@ -9,10 +9,9 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
 {
     [Header("Private Infos")]
     private LevelData levelData;
-    private float currentTimer;
-    
-    [Header("Private Infos")] 
     private List<EnemyMaster> currentEnemies = new List<EnemyMaster>();
+    private Coroutine constantSpawnCoroutine;
+    private bool gameNeedsToEnd;
 
     [Header("References")] 
     [SerializeField] private Transform enemySpawnXMinRef;
@@ -22,17 +21,11 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
     public void InitialiseEnemyManager(LevelData levelData)
     {
         this.levelData = levelData;
-
-        currentTimer = 0;
-        StartCoroutine(EnemiesConstantSpawnCoroutine());
+        
+        constantSpawnCoroutine = StartCoroutine(EnemiesConstantSpawnCoroutine());
         StartCoroutine(ManageEnemyWavesCoroutine());
     }
-
-    private void Update()
-    {
-        currentTimer += Time.deltaTime;
-    }
-
+    
 
     #region Waves Functions
 
@@ -43,6 +36,8 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
 
         while (currentWaveIndex < levelData.waves.Length)
         {
+            if(gameNeedsToEnd) yield break;
+            
             yield return new WaitForSeconds(levelData.waves[currentWaveIndex].waveWaitDuration - timerSpent);
 
             StartCoroutine(SpawnEnemyWaveCoroutine(levelData.waves[currentWaveIndex]));
@@ -57,6 +52,8 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
         {
             for (int j = 0; j < currentWave.waveEnemies[i].amount; j++)
             {
+                if(gameNeedsToEnd) yield break;
+                
                 SpawnEnemy(currentWave.waveEnemies[i].enemyType);
 
                 yield return new WaitForSeconds(currentWave.waveDelayBetweenSpawn);
@@ -74,7 +71,7 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
         while (true)
         {
             yield return new WaitForSeconds(Mathf.Lerp(levelData.startConstantEnemyDelaySpawn,
-                levelData.endConstantEnemyDelaySpawn, currentTimer / levelData.levelDuration));
+                levelData.endConstantEnemyDelaySpawn, GameManager.Instance.currentTimer / levelData.levelDuration));
 
             int spawnedEnemyIndex = Random.Range(0, levelData.spawnableEnemies.Length);
             
@@ -95,6 +92,29 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
 
     #region Others
 
+    public void EndGame()
+    {
+        gameNeedsToEnd = true;
+        
+        StopCoroutine(constantSpawnCoroutine);
+        StartCoroutine(VerifyGameEndCoroutine());
+    }
+
+    private IEnumerator VerifyGameEndCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.1f);
+
+            if (currentEnemies.Count == 0)
+            {
+                StartCoroutine(HUDManager.Instance.endScreen.DisplayWinCoroutine());
+                
+                yield break;
+            }
+        }
+    }
+    
     public Vector3 FindNearestEnemy()
     {
         if (currentEnemies.Count == 0) return new Vector3(0, 0, 0);
