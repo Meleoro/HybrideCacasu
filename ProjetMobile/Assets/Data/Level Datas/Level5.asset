@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822bf2e7adda8bb438cf5ce89273541b, type: 3}
+  m_Name: Level5
+  m_EditorClassIdentifier: 
+  levelName: Level2
+  levelDuration: 160
+  spawnableEnemies:
+  - {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
+  waves:
+  - waveWaitDuration: 30
+    waveDelayBetweenSpawn: 2
+    waveEnemies:
+    - enemyType: {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
+      amount: 10
+  startConstantEnemyDelaySpawn: 3
+  endConstantEnemyDelaySpawn: 1
+  startMoney: 15000
+  moneyPerEnemy: 1
+  softCurrencyWon: 0
