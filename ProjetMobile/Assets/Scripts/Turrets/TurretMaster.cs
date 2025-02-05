@@ -46,6 +46,7 @@ public class TurretMaster : MonoBehaviour
     [Header("References")] 
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private ParticleSystem shootVFX;
+    [SerializeField] private ParticleSystem upgradeVFX;
     [SerializeField] private Transform jointToRotate;
     
 
@@ -101,6 +102,9 @@ public class TurretMaster : MonoBehaviour
         upgradeValues.fireRateMultiplier += fireRate;
         upgradeValues.projectileSizeMultiplier += size;
         upgradeValues.projectileSpeedMultiplier += speed;
+        
+        upgradeVFX.Play();
+        transform.UBounce(0.15f, Vector3.one * 1.2f, 0.15f, Vector3.one, CurveType.EaseInOutSin);
     }
 
 
