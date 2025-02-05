@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 822bf2e7adda8bb438cf5ce89273541b, type: 3}
-  m_Name: Level5
+  m_Name: Level10
   m_EditorClassIdentifier: 
   levelName: Level5
-  levelDuration: 300
+  levelDuration: 180
   spawnableEnemies:
   - {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
   - {fileID: 3464992193447295867, guid: d3c5208b7cfd93b42ac9d26e834872f4, type: 3}
@@ -41,13 +41,34 @@ MonoBehaviour:
     - enemyType: {fileID: 3464992193447295867, guid: 73e4bf4f71e31ce45a1a08faa07b13aa, type: 3}
       amount: 20
   - waveWaitDuration: 125
-    waveDelayBetweenSpawn: 4
+    waveDelayBetweenSpawn: 1.5
     waveEnemies:
     - enemyType: {fileID: 3464992193447295867, guid: d3c5208b7cfd93b42ac9d26e834872f4, type: 3}
       amount: 20
+  - waveWaitDuration: 145
+    waveDelayBetweenSpawn: 2
+    waveEnemies:
+    - enemyType: {fileID: 3464992193447295867, guid: 73e4bf4f71e31ce45a1a08faa07b13aa, type: 3}
+      amount: 15
+    - enemyType: {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
+      amount: 10
+  - waveWaitDuration: 180
+    waveDelayBetweenSpawn: 1.5
+    waveEnemies:
+    - enemyType: {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
+      amount: 10
+    - enemyType: {fileID: 3464992193447295867, guid: d3c5208b7cfd93b42ac9d26e834872f4, type: 3}
+      amount: 12
+  - waveWaitDuration: 180
+    waveDelayBetweenSpawn: 6
+    waveEnemies:
+    - enemyType: {fileID: 3464992193447295867, guid: 99cd5e459ee3e674881aaa86872dfb50, type: 3}
+      amount: 4
+    - enemyType: {fileID: 3464992193447295867, guid: e519d7285b6ea804396caf73d93f5e91, type: 3}
+      amount: 1
   startConstantEnemyDelaySpawn: 3
   endConstantEnemyDelaySpawn: 1
   startMoney: 180
-  moneyPerEnemy: 2
+  moneyPerEnemy: 1
   softCurrencyWon: 0
-  durationObjectives: 
+  durationObjectives: 3c00000078000000b4000000

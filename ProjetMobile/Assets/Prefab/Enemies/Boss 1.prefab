@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3464992193447295867}
   - component: {fileID: 2397181390777811555}
   m_Layer: 6
-  m_Name: Enemy1
+  m_Name: Boss 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.7011905, y: -0.9620846, z: -0.094428875}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1286418168011765363}
   m_Father: {fileID: 0}
@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67cfba5b4429de542a9c4b76612852c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 45
-  enemySpeed: 2
+  enemyHealth: 600
+  enemySpeed: 2.5
   cooldownBetweenAttacks: 1
-  attackDamages: 1
+  attackDamages: 2
   moveDir: {x: 0, y: -1}
   moneyDropMultiplicator: 5
   meshTr: {fileID: 0}
@@ -83,18 +83,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1502239477393759605}
     m_Modifications:
-    - target: {fileID: 454829875287128045, guid: c82fcb28cfc2e684f9a9ec3676299e99, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 454829875287128045, guid: c82fcb28cfc2e684f9a9ec3676299e99, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 454829875287128045, guid: c82fcb28cfc2e684f9a9ec3676299e99, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.6
-      objectReference: {fileID: 0}
     - target: {fileID: 4620688097903270926, guid: c82fcb28cfc2e684f9a9ec3676299e99, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -154,22 +142,6 @@ PrefabInstance:
     - target: {fileID: 5468633069959754439, guid: c82fcb28cfc2e684f9a9ec3676299e99, type: 3}
       propertyPath: m_Name
       value: Hybride
-      objectReference: {fileID: 0}
-    - target: {fileID: 6361872533685374121, guid: c82fcb28cfc2e684f9a9ec3676299e99, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 6361872533685374121, guid: c82fcb28cfc2e684f9a9ec3676299e99, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 6361872533685374121, guid: c82fcb28cfc2e684f9a9ec3676299e99, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 6361872533685374121, guid: c82fcb28cfc2e684f9a9ec3676299e99, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
