@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67cfba5b4429de542a9c4b76612852c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 800
+  enemyHealth: 600
   enemySpeed: 2.5
   cooldownBetweenAttacks: 1
   attackDamages: 2

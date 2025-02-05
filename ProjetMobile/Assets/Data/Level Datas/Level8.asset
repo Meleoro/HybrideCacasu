@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822bf2e7adda8bb438cf5ce89273541b, type: 3}
+  m_Name: Level8
+  m_EditorClassIdentifier: 
+  levelName: Level3
+  levelDuration: 160
+  spawnableEnemies:
+  - {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
+  waves:
+  - waveWaitDuration: 10
+    waveDelayBetweenSpawn: 2
+    waveEnemies:
+    - enemyType: {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
+      amount: 12
+  - waveWaitDuration: 30
+    waveDelayBetweenSpawn: 1.5
+    waveEnemies:
+    - enemyType: {fileID: 3464992193447295867, guid: d3c5208b7cfd93b42ac9d26e834872f4, type: 3}
+      amount: 5
+  - waveWaitDuration: 60
+    waveDelayBetweenSpawn: 0.75
+    waveEnemies:
+    - enemyType: {fileID: 3464992193447295867, guid: 73e4bf4f71e31ce45a1a08faa07b13aa, type: 3}
+      amount: 8
+  - waveWaitDuration: 90
+    waveDelayBetweenSpawn: 1
+    waveEnemies:
+    - enemyType: {fileID: 3464992193447295867, guid: 73e4bf4f71e31ce45a1a08faa07b13aa, type: 3}
+      amount: 8
+    - enemyType: {fileID: 3464992193447295867, guid: d3c5208b7cfd93b42ac9d26e834872f4, type: 3}
+      amount: 5
+  - waveWaitDuration: 120
+    waveDelayBetweenSpawn: 0.5
+    waveEnemies:
+    - enemyType: {fileID: 3464992193447295867, guid: 73e4bf4f71e31ce45a1a08faa07b13aa, type: 3}
+      amount: 10
+    - enemyType: {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
+      amount: 5
+    - enemyType: {fileID: 3464992193447295867, guid: d3c5208b7cfd93b42ac9d26e834872f4, type: 3}
+      amount: 5
+  - waveWaitDuration: 140
+    waveDelayBetweenSpawn: 3
+    waveEnemies:
+    - enemyType: {fileID: 3464992193447295867, guid: 73e4bf4f71e31ce45a1a08faa07b13aa, type: 3}
+      amount: 10
+    - enemyType: {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
+      amount: 5
+    - enemyType: {fileID: 3464992193447295867, guid: d3c5208b7cfd93b42ac9d26e834872f4, type: 3}
+      amount: 5
+  - waveWaitDuration: 143
+    waveDelayBetweenSpawn: 15
+    waveEnemies:
+    - enemyType: {fileID: 3464992193447295867, guid: 99cd5e459ee3e674881aaa86872dfb50, type: 3}
+      amount: 2
+  startConstantEnemyDelaySpawn: 3
+  endConstantEnemyDelaySpawn: 1
+  startMoney: 180
+  moneyPerEnemy: 1
+  softCurrencyWon: 150
+  durationObjectives: 2800000050000000a0000000
