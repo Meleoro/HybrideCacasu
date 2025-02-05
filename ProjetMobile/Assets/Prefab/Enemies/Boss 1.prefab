@@ -52,7 +52,7 @@ MonoBehaviour:
   attackDamages: 2
   moveDir: {x: 0, y: -1}
   moneyDropMultiplicator: 5
-  meshTr: {fileID: 0}
+  meshTr: {fileID: 1286418168011765363}
   deathVFX: {fileID: 7700623489847457882, guid: 29dd55f22d185b84b95d2d27a69b2871, type: 3}
 --- !u!135 &2397181390777811555
 SphereCollider:

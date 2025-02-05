@@ -90,7 +90,7 @@ public class EnemyMaster : MonoBehaviour
         }
         else
         {
-            meshTr.UShakeLocalPosition(0.1f, 0.3f, 0.025f);
+            meshTr.UShakeLocalPosition(0.1f, 0.2f, 0.02f);
             StartCoroutine(KnockbackCoroutine(0.1f, 4f, new Vector3(0, 0, 1)));
         }
     }
@@ -104,7 +104,7 @@ public class EnemyMaster : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            currentKnockback = Mathf.Lerp(0, strength, timer / duration) * direction;
+            currentKnockback = Mathf.Lerp(strength, 0, timer / duration) * direction;
             
             yield return new WaitForSeconds(Time.deltaTime);
         }
