@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DontDestroyOnLoadObject : GenericSingletonClass<DontDestroyOnLoadObject>, ISaveable
 {
+    [Header("Actions")] 
+    public Action OnSaveLoad;
+    
     [Header("Public Infos")] 
     public LevelData levelData;
     public int currentLevelIndex;
@@ -48,6 +51,8 @@ public class DontDestroyOnLoadObject : GenericSingletonClass<DontDestroyOnLoadOb
         ownedSoftCurrency = data.ownedSoftCurrency;
         wonObjectives = data.wonObjectives;
         turretsLevels = data.turretsLevels;
+        
+        OnSaveLoad?.Invoke();
     }
 
     public void SaveData(ref GameData data)

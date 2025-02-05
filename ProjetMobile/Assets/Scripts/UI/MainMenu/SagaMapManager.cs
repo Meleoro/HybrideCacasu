@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,6 +18,9 @@ public class SagaMapManager : MonoBehaviour
     [Header("Public Infos")] 
     public bool isDoingTransition;
 
+    [Header("Private Infos")] 
+    private List<SagaMapLevel> levelScripts;
+
     [Header("References")] 
     [SerializeField] private LevelTransition transitionScript;
     [SerializeField] private RectTransform levelParentTr;
@@ -31,19 +36,28 @@ public class SagaMapManager : MonoBehaviour
     
     private void Start()
     {
+        StartCoroutine(DoOnceCoroutine());
+    }
+
+    private IEnumerator DoOnceCoroutine()
+    {
+        yield return null;
+        
         GenerateSagaMap();
+        DontDestroyOnLoadObject.Instance.OnSaveLoad += ActualiseLevels;
     }
 
     private void GenerateSagaMap()
     {
         Vector2 currentPos = new Vector2(0, offsetBetweenLevelsY);
-        
+        levelScripts = new();
         levelParentTr.sizeDelta = new Vector2(500, offsetBetweenLevelsY + levels.Length * offsetBetweenLevelsY);
 
         for (int i = 0; i < levels.Length; i++)
         {
             SagaMapLevel newLevel = Instantiate(levelPrefab, levelParentTr);
             newLevel.SetupLevel(levels[i], i, this);
+            levelScripts.Add(newLevel);
             
             RectTransform levelRectTr = newLevel.GetComponent<RectTransform>();
             levelRectTr.localPosition = new Vector3(currentPos.x, currentPos.y);
@@ -52,6 +66,16 @@ public class SagaMapManager : MonoBehaviour
         }
     }
 
+
+    public void ActualiseLevels()
+    {
+        Debug.Log(12);
+        
+        for (int i = 0; i < levels.Length; i++)
+        {
+            levelScripts[i].SetupLevel(levels[i], i, this);
+        }
+    }
 
     public void OpenDetails(LevelData data, int levelIndex)
     {

@@ -14,10 +14,8 @@ public class SaveManager : GenericSingletonClass<SaveManager>
     private SaveFileWriter saveFileWriter;
 
 
-    public override void Awake()
+    public void Start()
     {
-        base.Awake();
-        
         saveFileWriter = new SaveFileWriter(Application.persistentDataPath, fileName);
         saveableObjects = GetAllSaveableObjects();
         
@@ -35,6 +33,9 @@ public class SaveManager : GenericSingletonClass<SaveManager>
     public void NewGame()
     {
         gameData = new GameData();
+        saveFileWriter.Save(gameData);
+        
+        LoadGame();
     }
     
     public void SaveGame()
