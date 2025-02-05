@@ -14,8 +14,10 @@ public class SaveManager : GenericSingletonClass<SaveManager>
     private SaveFileWriter saveFileWriter;
 
 
-    public void Start()
+    public override void Awake()
     {
+        base.Awake();
+        
         saveFileWriter = new SaveFileWriter(Application.persistentDataPath, fileName);
         saveableObjects = GetAllSaveableObjects();
         

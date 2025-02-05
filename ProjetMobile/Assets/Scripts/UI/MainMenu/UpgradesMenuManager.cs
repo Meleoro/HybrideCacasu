@@ -26,6 +26,8 @@ public class UpgradesMenuManager : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoadObject.Instance.OnSaveLoad += ActualiseUpgradeSlots;
+        
         for (int i = 0; i < equippedSlots.Length; i++)
         {
             equippedSlots[i].SetupSlot(possibleTurrets[i], this);
@@ -73,7 +75,12 @@ public class UpgradesMenuManager : MonoBehaviour
     {
         DontDestroyOnLoadObject.Instance.ChangeTurretLevel(currentData.turretIndex, DontDestroyOnLoadObject.Instance.turretsLevels[currentData.turretIndex] + 1);
         currentData.ActualiseTurretLevel(DontDestroyOnLoadObject.Instance.turretsLevels[currentData.turretIndex]);
-        
+
+        ActualiseUpgradeSlots();
+    }
+
+    public void ActualiseUpgradeSlots()
+    {
         for (int i = 0; i < equippedSlots.Length; i++)
         {
             equippedSlots[i].ActualiseInfos();

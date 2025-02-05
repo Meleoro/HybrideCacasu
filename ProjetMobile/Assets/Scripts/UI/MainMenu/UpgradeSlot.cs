@@ -28,7 +28,10 @@ public class UpgradeSlot : MonoBehaviour
     
     public void ActualiseInfos()
     {
+        currentData.ActualiseTurretLevel(DontDestroyOnLoadObject.Instance.turretsLevels[currentData.turretIndex]);
+        
         turretNameText.text = currentData.turretName;
-        turretLvlText.text = "Lv." + DontDestroyOnLoadObject.Instance.turretsLevels[currentData.turretIndex];
+        
+        turretLvlText.text = "Lv." + (DontDestroyOnLoadObject.Instance.turretsLevels[currentData.turretIndex] + 1);
     }
 }
