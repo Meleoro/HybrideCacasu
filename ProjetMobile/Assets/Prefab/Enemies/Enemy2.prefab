@@ -49,7 +49,7 @@ MonoBehaviour:
   enemyHealth: 100
   enemySpeed: 1
   cooldownBetweenAttacks: 1
-  attackDamages: 1
+  attackDamages: 2
   moveDir: {x: 0, y: -1}
   moneyDropMultiplicator: 10
   meshTr: {fileID: 0}

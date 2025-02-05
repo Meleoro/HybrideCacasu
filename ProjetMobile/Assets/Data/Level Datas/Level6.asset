@@ -49,7 +49,7 @@ MonoBehaviour:
     - enemyType: {fileID: 3464992193447295867, guid: d3c5208b7cfd93b42ac9d26e834872f4, type: 3}
       amount: 5
   - waveWaitDuration: 140
-    waveDelayBetweenSpawn: 0.5
+    waveDelayBetweenSpawn: 3
     waveEnemies:
     - enemyType: {fileID: 3464992193447295867, guid: 73e4bf4f71e31ce45a1a08faa07b13aa, type: 3}
       amount: 10
@@ -58,7 +58,7 @@ MonoBehaviour:
     - enemyType: {fileID: 3464992193447295867, guid: d3c5208b7cfd93b42ac9d26e834872f4, type: 3}
       amount: 5
   - waveWaitDuration: 143
-    waveDelayBetweenSpawn: 5
+    waveDelayBetweenSpawn: 15
     waveEnemies:
     - enemyType: {fileID: 3464992193447295867, guid: 99cd5e459ee3e674881aaa86872dfb50, type: 3}
       amount: 2
