@@ -40,7 +40,7 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
         while (currentWaveIndex < levelData.waves.Length)
         {
             if(gameNeedsToEnd) yield break;
-            
+
             yield return new WaitForSeconds(levelData.waves[currentWaveIndex].waveWaitDuration - timerSpent);
  
             StartCoroutine(SpawnEnemyWaveCoroutine(levelData.waves[currentWaveIndex]));
