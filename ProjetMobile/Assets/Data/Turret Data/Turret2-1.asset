@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Turret2-1
   m_EditorClassIdentifier: 
   turretName: Turret 2
-  turretDescription: Macron, explosion
+  turretIndex: 1
   damages: 25
   shootCooldown: 2
   shootDispersion: 0.5
@@ -23,3 +23,4 @@ MonoBehaviour:
   explosionRange: 1
   shootBehavior: 1
   bulletBehavior: 2
+  turretLevels: []

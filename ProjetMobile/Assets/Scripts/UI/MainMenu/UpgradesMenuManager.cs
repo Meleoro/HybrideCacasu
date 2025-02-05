@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class UpgradesMenuManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Parameters")] 
+    [SerializeField] private TurretData possibleTurrets;
+    
+    [Header("References")] 
+    [SerializeField] private UpgradeSlot[] equippedSlots;
+    [SerializeField] private UpgradeSlot[] notEquippedSlots;
 }

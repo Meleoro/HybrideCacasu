@@ -31,7 +31,6 @@ public class SagaMapManager : MonoBehaviour
     
     private void Start()
     {
-        SaveManager.Instance.LoadGame();
         GenerateSagaMap();
     }
 

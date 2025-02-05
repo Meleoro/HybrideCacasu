@@ -58,6 +58,11 @@ public class TurretMaster : MonoBehaviour
         StartCoroutine(ShootBehaviorCoroutine());
 
         HUDManager.Instance.turretScripts.Add(this);
+
+        if (DontDestroyOnLoadObject.Instance != null)
+        {
+            turretData.ActualiseTurretLevel(DontDestroyOnLoadObject.Instance.turretsLevels[turretData.turretIndex]);
+        }
     }
     
 

@@ -1294,9 +1294,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 1500}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -499.99994}
+  m_SizeDelta: {x: 500, y: 1000}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &4801743022042124192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,13 +1833,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - {fileID: 11400000, guid: 2c3576d0902a949449b153f3d0f12f1c, type: 2}
+  - {fileID: 11400000, guid: b81c685e6a9d86c4e9c51de6b8fa5ec9, type: 2}
   - {fileID: 11400000, guid: 4dac660ef8ff4ff4b87b8a634ad561cf, type: 2}
+  - {fileID: 11400000, guid: 2c3576d0902a949449b153f3d0f12f1c, type: 2}
+  - {fileID: 11400000, guid: 2c3576d0902a949449b153f3d0f12f1c, type: 2}
+  - {fileID: 11400000, guid: 2c3576d0902a949449b153f3d0f12f1c, type: 2}
+  - {fileID: 11400000, guid: 2c3576d0902a949449b153f3d0f12f1c, type: 2}
+  - {fileID: 11400000, guid: 2c3576d0902a949449b153f3d0f12f1c, type: 2}
+  - {fileID: 11400000, guid: 2c3576d0902a949449b153f3d0f12f1c, type: 2}
+  - {fileID: 11400000, guid: 2c3576d0902a949449b153f3d0f12f1c, type: 2}
+  - {fileID: 11400000, guid: 2c3576d0902a949449b153f3d0f12f1c, type: 2}
+  - {fileID: 11400000, guid: 2c3576d0902a949449b153f3d0f12f1c, type: 2}
+  - {fileID: 11400000, guid: 2c3576d0902a949449b153f3d0f12f1c, type: 2}
+  - {fileID: 11400000, guid: 2c3576d0902a949449b153f3d0f12f1c, type: 2}
+  - {fileID: 11400000, guid: 2c3576d0902a949449b153f3d0f12f1c, type: 2}
   - {fileID: 11400000, guid: 2c3576d0902a949449b153f3d0f12f1c, type: 2}
   - {fileID: 11400000, guid: 2c3576d0902a949449b153f3d0f12f1c, type: 2}
   - {fileID: 11400000, guid: 2c3576d0902a949449b153f3d0f12f1c, type: 2}
   offsetBetweenLevelsY: 185
   levelPrefab: {fileID: 105931033725925963, guid: ef5976d075649d049bede5b22a908c00, type: 3}
+  fullStarSprite: {fileID: 21300000, guid: 5cf538fcf439a49d48fcf2995f950403, type: 3}
+  emptyStarSprite: {fileID: 21300000, guid: d228604ab6373411fac2dbf1e0e215d1, type: 3}
+  isDoingTransition: 0
   transitionScript: {fileID: 4253596053272375689}
   levelParentTr: {fileID: 4221767412178442626}
   detailsParentTr: {fileID: 8737109754470610935}

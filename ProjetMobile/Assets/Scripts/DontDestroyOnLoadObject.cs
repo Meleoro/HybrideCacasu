@@ -9,6 +9,7 @@ public class DontDestroyOnLoadObject : GenericSingletonClass<DontDestroyOnLoadOb
     public int currentLevelIndex;
     public int ownedSoftCurrency;
     public bool[] wonObjectives;
+    public int[] turretsLevels;
     
     
     private void Start()
@@ -32,16 +33,27 @@ public class DontDestroyOnLoadObject : GenericSingletonClass<DontDestroyOnLoadOb
         
         SaveManager.Instance.SaveGame();
     }
+
+
+    public void ChangeTurretLevel(int turretIndex, int newLevel)
+    {
+        turretsLevels[turretIndex] = newLevel;
+        
+        SaveManager.Instance.SaveGame();
+    }
+    
     
     public void LoadData(GameData data)
     {
         ownedSoftCurrency = data.ownedSoftCurrency;
         wonObjectives = data.wonObjectives;
+        turretsLevels = data.turretsLevels;
     }
 
     public void SaveData(ref GameData data)
     {
         data.ownedSoftCurrency = ownedSoftCurrency;
         data.wonObjectives = wonObjectives;
+        data.turretsLevels = turretsLevels;
     }
 }

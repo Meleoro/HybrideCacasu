@@ -7,16 +7,22 @@ using UnityEngine;
 public class SaveManager : GenericSingletonClass<SaveManager>
 {
     [SerializeField] private string fileName;
+    [SerializeField] private bool newGame;
     
     private GameData gameData;
     private List<ISaveable> saveableObjects = new();
     private SaveFileWriter saveFileWriter;
-    
 
-    private void Start()
+
+    public override void Awake()
     {
+        base.Awake();
+        
         saveFileWriter = new SaveFileWriter(Application.persistentDataPath, fileName);
         saveableObjects = GetAllSaveableObjects();
+        
+        if(newGame)
+            NewGame();
         
         LoadGame();
     }
