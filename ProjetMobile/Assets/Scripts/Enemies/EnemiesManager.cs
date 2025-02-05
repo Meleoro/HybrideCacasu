@@ -25,8 +25,8 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
     {
         this.levelData = levelData;
         
-        constantSpawnCoroutine = StartCoroutine(EnemiesConstantSpawnCoroutine());
         StartCoroutine(ManageEnemyWavesCoroutine());
+        constantSpawnCoroutine = StartCoroutine(EnemiesConstantSpawnCoroutine());
     }
     
 
@@ -42,7 +42,7 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
             if(gameNeedsToEnd) yield break;
             
             yield return new WaitForSeconds(levelData.waves[currentWaveIndex].waveWaitDuration - timerSpent);
-
+ 
             StartCoroutine(SpawnEnemyWaveCoroutine(levelData.waves[currentWaveIndex]));
             timerSpent = levelData.waves[currentWaveIndex].waveWaitDuration;
             currentWaveIndex++;

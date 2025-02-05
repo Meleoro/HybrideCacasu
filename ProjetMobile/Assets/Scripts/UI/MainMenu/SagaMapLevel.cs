@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class SagaMapLevel : MonoBehaviour
 {
     [Header("Parameters")] 
+    [SerializeField] private Sprite emptyStarSprite;
     [SerializeField] private Sprite fullStarSprite;
     
     [Header("Private Infos")] 
@@ -30,6 +31,10 @@ public class SagaMapLevel : MonoBehaviour
             if (DontDestroyOnLoadObject.Instance.wonObjectives[i + currentIndex * 3])
             {
                 stars[i].sprite = fullStarSprite;
+            }
+            else
+            {
+                stars[i].sprite = emptyStarSprite;
             }
         }
     }

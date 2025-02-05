@@ -54,6 +54,7 @@ public enum BulletBehavior
 [Serializable]
 public struct TurretLevel
 {
+    public int upgradeCost;
     public int newDamages;
     [Range(0.1f, 5f)] public float newShootCooldown;
     public float newBulletSpeed;

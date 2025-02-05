@@ -622,6 +622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a0b04c701a34de40b4405556eefdbec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emptyStarSprite: {fileID: 21300000, guid: d228604ab6373411fac2dbf1e0e215d1, type: 3}
   fullStarSprite: {fileID: 21300000, guid: 5cf538fcf439a49d48fcf2995f950403, type: 3}
   levelIndexText: {fileID: 6400259560866746886}
   stars:
