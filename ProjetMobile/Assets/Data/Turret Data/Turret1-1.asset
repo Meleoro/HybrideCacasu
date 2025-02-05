@@ -24,17 +24,20 @@ MonoBehaviour:
   shootBehavior: 0
   bulletBehavior: 0
   turretLevels:
-  - newDamages: 10
+  - upgradeCost: 100
+    newDamages: 10
     newShootCooldown: 1
     newBulletSpeed: 8
     newBulletSize: 0.3
     newExplosionRange: 1
-  - newDamages: 12
+  - upgradeCost: 200
+    newDamages: 12
     newShootCooldown: 0.95
     newBulletSpeed: 8.5
     newBulletSize: 0.3
     newExplosionRange: 1.1
-  - newDamages: 15
+  - upgradeCost: 300
+    newDamages: 15
     newShootCooldown: 0.9
     newBulletSpeed: 9
     newBulletSize: 0.3

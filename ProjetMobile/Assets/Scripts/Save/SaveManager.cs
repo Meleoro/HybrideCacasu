@@ -35,6 +35,9 @@ public class SaveManager : GenericSingletonClass<SaveManager>
     public void NewGame()
     {
         gameData = new GameData();
+        saveFileWriter.Save(gameData);
+        
+        LoadGame();
     }
     
     public void SaveGame()

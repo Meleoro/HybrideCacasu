@@ -34,7 +34,7 @@ public class GameManager : GenericSingletonClass<GameManager>
         {
             currentTimer += Time.deltaTime;
 
-            yield return new WaitForSeconds(Time.deltaTime);
+            yield return new WaitForEndOfFrame();
         }
 
         EnemiesManager.Instance.EndGame();
