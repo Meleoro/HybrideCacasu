@@ -8056,10 +8056,10 @@ MonoBehaviour:
   - {r: 0.4141153, g: 0.72089815, b: 0.8867924, a: 1}
   - {r: 0.9433962, g: 0.5929069, b: 0.25364897, a: 1}
   - {r: 0.7287076, g: 0.3270737, b: 0.9245283, a: 1}
-  turretDamageMultiplierPerUpgrade: 2
-  turretFireRateMultiplierPerUpgrade: 2
-  turretBulletSpeedMultiplierPerUpgrade: 2
-  turretBulletSizeMultiplierPerUpgrade: 2
+  turretDamageMultiplierPerUpgrade: 1.05
+  turretFireRateMultiplierPerUpgrade: 1.05
+  turretBulletSpeedMultiplierPerUpgrade: 1
+  turretBulletSizeMultiplierPerUpgrade: 1.05
   availableButtonColor: {r: 1, g: 1, b: 1, a: 1}
   notAvailableButtonColor: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
   turretSlotsManager: {fileID: 1076690337}
@@ -8230,7 +8230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690e215e537545c41b45b6f95bbcdcb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deadZoneHeight: 9
+  deadZoneHeight: 7
   enemySpawnXMinRef: {fileID: 2005453242}
   enemySpawnXMaxRef: {fileID: 984903340}
 --- !u!114 &1517287776
