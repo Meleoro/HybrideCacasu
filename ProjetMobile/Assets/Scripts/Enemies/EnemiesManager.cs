@@ -25,8 +25,8 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
     {
         this.levelData = levelData;
         
-        constantSpawnCoroutine = StartCoroutine(EnemiesConstantSpawnCoroutine());
         StartCoroutine(ManageEnemyWavesCoroutine());
+        constantSpawnCoroutine = StartCoroutine(EnemiesConstantSpawnCoroutine());
     }
     
 
