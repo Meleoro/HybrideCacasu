@@ -24,6 +24,8 @@ public class GetNewModificatorUISlot : MonoBehaviour
     [SerializeField] private RectTransform mainTr;
     [SerializeField] private ParticleSystem constantVFX;
     [SerializeField] private ParticleSystem explosionVFX;
+    [SerializeField] private RectTransform raysMainRectTr;
+    [SerializeField] private RectTransform[] raysRectTr;
     private GetNewModificatorUI mainScript;
 
     
@@ -80,7 +82,6 @@ public class GetNewModificatorUISlot : MonoBehaviour
     }
     
 
-
     #region Open / Close Animations
 
     public IEnumerator DoOpenAnimCoroutine()
@@ -103,6 +104,8 @@ public class GetNewModificatorUISlot : MonoBehaviour
         
         backImage.UFadeImage(openAnimDuration * 0.3f, 0.4f, CurveType.None, true);
         explosionVFX.Play();
+
+        StartCoroutine(RaysAppearEffectCoroutine(0.5f));
         
         yield return new WaitForSecondsRealtime(openAnimDuration * 0.3f);
         
@@ -122,6 +125,9 @@ public class GetNewModificatorUISlot : MonoBehaviour
         currentCap = null;
         
         constantVFX.Stop();
+        
+        if(!instant)
+            StartCoroutine(RaysDisappearCoroutine(1f));
         
         yield return new WaitForSeconds(instant ? 0.01f : openAnimDuration);
     }
@@ -156,6 +162,47 @@ public class GetNewModificatorUISlot : MonoBehaviour
     {
         isDragged = false;
         currentCap.ChangeWantedPos(transform.position);
+    }
+
+    #endregion
+
+
+    #region Rays
+
+    private Coroutine rayRotationCoroutine;
+    public IEnumerator RaysAppearEffectCoroutine(float duration)
+    {
+        rayRotationCoroutine = StartCoroutine(RaysRotationEffectCoroutine());
+
+        for (int i = 0; i < raysRectTr.Length; i++)
+        {
+            raysRectTr[i].UBounce(duration * 0.8f, new Vector3(0.25f, 0.25f, 0.25f), duration * 0.2f, new Vector3(0.2f, 0.2f, 0.2f), 
+                CurveType.EaseInOutSin, true);
+            
+            yield return new WaitForSecondsRealtime(duration / 8);
+        }
+    }
+
+    private IEnumerator RaysRotationEffectCoroutine()
+    {
+        while (true)
+        {
+            raysMainRectTr.rotation *= Quaternion.Euler(new Vector3(0, 0, Time.unscaledDeltaTime * 6f));
+            
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    public IEnumerator RaysDisappearCoroutine(float duration)
+    {
+        for (int i = 0; i < raysRectTr.Length; i++)
+        {
+            raysRectTr[i].UChangeScale(duration, Vector3.zero, CurveType.EaseOutSin, true);
+            
+            yield return new WaitForSecondsRealtime(duration / 8);
+        }
+        
+        StopCoroutine(rayRotationCoroutine);
     }
 
     #endregion
