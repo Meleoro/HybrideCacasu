@@ -8054,8 +8054,8 @@ MonoBehaviour:
   ranksColors:
   - {r: 0.41651833, g: 0.754717, b: 0.44828373, a: 1}
   - {r: 0.4141153, g: 0.72089815, b: 0.8867924, a: 1}
-  - {r: 0.9433962, g: 0.5929069, b: 0.25364897, a: 1}
   - {r: 0.7287076, g: 0.3270737, b: 0.9245283, a: 1}
+  - {r: 0.9433962, g: 0.5929069, b: 0.25364897, a: 1}
   turretDamageMultiplierPerUpgrade: 1.05
   turretFireRateMultiplierPerUpgrade: 1.05
   turretBulletSpeedMultiplierPerUpgrade: 1

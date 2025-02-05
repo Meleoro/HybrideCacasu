@@ -14,6 +14,7 @@ public class GetNewModificatorUISlot : MonoBehaviour
 
     [Header("Private Infos")] 
     private Cap currentCap;
+    private int currentRank;
     private bool isDragged;
     
     [Header("References")] 
@@ -37,6 +38,8 @@ public class GetNewModificatorUISlot : MonoBehaviour
 
     public void SetCurrentData(ModificatorData data, int rank)
     {
+        currentRank = rank;
+        
         isDragged = false;
         modificatorNameText.text = data.modificatorName;
         modificatorDescText.text = data.modificatorDescription;
@@ -48,9 +51,9 @@ public class GetNewModificatorUISlot : MonoBehaviour
         main = explosionVFX.main;
         main.startColor = HUDManager.Instance.ranksColors[rank];
 
-        currentCap = Instantiate(capPrefab, transform.position, transform.rotation);
+        currentCap = Instantiate(capPrefab, transform.position - transform.forward * 0.5f, transform.rotation);
         currentCap.SetData(data, rank);
-        currentCap.ChangeWantedPos(transform.position);
+        currentCap.ChangeWantedPos(transform.position - transform.forward * 0.5f);
         
         ActualiseDescription(data, rank);
     }
@@ -88,9 +91,7 @@ public class GetNewModificatorUISlot : MonoBehaviour
     {
         mainTr.UBounce(openAnimDuration * 0.7f, Vector3.one * 1.2f, 
             openAnimDuration * 0.3f, Vector3.one * 1f, CurveType.None, true);
-        
         backImage.UFadeImage(openAnimDuration * 0.7f, 0.6f, CurveType.None, true);
-        
         backImage.rectTransform.UBounce(openAnimDuration * 0.7f, backImage.rectTransform.localScale * 1.1f, 
             openAnimDuration * 0.3f, backImage.rectTransform.localScale, CurveType.None, true);
         
@@ -100,12 +101,14 @@ public class GetNewModificatorUISlot : MonoBehaviour
         currentCap.ActualiseCap();
         currentCap.DoRotationEntrance(openAnimDuration);
         
-        yield return new WaitForSecondsRealtime(openAnimDuration * 0.7f);
+        yield return new WaitForSecondsRealtime(openAnimDuration * 0.4f);
+        
+        StartCoroutine(RaysAppearEffectCoroutine(0.4f));
+        
+        yield return new WaitForSecondsRealtime(openAnimDuration * 0.3f);
         
         backImage.UFadeImage(openAnimDuration * 0.3f, 0.4f, CurveType.None, true);
         explosionVFX.Play();
-
-        StartCoroutine(RaysAppearEffectCoroutine(0.5f));
         
         yield return new WaitForSecondsRealtime(openAnimDuration * 0.3f);
         
@@ -161,7 +164,7 @@ public class GetNewModificatorUISlot : MonoBehaviour
     public void StopDrag()
     {
         isDragged = false;
-        currentCap.ChangeWantedPos(transform.position);
+        currentCap.ChangeWantedPos(transform.position - transform.forward * 0.5f);
     }
 
     #endregion
@@ -178,6 +181,8 @@ public class GetNewModificatorUISlot : MonoBehaviour
         {
             raysRectTr[i].UBounce(duration * 0.8f, new Vector3(0.25f, 0.25f, 0.25f), duration * 0.2f, new Vector3(0.2f, 0.2f, 0.2f), 
                 CurveType.EaseInOutSin, true);
+            
+            raysRectTr[i].GetComponent<Image>().color = HUDManager.Instance.ranksColors[currentRank];
             
             yield return new WaitForSecondsRealtime(duration / 8);
         }

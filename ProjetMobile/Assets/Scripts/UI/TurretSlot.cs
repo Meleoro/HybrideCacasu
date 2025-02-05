@@ -6,10 +6,14 @@ using Utilities;
 public class TurretSlot : MonoBehaviour
 {
     [Header("Parameters")] 
+    [SerializeField] private int turretIndex;
     [SerializeField] private Color noDataColor; 
     [SerializeField] private Color dataColor; 
     [SerializeField] private Color compatibleColor; 
     [SerializeField] private Color incompatibleColor;
+
+    [Header("Public Infos")] 
+    public bool bounceTurret;
     
     [Header("Private Infos")] 
     [SerializeField] private Cap currentCap;
@@ -210,6 +214,6 @@ public class TurretSlot : MonoBehaviour
 
     private void ModificatorAddFeel()
     {
-        
+        bounceTurret = true;
     }
 }

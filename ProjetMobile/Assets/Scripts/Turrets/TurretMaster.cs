@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using Utilities;
 using Random = UnityEngine.Random;
 
 public struct TurretModificatorValues
@@ -85,7 +86,13 @@ public class TurretMaster : MonoBehaviour
 
     private void ActualiseModificators()
     {
-        modificatorValues = HUDManager.Instance.turretSlotsManager.GetTurretModificators(turretIndex);
+        bool bounce;
+        (modificatorValues, bounce) = HUDManager.Instance.turretSlotsManager.GetTurretModificators(turretIndex);
+
+        if (bounce)
+        {
+            transform.UBounce(0.15f, Vector3.one * 1.2f, 0.15f, Vector3.one, CurveType.EaseInOutSin);
+        }
     }
 
     public void UpgradeTurret(float damage, float fireRate, float size, float speed)

@@ -63,7 +63,7 @@ public class TurretSlotsManager : MonoBehaviour
         }
     }
     
-    public TurretModificatorValues GetTurretModificators(int turretIndex)
+    public (TurretModificatorValues, bool) GetTurretModificators(int turretIndex)
     {
         TurretSlot[] slots = turret1Slots;
         switch (turretIndex)
@@ -77,11 +77,18 @@ public class TurretSlotsManager : MonoBehaviour
         }
 
         TurretModificatorValues returnedValues = new TurretModificatorValues(1, 1);
+        bool needToBounce = false;
 
         for (int i = 0; i < slots.Length; i++)
         {
             (ModificatorData modificatorData, int rank) = slots[i].GetCurrentModificator();
             if (modificatorData == null) continue;
+
+            if (slots[i].bounceTurret)
+            {
+                needToBounce = true;
+                slots[i].bounceTurret = false;
+            }
 
             switch (modificatorData.modificatorType)
             {
@@ -115,7 +122,7 @@ public class TurretSlotsManager : MonoBehaviour
             }
         }
 
-        return returnedValues;
+        return (returnedValues, needToBounce);
     }
 
     #endregion
