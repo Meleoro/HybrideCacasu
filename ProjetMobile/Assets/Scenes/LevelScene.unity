@@ -4781,6 +4781,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 8652189188676198935, guid: 4e27ba9846969b84397db01d59d0d5ed, type: 3}
+      propertyPath: m_margin.z
+      value: 399.62396
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

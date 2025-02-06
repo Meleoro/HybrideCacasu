@@ -92,7 +92,7 @@ public class TurretMaster : MonoBehaviour
 
         if (bounce)
         {
-            transform.UBounce(0.15f, Vector3.one * 1.2f, 0.15f, Vector3.one, CurveType.EaseInOutSin);
+            transform.USquishEffect(0.5f, 0.3f, false, CurveType.EaseInOutSin);
         }
     }
 
@@ -104,7 +104,7 @@ public class TurretMaster : MonoBehaviour
         upgradeValues.projectileSpeedMultiplier += speed;
         
         upgradeVFX.Play();
-        transform.UBounce(0.15f, Vector3.one * 1.2f, 0.15f, Vector3.one, CurveType.EaseInOutSin);
+        transform.USquishEffect(0.5f, 0.3f, false, CurveType.EaseInOutSin);
     }
 
 

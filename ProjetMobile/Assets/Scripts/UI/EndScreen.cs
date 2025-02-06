@@ -112,7 +112,7 @@ public class EndScreen : MonoBehaviour
     {
         transform.localScale = Vector3.zero;
         
-        transform.UBounce(duration * 0.8f, Vector3.one * 1.2f, duration * 0.2f, Vector3.one,CurveType.EaseInOutSin, true);
+        transform.UBounceScale(duration * 0.8f, Vector3.one * 1.2f, duration * 0.2f, Vector3.one,CurveType.EaseInOutSin, false, true);
     }
     
     private IEnumerator CurrencyFeelCoroutine(int wonCurrency, float duration)
