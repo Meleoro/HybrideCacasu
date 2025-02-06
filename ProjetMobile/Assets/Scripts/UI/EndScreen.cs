@@ -45,6 +45,11 @@ public class EndScreen : MonoBehaviour
         
         int score = (int)(GameManager.Instance.levelData.softCurrencyWon * GameManager.Instance.currentTimer / GameManager.Instance.levelData.levelDuration);
         
+        if (DontDestroyOnLoadObject.Instance != null)
+        {
+            DontDestroyOnLoadObject.Instance.ownedSoftCurrency += score;
+        }
+        
         bool[] wonObjectives = new bool[3];
         for (int i = 0; i < starsImages.Length; i++)
         {
@@ -86,6 +91,12 @@ public class EndScreen : MonoBehaviour
         
         int score = GameManager.Instance.levelData.softCurrencyWon;
         bool[] wonObjectives = new bool[3];
+        
+        if (DontDestroyOnLoadObject.Instance != null)
+        {
+            DontDestroyOnLoadObject.Instance.ownedSoftCurrency += score;
+        }
+        
         for (int i = 0; i < starsImages.Length; i++)
         {
             wonObjectives[i] = true;
