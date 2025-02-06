@@ -48,6 +48,9 @@ public class GetNewModificatorUI : MonoBehaviour
         
         while (true)
         {
+            pickedModificatorIndex = Random.Range(0, possibleModificators.Length);
+            pickedRankProba = Random.Range(0f, currentProbabilitiesSum);
+            
             bool isValidated = true;
             for (int i = 0; i < chosenModificators.Length; i++)
             {
@@ -61,9 +64,6 @@ public class GetNewModificatorUI : MonoBehaviour
             }
 
             if (!isValidated) continue;
-            
-            pickedModificatorIndex = Random.Range(0, possibleModificators.Length);
-            pickedRankProba = Random.Range(0f, currentProbabilitiesSum);
             
             float cumulatedProba = 0;
             for (int i = 0; i < currentProbabilityPerRank.Length; i++)
