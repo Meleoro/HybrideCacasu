@@ -213,7 +213,7 @@ TrailRenderer:
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.35
+    widthMultiplier: 0.25
     widthCurve:
       serializedVersion: 2
       m_Curve:
