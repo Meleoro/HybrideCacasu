@@ -56,14 +56,14 @@ public class Cap : MonoBehaviour
     {
         transform.localScale = new Vector3(0, 0, 0);
         
-        transform.UBounce(duration * 0.7f, Vector3.one * 1.4f, duration * 0.3f, Vector3.one, CurveType.EaseOutBack, true);
+        transform.UBounceScale(duration * 0.7f, Vector3.one * 1.4f, duration * 0.3f, Vector3.one, CurveType.EaseOutBack, false, true);
         transform.UChangeRotation(duration * 1f, transform.eulerAngles + new Vector3(0, 0, 720), CurveType.EaseOutCubic, true);
     }
     
     public void FuseCaps()
     {
         transform.UChangeRotation(0.5f, transform.eulerAngles + new Vector3(720, 0, 0), CurveType.EaseOutCubic, true);
-        transform.UBounce(0.15f, transform.localScale * 2f, 0.35f, transform.localScale, CurveType.None, true);
+        transform.UBounceScale(0.15f, transform.localScale * 2f, 0.35f, transform.localScale, CurveType.None, false, true);
     }
     
     #endregion

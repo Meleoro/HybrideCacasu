@@ -82,8 +82,6 @@ public class GetNewModificatorUI : MonoBehaviour
                 }
             }
         }
-
-        return (possibleModificators[pickedModificatorIndex], 0);
     }
 
 
