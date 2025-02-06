@@ -15,6 +15,7 @@ public class EndScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currencyText;
     [SerializeField] private Image[] starsImages;
     [SerializeField] private TextMeshProUGUI[] objectivesText;
+    [SerializeField] private ParticleSystem[] starsVFXs;
     [SerializeField] private LevelTransition levelTransitionScript;
 
 
@@ -50,6 +51,8 @@ public class EndScreen : MonoBehaviour
             
             if (GameManager.Instance.levelData.durationObjectives[i] > GameManager.Instance.currentTimer) continue;
 
+            starsVFXs[i].Play();
+            
             starsImages[i].sprite = fullStarSprite;
             starsImages[i].rectTransform.UBounce(0.2f, starsImages[i].rectTransform.localScale * 1.4f, 
                 0.4f, starsImages[i].rectTransform.localScale);
@@ -84,6 +87,8 @@ public class EndScreen : MonoBehaviour
         for (int i = 0; i < starsImages.Length; i++)
         {
             wonObjectives[i] = true;
+            
+            starsVFXs[i].Play();
             
             starsImages[i].sprite = fullStarSprite;
             starsImages[i].rectTransform.UBounce(0.2f, starsImages[i].rectTransform.localScale * 1.4f, 
