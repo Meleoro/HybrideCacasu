@@ -20,6 +20,9 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     [SerializeField][Range(1f, 2f)] private float turretBulletSizeMultiplierPerUpgrade;
     [SerializeField] private Color availableButtonColor = new Color(1, 1, 1);
     [SerializeField] private Color notAvailableButtonColor = new Color(0.5f, 0.5f, 0.5f);
+
+    [Header("Public Infos")] 
+    public int currentUpgradeCount;
     
     [Header("Private Infos")] 
     private bool isDragging;
@@ -110,12 +113,16 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     public void ClickLeftButton()
     {
         if (!MoneyManager.Instance.VerifyHasEnoughMoneyTowerUpgrade(true)) return;
+
+        currentUpgradeCount++;
         
         for (int i = 0; i < turretScripts.Count; i++)
         {
             turretScripts[i].UpgradeTurret(turretDamageMultiplierPerUpgrade-1, turretFireRateMultiplierPerUpgrade-1, 
                 turretBulletSizeMultiplierPerUpgrade-1, turretBulletSpeedMultiplierPerUpgrade-1);
         }
+
+        turretSlotsManager.ActualiseAvailableTurrets();
     }
 
     #endregion

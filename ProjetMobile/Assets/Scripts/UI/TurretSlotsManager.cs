@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class TurretSlotsManager : MonoBehaviour
 {
+    [Header("Parameters")] 
+    [SerializeField] private int unlockSecondRawUpgradeNeeded = 3;
+    [SerializeField] private int unlockThirdRawUpgradeNeeded = 6;
+    
     [Header("Private Infos")] 
     private TurretSlot currentOverlayedSlot;
     private TurretSlot dragSlotOrigin;
@@ -41,6 +45,13 @@ public class TurretSlotsManager : MonoBehaviour
             turretSlots[currentIndex] = turret3Slots[i];
             currentIndex++;
         }
+        
+        turret1Slots[1].gameObject.SetActive(false);
+        turret2Slots[1].gameObject.SetActive(false);
+        turret3Slots[1].gameObject.SetActive(false);
+        turret1Slots[2].gameObject.SetActive(false);
+        turret2Slots[2].gameObject.SetActive(false);
+        turret3Slots[2].gameObject.SetActive(false);
     }
     
     
@@ -60,6 +71,25 @@ public class TurretSlotsManager : MonoBehaviour
         for (int i = 0; i < turret3Slots.Length; i++)
         {
             turret3Slots[i].ActualiseSlot();
+        }
+    }
+
+    public void ActualiseAvailableTurrets()
+    {
+        int currentUpgradeCount = HUDManager.Instance.currentUpgradeCount + 1;
+        
+        if (currentUpgradeCount > unlockSecondRawUpgradeNeeded)
+        {
+            turret1Slots[1].gameObject.SetActive(true);
+            turret2Slots[1].gameObject.SetActive(true);
+            turret3Slots[1].gameObject.SetActive(true);
+        }
+
+        if (currentUpgradeCount > unlockThirdRawUpgradeNeeded)
+        {
+            turret1Slots[2].gameObject.SetActive(true);
+            turret2Slots[2].gameObject.SetActive(true);
+            turret3Slots[2].gameObject.SetActive(true);
         }
     }
     
