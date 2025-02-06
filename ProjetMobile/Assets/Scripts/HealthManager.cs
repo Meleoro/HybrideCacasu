@@ -9,10 +9,10 @@ public class HealthManager : GenericSingletonClass<HealthManager>
 
     [Header("Private Infos")] 
     private int currentHealth;
-    
 
     [Header("References")]
     [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private Wall cheeseWallScript;
 
 
     private void Start()
@@ -24,6 +24,8 @@ public class HealthManager : GenericSingletonClass<HealthManager>
     private void ActualiseHealthText()
     {
         healthText.text = currentHealth.ToString();
+        
+        cheeseWallScript.ActualiseWallMeshes(currentHealth, startHealth);
     }
 
 
