@@ -114,7 +114,7 @@ public class EnemyMaster : MonoBehaviour
 
     private void Die()
     {
-        MoneyManager.Instance.AddMoney((int)(GameManager.Instance.levelData.moneyPerEnemy * moneyDropMultiplicator));
+        MoneyManager.Instance.CreateCoin(transform.position, (int)(GameManager.Instance.levelData.moneyPerEnemy * moneyDropMultiplicator));
         Instantiate(deathVFX, transform.position, Quaternion.Euler(0, 0, 0));
         
         EnemiesManager.Instance.KillEnemy(this);

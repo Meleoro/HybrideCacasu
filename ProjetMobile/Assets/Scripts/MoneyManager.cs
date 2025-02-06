@@ -16,6 +16,7 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
     [SerializeField] private float middleChestCostMultiplierPerChestUpgrade = 1f;
     [SerializeField] private float chestUpgradeCostMultiplierPerChestUpgrade = 1f;
     [SerializeField] private float towerUpgradeCostMultiplierPerTowerUpgrade = 1f;
+    [SerializeField] private Coin coinPrefab;
     
     [Header("Private Infos")] 
     private int currentMoney;
@@ -44,6 +45,14 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
     
     #region Public Functions
 
+    public void CreateCoin(Vector3 enemyPos, int coinValue)
+    {
+        Vector3 dir = Vector3.ClampMagnitude(enemyPos - CameraManager.Instance.transform.position, 8.5f);
+        
+        Coin newCoin = Instantiate(coinPrefab, CameraManager.Instance.transform.position + dir, Quaternion.identity, transform);
+        newCoin.Initialise(moneyText.transform.position, coinValue);
+    }
+    
     public void AddMoney(int moneyAmount)
     {
         currentMoney += moneyAmount;
