@@ -38,6 +38,8 @@ public class TurretSlot : MonoBehaviour
 
     public void DisplayIsCompatible(ModificatorData draggedModificator, int draggedRank, TurretSlot originSlot)
     {
+        return;
+        
         if (originSlot == this)
         {
             isShowingCompatibleColor = true;
