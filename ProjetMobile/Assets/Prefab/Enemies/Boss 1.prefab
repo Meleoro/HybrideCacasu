@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 600
-  enemySpeed: 2.5
+  enemySpeed: 2
   cooldownBetweenAttacks: 1
   attackDamages: 2
   moveDir: {x: 0, y: -1}
