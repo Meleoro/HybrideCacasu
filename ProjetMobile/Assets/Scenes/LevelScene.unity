@@ -3328,6 +3328,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f7c1e020b79174686b8cc426c6d722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level1ForcedPools: []
+  level2ForcedPools:
+  - forcedModificators:
+    - {fileID: 11400000, guid: 97a1f8f9c644f6546ba419f0aa785a9c, type: 2}
+    - {fileID: 11400000, guid: c0d1f39fe22acc24b985946d91180ded, type: 2}
+    - {fileID: 11400000, guid: 2d6019168603ca647ac96e70138df86a, type: 2}
+    forcedRanks: 020000000100000001000000
   cursorImage: {fileID: 1015318211}
   backImage: {fileID: 2136267615}
   openChestButton: {fileID: 1798679002}
@@ -3576,7 +3583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071fdc2fac680b94baf6262bb11a411d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelData: {fileID: 11400000, guid: d4cdf9f6bf380bf46adb07c4e03307e7, type: 2}
+  levelData: {fileID: 11400000, guid: 4dac660ef8ff4ff4b87b8a634ad561cf, type: 2}
   currentTimer: 0
 --- !u!114 &1517287777
 MonoBehaviour:

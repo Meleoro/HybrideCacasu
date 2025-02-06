@@ -1,13 +1,26 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
 
+[Serializable]
+public struct ForcedPool
+{
+    public ModificatorData[] forcedModificators;
+    public int[] forcedRanks;
+}
+
 public class TutoManager : MonoBehaviour
 {
+    [Header("Parameters")] 
+    public ForcedPool[] level1ForcedPools;
+    public ForcedPool[] level2ForcedPools;
+    
     [Header("Private Infos")] 
     private bool upgradedChest;
     private bool upgradedTurret;
+    private int poolIndex;
     
     [Header("References")] 
     [SerializeField] private Image cursorImage;
@@ -25,6 +38,19 @@ public class TutoManager : MonoBehaviour
     public void UpgradeTurret()
     {
         upgradedTurret = true;
+    }
+
+
+    public (ModificatorData[], int[]) GetForcedPool(int levelIndex)
+    {
+        ForcedPool[] pickedForcedPools = level1ForcedPools;
+        if (levelIndex == 2) pickedForcedPools = level2ForcedPools;
+        
+        if (poolIndex >= pickedForcedPools.Length) return (new ModificatorData[3], new int[3]);
+        
+        poolIndex++;
+
+        return (pickedForcedPools[poolIndex - 1].forcedModificators, pickedForcedPools[poolIndex - 1].forcedRanks);
     }
     
     
@@ -52,7 +78,7 @@ public class TutoManager : MonoBehaviour
         Time.timeScale = 1f;
         
         upgradeChestButton.image.UStopBounceImageColor();
-        upgradeChestButton.image.ULerpImageColor(0.5f, Color.white);
+        HUDManager.Instance.ActualiseButtonColors();
 
         upgradeChestButton.transform.parent = originalParent;
         openChestButton.enabled = true;
@@ -84,7 +110,7 @@ public class TutoManager : MonoBehaviour
         Time.timeScale = 1f;
         
         upgradeTurretButton.image.UStopBounceImageColor();
-        upgradeTurretButton.image.ULerpImageColor(0.5f, Color.white);
+        HUDManager.Instance.ActualiseButtonColors();
         
         upgradeTurretButton.transform.parent = originalParent;
         upgradeChestButton.enabled = true;

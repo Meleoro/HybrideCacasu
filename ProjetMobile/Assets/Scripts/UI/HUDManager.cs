@@ -37,7 +37,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     [SerializeField] private LevelProgressUI progressScript;
     [SerializeField] private ParticleSystem upgradeChestVFX;
     [SerializeField] private LevelTransition transitionScript;
-    [SerializeField] private TutoManager tutoManager;
+    public TutoManager tutoManager;
     public List<TurretMaster> turretScripts = new();
     private RectTransform canvasRect;
     

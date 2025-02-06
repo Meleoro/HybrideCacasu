@@ -21,7 +21,7 @@ public class Coin : MonoBehaviour
         this.wantedPos = wantedPos;
         this.coinValue = coinValue;
         
-        rb.AddForce(new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * startImpulseForce, ForceMode.Impulse);
+        rb.AddForce(new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * startImpulseForce, ForceMode.Impulse);
     }
     
     private void Update()

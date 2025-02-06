@@ -125,10 +125,22 @@ public class GetNewModificatorUI : MonoBehaviour
         
         Time.timeScale = 0.05f;
         backImage.UFadeImage(0.5f, 0.5f, CurveType.None, true);
-        
-        for (int i = 0; i < 3; i++)
+
+        if (GameManager.Instance.levelData.isFirstLevel)
         {
-            (chosenModificators[i], chosenRanks[i]) = PickAModificator(chosenModificators);
+            (chosenModificators, chosenRanks) = HUDManager.Instance.tutoManager.GetForcedPool(1);
+        } else if (GameManager.Instance.levelData.isSecondLevel)
+        {
+            (chosenModificators, chosenRanks) = HUDManager.Instance.tutoManager.GetForcedPool(2);
+        }
+
+        if (chosenModificators[0] == null)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                (chosenModificators[i], chosenRanks[i]) = PickAModificator(chosenModificators);
+            }
+
         }
 
         for (int i = 0; i < modificatorUpgradeSlotsScripts.Length; i++)
