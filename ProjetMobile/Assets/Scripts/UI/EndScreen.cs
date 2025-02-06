@@ -33,7 +33,8 @@ public class EndScreen : MonoBehaviour
     public IEnumerator DisplayLoseCoroutine()
     {
         AppearEffect(1.5f);
-        
+                
+        currencyText.text = "+ " + 0;
         mainText.text = "GAME OVER";
         for(int i = 0; i < objectivesText.Length; i++)
         {
@@ -74,6 +75,7 @@ public class EndScreen : MonoBehaviour
     {
         AppearEffect(1.5f);
         
+        currencyText.text = "+ " + 0;
         for(int i = 0; i < objectivesText.Length; i++)
         {
             objectivesText[i].text = "SURVIVE " + GameManager.Instance.levelData.durationObjectives[i] + " SECONDS";

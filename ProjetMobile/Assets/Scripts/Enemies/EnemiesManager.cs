@@ -101,7 +101,8 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
     {
         gameNeedsToEnd = true;
         
-        StopCoroutine(constantSpawnCoroutine);
+        if(constantSpawnCoroutine != null)
+            StopCoroutine(constantSpawnCoroutine);
         StartCoroutine(VerifyGameEndCoroutine());
     }
 
