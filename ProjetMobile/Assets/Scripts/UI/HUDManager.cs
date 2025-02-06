@@ -37,6 +37,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     [SerializeField] private LevelProgressUI progressScript;
     [SerializeField] private ParticleSystem upgradeChestVFX;
     [SerializeField] private LevelTransition transitionScript;
+    [SerializeField] private TutoManager tutoManager;
     public List<TurretMaster> turretScripts = new();
     private RectTransform canvasRect;
     
@@ -66,6 +67,8 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         else if (GameManager.Instance.levelData.isSecondLevel)
         {
             bottomButtons[2].gameObject.SetActive(false);
+            
+            StartCoroutine(tutoManager.PlayUpgradeChestTutoCoroutine());
         } 
     }
 
@@ -107,6 +110,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         upgradeChestVFX.Play();
         openChestButtonRectTr.UBounce(0.1f, Vector3.one * 1.4f, 0.3f, Vector3.one, CurveType.None, true);
         
+        tutoManager.UpgradeChest();
         modificatorChooseScript.UpgradeChest();
     }
 
@@ -122,6 +126,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
                 turretBulletSizeMultiplierPerUpgrade-1, turretBulletSpeedMultiplierPerUpgrade-1);
         }
 
+        tutoManager.UpgradeTurret();
         turretSlotsManager.ActualiseAvailableTurrets();
     }
 

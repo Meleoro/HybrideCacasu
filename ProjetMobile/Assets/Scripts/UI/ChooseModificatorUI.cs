@@ -60,7 +60,7 @@ public class GetNewModificatorUI : MonoBehaviour
                 }
             }
 
-            if(isValidated) break;
+            if (!isValidated) continue;
             
             pickedModificatorIndex = Random.Range(0, possibleModificators.Length);
             pickedRankProba = Random.Range(0f, currentProbabilitiesSum);
@@ -71,8 +71,14 @@ public class GetNewModificatorUI : MonoBehaviour
                 cumulatedProba += currentProbabilityPerRank[i];
                 if (pickedRankProba <= cumulatedProba)
                 {
-                    if(i >= possibleModificators[pickedModificatorIndex].minimumRank) 
+                    if (i >= possibleModificators[pickedModificatorIndex].minimumRank && isValidated)
+                    {
                         return (possibleModificators[pickedModificatorIndex], i);
+                    }
+                    else
+                    {
+                        isValidated = false;
+                    }
                 }
             }
         }
