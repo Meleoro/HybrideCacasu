@@ -38,4 +38,9 @@ public class LevelData : ScriptableObject
 
     [Header("Objectives infos")] 
     public int[] durationObjectives;
+
+    [Header("Tuto Parameters")] 
+    public bool isFirstLevel;
+    public bool isSecondLevel;
+    public bool isThirdLevel;
 }

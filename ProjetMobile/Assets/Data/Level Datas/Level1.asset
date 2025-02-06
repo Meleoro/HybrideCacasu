@@ -37,3 +37,6 @@ MonoBehaviour:
   moneyPerEnemy: 1
   softCurrencyWon: 100
   durationObjectives: 0a0000001e00000037000000
+  isFirstLevel: 1
+  isSecondLevel: 0
+  isThirdLevel: 0

@@ -71,6 +71,8 @@ public class EnemiesManager : GenericSingletonClass<EnemiesManager>
 
     private IEnumerator EnemiesConstantSpawnCoroutine()
     {
+        if(levelData.spawnableEnemies.Length == 0) yield break;
+        
         while (true)
         {
             yield return new WaitForSeconds(Mathf.Lerp(levelData.startConstantEnemyDelaySpawn,

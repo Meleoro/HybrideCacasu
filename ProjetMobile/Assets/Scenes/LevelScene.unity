@@ -3192,6 +3192,10 @@ MonoBehaviour:
   upgradeTowerButtonImage: {fileID: 1826522401}
   openChestButtonImage: {fileID: 1798679003}
   upgradeChestButtonImage: {fileID: 1067245341}
+  bottomButtons:
+  - {fileID: 1798679002}
+  - {fileID: 1067245340}
+  - {fileID: 1826522400}
 --- !u!1 &1381635608
 GameObject:
   m_ObjectHideFlags: 0

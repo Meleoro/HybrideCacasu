@@ -46,6 +46,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
     [SerializeField] private Image upgradeTowerButtonImage;
     [SerializeField] private Image openChestButtonImage;
     [SerializeField] private Image upgradeChestButtonImage;
+    [SerializeField] private Button[] bottomButtons;
 
 
     public void InitialiseHUD()
@@ -53,6 +54,16 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         progressScript.GenerateWavesMarkers(GameManager.Instance.levelData);
         canvasRect = GetComponent<RectTransform>();
         transitionScript.ExitTransitionCoroutine();
+
+        if (GameManager.Instance.levelData.isFirstLevel)
+        {
+            bottomButtons[1].gameObject.SetActive(false);
+            bottomButtons[2].gameObject.SetActive(false);
+        } 
+        else if (GameManager.Instance.levelData.isSecondLevel)
+        {
+            bottomButtons[2].gameObject.SetActive(false);
+        } 
     }
 
     private void Update()
