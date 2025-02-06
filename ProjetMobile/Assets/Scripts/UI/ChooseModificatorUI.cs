@@ -64,15 +64,16 @@ public class GetNewModificatorUI : MonoBehaviour
             
             pickedModificatorIndex = Random.Range(0, possibleModificators.Length);
             pickedRankProba = Random.Range(0f, currentProbabilitiesSum);
-        }
-        
-        float cumulatedProba = 0;
-        for (int i = 0; i < currentProbabilityPerRank.Length; i++)
-        {
-            cumulatedProba += currentProbabilityPerRank[i];
-            if (pickedRankProba <= cumulatedProba)
+            
+            float cumulatedProba = 0;
+            for (int i = 0; i < currentProbabilityPerRank.Length; i++)
             {
-                return (possibleModificators[pickedModificatorIndex], i);
+                cumulatedProba += currentProbabilityPerRank[i];
+                if (pickedRankProba <= cumulatedProba)
+                {
+                    if(i >= possibleModificators[pickedModificatorIndex].minimumRank) 
+                        return (possibleModificators[pickedModificatorIndex], i);
+                }
             }
         }
 

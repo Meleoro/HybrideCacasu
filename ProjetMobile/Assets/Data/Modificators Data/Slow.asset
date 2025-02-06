@@ -23,3 +23,4 @@ MonoBehaviour:
   modificatorName: Slow
   modificatorDescription: Ca ralenti quoi
   isPercentDisplay: 0
+  minimumRank: 0

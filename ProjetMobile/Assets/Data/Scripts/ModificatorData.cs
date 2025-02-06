@@ -13,6 +13,9 @@ public class ModificatorData : ScriptableObject
     public string modificatorName;
     public string modificatorDescription;
     public bool isPercentDisplay;
+
+    [Header("Others")]
+    [Range(0, 3)] public int minimumRank;
 }
 
 public enum ModificatorType
