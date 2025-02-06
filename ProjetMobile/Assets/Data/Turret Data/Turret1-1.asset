@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretName: Turret 1
   turretIndex: 0
-  damages: 10
-  shootCooldown: 1
+  damages: 15
+  shootCooldown: 0.75
   shootDispersion: 0.5
-  bulletSpeed: 8
+  bulletSpeed: 9
   bulletCount: 1
   bulletSize: 0.3
-  explosionRange: 1
+  explosionRange: 1.2
   shootBehavior: 0
   bulletBehavior: 0
   turretLevels:
@@ -30,15 +30,15 @@ MonoBehaviour:
     newBulletSpeed: 8
     newBulletSize: 0.3
     newExplosionRange: 1
-  - upgradeCost: 200
+  - upgradeCost: 100
     newDamages: 12
-    newShootCooldown: 0.95
+    newShootCooldown: 0.85
     newBulletSpeed: 8.5
     newBulletSize: 0.3
     newExplosionRange: 1.1
   - upgradeCost: 300
     newDamages: 15
-    newShootCooldown: 0.9
+    newShootCooldown: 0.75
     newBulletSpeed: 9
     newBulletSize: 0.3
     newExplosionRange: 1.2
