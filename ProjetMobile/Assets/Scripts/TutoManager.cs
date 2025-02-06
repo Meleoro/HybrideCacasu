@@ -39,6 +39,8 @@ public class TutoManager : MonoBehaviour
         Time.timeScale = 0.02f;
         backImage.UFadeImage(0.5f, 0.7f, CurveType.EaseOutSin, true);
         
+        upgradeChestButton.image.UBounceImageColor(0.8f, Color.white * 0.8f, 0.8f, Color.white, CurveType.EaseInOutSin, true, true);
+        
         while (true)
         {
             if (upgradedChest) break;
@@ -48,6 +50,9 @@ public class TutoManager : MonoBehaviour
         
         backImage.UFadeImage(0.5f, 0f, CurveType.EaseOutSin, true);
         Time.timeScale = 1f;
+        
+        upgradeChestButton.image.UStopBounceImageColor();
+        upgradeChestButton.image.ULerpImageColor(0.5f, Color.white);
 
         upgradeChestButton.transform.parent = originalParent;
         openChestButton.enabled = true;
@@ -60,7 +65,13 @@ public class TutoManager : MonoBehaviour
         openChestButton.enabled = false;
         upgradeChestButton.enabled = false;
 
+        Transform originalParent = upgradeTurretButton.transform.parent;
+        upgradeTurretButton.transform.parent = backImage.transform;
+        
         Time.timeScale = 0.02f;
+        backImage.UFadeImage(0.5f, 0.7f, CurveType.EaseOutSin, true);
+        
+        upgradeTurretButton.image.UBounceImageColor(0.8f, Color.white * 0.8f, 0.8f, Color.white, CurveType.EaseInOutSin, true, true);
         
         while (true)
         {
@@ -69,8 +80,13 @@ public class TutoManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         
+        backImage.UFadeImage(0.5f, 0f, CurveType.EaseOutSin, true);
         Time.timeScale = 1f;
         
+        upgradeTurretButton.image.UStopBounceImageColor();
+        upgradeTurretButton.image.ULerpImageColor(0.5f, Color.white);
+        
+        upgradeTurretButton.transform.parent = originalParent;
         upgradeChestButton.enabled = true;
         openChestButton.enabled = true;
         cursorImage.enabled = false;

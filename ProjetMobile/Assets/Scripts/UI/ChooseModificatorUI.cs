@@ -75,7 +75,7 @@ public class GetNewModificatorUI : MonoBehaviour
                     {
                         return (possibleModificators[pickedModificatorIndex], i);
                     }
-                    else
+                    if(i < possibleModificators[pickedModificatorIndex].minimumRank)
                     {
                         isValidated = false;
                     }

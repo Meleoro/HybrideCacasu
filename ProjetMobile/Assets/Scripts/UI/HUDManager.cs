@@ -70,6 +70,10 @@ public class HUDManager : GenericSingletonClass<HUDManager>
             
             StartCoroutine(tutoManager.PlayUpgradeChestTutoCoroutine());
         } 
+        else if (GameManager.Instance.levelData.isThirdLevel)
+        {
+            StartCoroutine(tutoManager.PlayUpgradeTurretTutoCoroutine());
+        } 
     }
 
     private void Update()
