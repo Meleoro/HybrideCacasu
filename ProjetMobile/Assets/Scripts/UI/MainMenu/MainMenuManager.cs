@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using Utilities;
 
@@ -10,11 +11,13 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private RectTransform sagaMapIconRectTr;
     [SerializeField] private RectTransform upgradeIconRectTr;
     [SerializeField] private RectTransform selectedPanelIcon;
+    [SerializeField] private TextMeshProUGUI softCurrencyText;
 
 
     private void Start()
     {
         Time.timeScale = 1;
+        softCurrencyText.text = DontDestroyOnLoadObject.Instance.ownedSoftCurrency.ToString();
     }
 
     public void OpenSagaMap()

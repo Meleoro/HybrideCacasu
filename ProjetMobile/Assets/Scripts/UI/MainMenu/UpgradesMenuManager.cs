@@ -21,6 +21,7 @@ public class UpgradesMenuManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI detailsTurretReloadText;
     [SerializeField] private TextMeshProUGUI detailsTurretSpeedText;
     [SerializeField] private TextMeshProUGUI detailsUpgradeCostText;
+    [SerializeField] private TextMeshProUGUI softCurrencyText;
     [SerializeField] private RectTransform detailsParentTr;
 
 
@@ -57,6 +58,8 @@ public class UpgradesMenuManager : MonoBehaviour
 
     private void ActualiseDetails()
     {
+        if (currentData == null) return;
+        
         detailsTurretNameText.text = currentData.turretName;
         detailsTurretDamagesText.text = currentData.damages.ToString();
         detailsTurretReloadText.text = currentData.shootCooldown.ToString();
@@ -73,6 +76,22 @@ public class UpgradesMenuManager : MonoBehaviour
 
     public void UpgradeTurret()
     {
+        if (DontDestroyOnLoadObject.Instance.turretsLevels[currentData.turretIndex] + 1 >=
+            currentData.turretLevels.Length)
+        {
+            return;
+        }
+        
+        if (DontDestroyOnLoadObject.Instance.ownedSoftCurrency < currentData
+                  .turretLevels[DontDestroyOnLoadObject.Instance.turretsLevels[currentData.turretIndex] + 1].upgradeCost)
+        {
+            return;
+        }
+
+        DontDestroyOnLoadObject.Instance.ownedSoftCurrency -= currentData
+            .turretLevels[DontDestroyOnLoadObject.Instance.turretsLevels[currentData.turretIndex]].upgradeCost;
+        softCurrencyText.text = DontDestroyOnLoadObject.Instance.ownedSoftCurrency.ToString();
+        
         DontDestroyOnLoadObject.Instance.ChangeTurretLevel(currentData.turretIndex, DontDestroyOnLoadObject.Instance.turretsLevels[currentData.turretIndex] + 1);
         currentData.ActualiseTurretLevel(DontDestroyOnLoadObject.Instance.turretsLevels[currentData.turretIndex]);
 
