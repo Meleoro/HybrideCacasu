@@ -32,13 +32,25 @@ MonoBehaviour:
     newExplosionRange: 1
   - upgradeCost: 250
     newDamages: 28
-    newShootCooldown: 1.85
-    newBulletSpeed: 15
-    newBulletSize: 0.55
+    newShootCooldown: 1.87
+    newBulletSpeed: 13.5
+    newBulletSize: 0.525
     newExplosionRange: 1.2
   - upgradeCost: 500
-    newDamages: 32
+    newDamages: 30
     newShootCooldown: 1.75
-    newBulletSpeed: 17
+    newBulletSpeed: 14
+    newBulletSize: 0.55
+    newExplosionRange: 1.3
+  - upgradeCost: 750
+    newDamages: 32
+    newShootCooldown: 1.63
+    newBulletSpeed: 14.5
+    newBulletSize: 0.575
+    newExplosionRange: 1.5
+  - upgradeCost: 1000
+    newDamages: 34
+    newShootCooldown: 1.5
+    newBulletSpeed: 15
     newBulletSize: 0.6
-    newExplosionRange: 1.4
+    newExplosionRange: 1.6
