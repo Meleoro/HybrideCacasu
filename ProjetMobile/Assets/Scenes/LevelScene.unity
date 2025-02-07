@@ -5477,6 +5477,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1079319462913365932, guid: 4e27ba9846969b84397db01d59d0d5ed, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1157038108011903479, guid: 4e27ba9846969b84397db01d59d0d5ed, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.000018483792
@@ -5492,6 +5496,22 @@ PrefabInstance:
     - target: {fileID: 1194710256127081274, guid: 4e27ba9846969b84397db01d59d0d5ed, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -239.00002
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321321931524961792, guid: 4e27ba9846969b84397db01d59d0d5ed, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1541208503, guid: 9f969a31af373094298b53bc3df5a721, type: 3}
+    - target: {fileID: 1321321931524961792, guid: 4e27ba9846969b84397db01d59d0d5ed, type: 3}
+      propertyPath: m_Color.b
+      value: 0.823
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321321931524961792, guid: 4e27ba9846969b84397db01d59d0d5ed, type: 3}
+      propertyPath: m_Color.g
+      value: 0.823
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321321931524961792, guid: 4e27ba9846969b84397db01d59d0d5ed, type: 3}
+      propertyPath: m_Color.r
+      value: 0.823
       objectReference: {fileID: 0}
     - target: {fileID: 1470335686340903371, guid: 4e27ba9846969b84397db01d59d0d5ed, type: 3}
       propertyPath: winImage
