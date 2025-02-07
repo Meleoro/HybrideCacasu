@@ -20,17 +20,17 @@ MonoBehaviour:
     waveDelayBetweenSpawn: 1
     waveEnemies:
     - enemyType: {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
-      amount: 10
-  - waveWaitDuration: 15
+      amount: 7
+  - waveWaitDuration: 12
     waveDelayBetweenSpawn: 1
     waveEnemies:
     - enemyType: {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
-      amount: 15
-  - waveWaitDuration: 32
-    waveDelayBetweenSpawn: 1
+      amount: 13
+  - waveWaitDuration: 27
+    waveDelayBetweenSpawn: 1.5
     waveEnemies:
     - enemyType: {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
-      amount: 25
+      amount: 20
   startConstantEnemyDelaySpawn: 3
   endConstantEnemyDelaySpawn: 1
   startMoney: 100
