@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level12
   m_EditorClassIdentifier: 
   levelName: Level 12
-  levelDuration: 85
+  levelDuration: 70
   spawnableEnemies: []
   waves:
   - waveWaitDuration: 15
@@ -35,7 +35,7 @@ MonoBehaviour:
     waveDelayBetweenSpawn: 5
     waveEnemies:
     - enemyType: {fileID: 3464992193447295867, guid: 99cd5e459ee3e674881aaa86872dfb50, type: 3}
-      amount: 6
+      amount: 4
   - waveWaitDuration: 40
     waveDelayBetweenSpawn: 0.5
     waveEnemies:
@@ -55,7 +55,7 @@ MonoBehaviour:
     waveDelayBetweenSpawn: 0.5
     waveEnemies:
     - enemyType: {fileID: 3464992193447295867, guid: 99cd5e459ee3e674881aaa86872dfb50, type: 3}
-      amount: 6
+      amount: 5
   - waveWaitDuration: 60
     waveDelayBetweenSpawn: 0.5
     waveEnemies:
@@ -87,7 +87,7 @@ MonoBehaviour:
   startMoney: 1250
   moneyPerEnemy: 1
   softCurrencyWon: 150
-  durationObjectives: 550000005500000055000000
+  durationObjectives: 460000004600000046000000
   isFirstLevel: 0
   isSecondLevel: 0
   isThirdLevel: 0
