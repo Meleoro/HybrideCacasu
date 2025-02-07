@@ -75,7 +75,7 @@ public class Bullet : MonoBehaviour
 
         transform.position = new Vector3(transform.position.x, endPoint.y + currentY * 3f, transform.position.z);
 
-        if (progress >= 0.99f)
+        if (progress >= 0.99f || transform.position.z > endPoint.z)
         {
             ReachDestination();
         }
