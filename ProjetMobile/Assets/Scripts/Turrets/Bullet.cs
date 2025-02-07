@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
     private Vector3 moveDir;
     private float speed;
     private int damages;
+    private float vfxExplosionMultiplier;
     private BulletBehavior behaviorBullet;
     private ShootBehavior behaviorShoot;
 
@@ -39,6 +40,7 @@ public class Bullet : MonoBehaviour
         damages = (int)(data.damages * modificatorValues.damageMultiplier * upgradesValues.damageMultiplier);
         behaviorBullet = data.bulletBehavior;
         behaviorShoot = data.shootBehavior;
+        vfxExplosionMultiplier = modificatorValues.projectileSizeMultiplier * upgradesValues.projectileSizeMultiplier;
 
         burnStrength = modificatorValues.burnStrength;
         slowStrength = modificatorValues.slowStrength;
@@ -51,7 +53,7 @@ public class Bullet : MonoBehaviour
 
         if (data.bulletBehavior == BulletBehavior.Explose)
         {
-            explosionRange = data.explosionRange;
+            explosionRange = data.explosionRange * modificatorValues.projectileSizeMultiplier * upgradesValues.projectileSizeMultiplier;
         }
 
         transform.forward = moveDir;
@@ -75,7 +77,7 @@ public class Bullet : MonoBehaviour
 
         transform.position = new Vector3(transform.position.x, endPoint.y + currentY * 3f, transform.position.z);
 
-        if (progress >= 0.99f)
+        if (progress >= 0.99f || transform.position.z > endPoint.z)
         {
             ReachDestination();
         }
@@ -94,7 +96,9 @@ public class Bullet : MonoBehaviour
             enemy.TakeDamage(damages, transform.position);
         }
 
-        Instantiate(explosionVFX, transform.position + Vector3.down * 0.15f, Quaternion.Euler(0, 0, 0));
+        Transform newVFX = Instantiate(explosionVFX, transform.position + Vector3.down * 0.15f, Quaternion.Euler(0, 0, 0)).transform;
+        newVFX.localScale *= vfxExplosionMultiplier;
+        
         Destroy(gameObject);
     }
 

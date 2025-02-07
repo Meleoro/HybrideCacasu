@@ -118,22 +118,24 @@ public class TurretMaster : MonoBehaviour
             yield return new WaitForSeconds(turretData.shootCooldown / (modificatorValues.fireRateMultiplier + upgradeValues.fireRateMultiplier - 1));
 
             if (aimedPoint == Vector3.zero) continue;
-            Shoot(EnemiesManager.Instance.FindNearestEnemy());
+            StartCoroutine(ShootCoroutine(EnemiesManager.Instance.FindNearestEnemy()));
         }
     }
 
-    private void Shoot(Vector3 aimedPoint)
+    private IEnumerator ShootCoroutine(Vector3 aimedPoint)
     {
         anim.SetTrigger("Shoot");
+        
+        shootVFX.Play();
         
         for (int i = 0; i < turretData.bulletCount + modificatorValues.addedProjectiles; i++)
         {
             Bullet newBullet = Instantiate(bulletPrefab, shootVFX.transform.position, Quaternion.identity);
             newBullet.InitialiseBullet(aimedPoint + new Vector3(Random.Range(-turretData.shootDispersion, turretData.shootDispersion), 0, 0), 
                 turretData, modificatorValues, upgradeValues);
+
+            yield return new WaitForSeconds(0.1f);
         }
-        
-        shootVFX.Play();
     }
 
     #endregion

@@ -45,6 +45,8 @@ public class TurretSlotsManager : MonoBehaviour
             turretSlots[currentIndex] = turret3Slots[i];
             currentIndex++;
         }
+        
+        ActualiseAvailableTurrets();
     }
     
     
@@ -70,6 +72,14 @@ public class TurretSlotsManager : MonoBehaviour
     public void ActualiseAvailableTurrets()
     {
         int currentUpgradeCount = HUDManager.Instance.currentUpgradeCount + 1;
+        
+        turret1Slots[1].ActualiseLock(unlockSecondRawUpgradeNeeded - currentUpgradeCount + 1);
+        turret2Slots[1].ActualiseLock(unlockSecondRawUpgradeNeeded - currentUpgradeCount + 1);
+        turret3Slots[1].ActualiseLock(unlockSecondRawUpgradeNeeded - currentUpgradeCount + 1);
+        
+        turret1Slots[2].ActualiseLock(unlockThirdRawUpgradeNeeded - currentUpgradeCount + 1);
+        turret2Slots[2].ActualiseLock(unlockThirdRawUpgradeNeeded - currentUpgradeCount + 1);
+        turret3Slots[2].ActualiseLock(unlockThirdRawUpgradeNeeded - currentUpgradeCount + 1);
         
         if (currentUpgradeCount > unlockSecondRawUpgradeNeeded)
         {

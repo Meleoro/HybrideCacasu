@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
@@ -22,6 +23,8 @@ public class TurretSlot : MonoBehaviour
     [Header("References")] 
     [SerializeField] private Image slotImage;
     [SerializeField] private Button slotButton;
+    [SerializeField] private Image lockImage;
+    [SerializeField] private TextMeshProUGUI lockText;
     private TurretSlotsManager mainScript;
 
 
@@ -45,14 +48,23 @@ public class TurretSlot : MonoBehaviour
     {
         isActive = true;
         slotImage.enabled = true;
-        slotButton.enabled = true;
+        slotButton.gameObject.SetActive(true);
+        lockImage.enabled = false;
+        lockText.enabled = false;
     }
 
     private void DisableSlot()
     {
         isActive = false;
         slotImage.enabled = false;
-        slotButton.enabled = false;
+        slotButton.gameObject.SetActive(false);
+        lockImage.enabled = true;
+        lockText.enabled = true;
+    }
+
+    public void ActualiseLock(int upgradesNeeded)
+    {
+        lockText.text = "+" + upgradesNeeded + " Levels Needed";
     }
 
 
@@ -139,8 +151,6 @@ public class TurretSlot : MonoBehaviour
         currentCap.ChangeWantedPos(transform.position - transform.forward * 0.3f);
         currentCap.transform.rotation = transform.rotation * Quaternion.Euler(-90, 0, 0);
     }
-
-    
     
     public (ModificatorData, int) GetCurrentModificator()
     {
