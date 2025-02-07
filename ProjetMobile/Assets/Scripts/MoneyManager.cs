@@ -26,6 +26,9 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
 
     [Header("References")] 
     [SerializeField] private TextMeshProUGUI moneyText;
+    [SerializeField] private TextMeshProUGUI middleButtonCost;
+    [SerializeField] private TextMeshProUGUI leftButtonCost;
+    [SerializeField] private TextMeshProUGUI rightButtonCost;
 
 
     private void Start()
@@ -33,6 +36,10 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
         currentMiddleChestCost = middleChestCost;
         currentRankUpgradeCost = chestUpgradeCost;
         currentTowerUpgradeCost = towerUpgradeCost;
+        
+        middleButtonCost.text = currentMiddleChestCost.ToString();
+        leftButtonCost.text = currentTowerUpgradeCost.ToString();
+        rightButtonCost.text = currentRankUpgradeCost.ToString();
         
         ActualiseText();
     }
@@ -83,6 +90,8 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
                 currentMiddleChestCost += middleChestCostAddedPerMiddleChest;
                 currentMiddleChestCost = (int)(currentMiddleChestCost * middleChestCostMultiplierPerMiddleChest);
                 
+                middleButtonCost.text = currentMiddleChestCost.ToString();
+                
                 return true;
             }
 
@@ -103,6 +112,9 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
                 currentRankUpgradeCost = (int)(currentRankUpgradeCost * chestUpgradeCostMultiplierPerChestUpgrade);
                 currentMiddleChestCost += middleChestCostAddedPerChestUpgrade;
                 currentMiddleChestCost = (int)(currentMiddleChestCost * middleChestCostMultiplierPerChestUpgrade);
+
+                middleButtonCost.text = currentMiddleChestCost.ToString();
+                rightButtonCost.text = currentRankUpgradeCost.ToString();
                 
                 return true;
             }
@@ -121,6 +133,8 @@ public class MoneyManager : GenericSingletonClass<MoneyManager>
             {
                 UseMoney(currentTowerUpgradeCost);
                 currentTowerUpgradeCost = (int)(currentTowerUpgradeCost * towerUpgradeCostMultiplierPerTowerUpgrade);
+                
+                leftButtonCost.text = currentTowerUpgradeCost.ToString();
                 
                 return true;
             }

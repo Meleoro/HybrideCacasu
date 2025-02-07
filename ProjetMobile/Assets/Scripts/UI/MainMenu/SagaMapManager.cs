@@ -69,8 +69,6 @@ public class SagaMapManager : MonoBehaviour
 
     public void ActualiseLevels()
     {
-        Debug.Log(12);
-        
         for (int i = 0; i < levels.Length; i++)
         {
             levelScripts[i].SetupLevel(levels[i], i, this);

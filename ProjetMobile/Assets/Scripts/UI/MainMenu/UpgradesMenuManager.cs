@@ -40,7 +40,7 @@ public class UpgradesMenuManager : MonoBehaviour
     {
         currentData = slotData;
         
-        detailsParentTr.UChangeLocalPosition(0.5f, Vector3.zero, CurveType.EaseOutSin);
+        detailsParentTr.UChangeLocalPosition(0.25f, Vector3.zero, CurveType.EaseOutSin);
         
         detailsTurretNameText.text = slotData.turretName;
         detailsTurretDamagesText.text = slotData.damages.ToString();
@@ -110,6 +110,6 @@ public class UpgradesMenuManager : MonoBehaviour
     
     public void CloseTurretDetails()
     {
-        detailsParentTr.UChangeLocalPosition(0.5f, new Vector3(500, 0, 0), CurveType.EaseOutSin);
+        detailsParentTr.UChangeLocalPosition(0.25f, new Vector3(500, 0, 0), CurveType.EaseOutSin);
     }
 }
