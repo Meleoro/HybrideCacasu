@@ -7,10 +7,7 @@ public class TurretSlot : MonoBehaviour
 {
     [Header("Parameters")] 
     [SerializeField] private int turretIndex;
-    [SerializeField] private Color noDataColor; 
-    [SerializeField] private Color dataColor; 
-    [SerializeField] private Color compatibleColor; 
-    [SerializeField] private Color incompatibleColor;
+    [SerializeField] private float fadeValueAvailableSlot;
 
     [Header("Public Infos")] 
     public bool bounceTurret;
@@ -19,18 +16,43 @@ public class TurretSlot : MonoBehaviour
     [SerializeField] private Cap currentCap;
     private bool isShowingCompatibleColor;
     private bool isCompatible;
+    private bool isActive;
     private Coroutine compatibleEffectCoroutine;
     
     [Header("References")] 
     [SerializeField] private Image slotImage;
+    [SerializeField] private Button slotButton;
     private TurretSlotsManager mainScript;
 
 
-    public void InitialiseSlot(TurretSlotsManager mainScript)
+    public void InitialiseSlot(TurretSlotsManager mainScript, bool startEnabled)
     {
         currentCap = null;
         this.mainScript = mainScript;
         ActualiseSlot();
+
+        if (startEnabled)
+        {
+            EnableSlot();
+        }
+        else
+        {
+            DisableSlot();
+        }
+    }
+
+    public void EnableSlot()
+    {
+        isActive = true;
+        slotImage.enabled = true;
+        slotButton.enabled = true;
+    }
+
+    private void DisableSlot()
+    {
+        isActive = false;
+        slotImage.enabled = false;
+        slotButton.enabled = false;
     }
 
 
@@ -38,7 +60,7 @@ public class TurretSlot : MonoBehaviour
 
     public void DisplayIsCompatible(ModificatorData draggedModificator, int draggedRank, TurretSlot originSlot)
     {
-        return;
+        if (!isActive) return;
         
         if (originSlot == this)
         {
@@ -68,13 +90,15 @@ public class TurretSlot : MonoBehaviour
 
     public void HideIsCompatible(bool isPause)
     {
+        if (!isActive) return;
+        
         if (isCompatible)
         {
-            slotImage.UStopLerpImageColor();
-
-            
             slotImage.rectTransform.localScale = Vector3.one * 1f;
             StopCoroutine(compatibleEffectCoroutine);
+            
+            slotImage.UStopFadeImage();
+            slotImage.UFadeImage(0.1f, 0, CurveType.EaseOutSin, true);
 
             if(!isPause)  
                 isCompatible = false;
@@ -88,17 +112,15 @@ public class TurretSlot : MonoBehaviour
 
     private IEnumerator CompatibleEffectCoroutine()
     {
-        Color saveColor = slotImage.color;
+        slotImage.UStopFadeImage();
         
         while (true)
         {
-            slotImage.rectTransform.UChangeScale(0.5f, Vector3.one * 1.05f, CurveType.EaseInOutSin, true);
-            slotImage.ULerpImageColor(0.5f, saveColor * new Color(1.15f, 1.15f, 1.15f), CurveType.EaseInOutSin, true);
+            slotImage.UFadeImage(0.5f, fadeValueAvailableSlot, CurveType.EaseInOutSin, true);
         
             yield return new WaitForSecondsRealtime(0.55f);
         
-            slotImage.rectTransform.UChangeScale(0.5f, Vector3.one * 1f, CurveType.EaseInOutSin, true);
-            slotImage.ULerpImageColor(0.5f, saveColor, CurveType.EaseInOutSin, true);
+            slotImage.UFadeImage(0.5f, 0, CurveType.EaseInOutSin, true);
         
             yield return new WaitForSecondsRealtime(0.55f);
         }
@@ -111,17 +133,11 @@ public class TurretSlot : MonoBehaviour
     {
         if (currentCap is null)
         {
-            slotImage.color = noDataColor;
             return;
         }
         
         currentCap.ChangeWantedPos(transform.position - transform.forward * 0.3f);
         currentCap.transform.rotation = transform.rotation * Quaternion.Euler(-90, 0, 0);
-
-        if (isShowingCompatibleColor && !isCompatible)
-        {
-            slotImage.color *= incompatibleColor;
-        }
     }
 
     
@@ -132,8 +148,7 @@ public class TurretSlot : MonoBehaviour
 
         return (currentCap.capModificatorData, currentCap.capRank);
     }
-
-
+    
     public void StartOverlayButton()
     {
         mainScript.StartOverlaySlot(this);
@@ -142,8 +157,8 @@ public class TurretSlot : MonoBehaviour
         {
             HUDManager.Instance.PauseDrag();
             
-            slotImage.rectTransform.UChangeScale(0.1f, Vector3.one * 1.1f, CurveType.EaseOutBack, true);
-            slotImage.ULerpImageColor(0.1f, slotImage.color * new Color(1.25f, 1.25f, 1.25f), CurveType.EaseOutBack, true);
+            slotImage.UStopFadeImage();
+            slotImage.UFadeImage(0.1f, 0.75f, CurveType.EaseOutSin, true);
         }
     }
 
