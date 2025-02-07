@@ -2068,18 +2068,18 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
@@ -2088,10 +2088,10 @@ MonoBehaviour:
     m_RotationOrder: 4
   startProgressPerRank:
   - 1.1
-  - 0.5
   - 0
-  - -1
-  progressPerUpgrade: 0.1
+  - -0.7
+  - -1.7
+  progressPerUpgrade: 0.2
   isOpenned: 0
   currentProgresses: []
   currentProbabilityPerRank: []
@@ -3857,14 +3857,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   middleChestCost: 50
-  chestUpgradeCost: 75
+  chestUpgradeCost: 30
   towerUpgradeCost: 20
   middleChestCostAddedPerMiddleChest: 0
   middleChestCostAddedPerChestUpgrade: 0
   chestUpgradeCostAddedPerChestUpgrade: 0
   middleChestCostMultiplierPerMiddleChest: 1.1
   middleChestCostMultiplierPerChestUpgrade: 1
-  chestUpgradeCostMultiplierPerChestUpgrade: 1.2
+  chestUpgradeCostMultiplierPerChestUpgrade: 1.5
   towerUpgradeCostMultiplierPerTowerUpgrade: 1.5
   coinPrefab: {fileID: 733328164688441994, guid: 1946c45dfb2b66a4c81b0e8977ee9f8f, type: 3}
   moneyText: {fileID: 341030034}
