@@ -5,7 +5,7 @@ public class Bullet : MonoBehaviour
 {
     [Header("Parameters")] 
     [SerializeField] private AnimationCurve throwYCurve;
-    [SerializeField] private GameObject explosionVFX;
+    [SerializeField] private ParticleSystem explosionVFX;
     [SerializeField] private LayerMask enemyLayer; 
     
     [Header("Private Infos")] 
@@ -96,8 +96,9 @@ public class Bullet : MonoBehaviour
             enemy.TakeDamage(damages, transform.position);
         }
 
-        Transform newVFX = Instantiate(explosionVFX, transform.position + Vector3.down * 0.15f, Quaternion.Euler(0, 0, 0)).transform;
-        newVFX.localScale *= vfxExplosionMultiplier;
+        ParticleSystem newVFX = Instantiate(explosionVFX, transform.position + Vector3.down * 0.15f, Quaternion.Euler(0, 0, 0));
+        newVFX.transform.localScale *= vfxExplosionMultiplier;
+        newVFX.Play();
         
         Destroy(gameObject);
     }
