@@ -21,6 +21,6 @@ MonoBehaviour:
   - 1
   sellValues: 0a000000140000001e00000028000000
   modificatorName: Slow
-  modificatorDescription: Ca ralenti quoi
+  modificatorDescription: Reduces enemies speed by {x}% for 1s
   isPercentDisplay: 0
   minimumRank: 0
