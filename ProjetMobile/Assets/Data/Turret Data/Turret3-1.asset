@@ -23,4 +23,22 @@ MonoBehaviour:
   explosionRange: 1
   shootBehavior: 0
   bulletBehavior: 1
-  turretLevels: []
+  turretLevels:
+  - upgradeCost: 0
+    newDamages: 50
+    newShootCooldown: 3
+    newBulletSpeed: 10
+    newBulletSize: 0.25
+    newExplosionRange: 1
+  - upgradeCost: 300
+    newDamages: 52
+    newShootCooldown: 2.75
+    newBulletSpeed: 11
+    newBulletSize: 0.25
+    newExplosionRange: 1
+  - upgradeCost: 600
+    newDamages: 54
+    newShootCooldown: 2.5
+    newBulletSpeed: 12
+    newBulletSize: 0.25
+    newExplosionRange: 1
