@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f5c0ad6a7ef798145aac7a6b04b552d1
+guid: 8e5234defb2ed4f4b9bc3ffd645edc4c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SP victory-defeat_0
+      name: Logo_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 134
-        width: 758
-        height: 832
+        x: 29
+        y: 66
+        width: 946
+        height: 970
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,30 +125,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99c4006ddfd539648a5355bd5585e17a
-      internalID: -1139892123
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SP victory-defeat_1
-      rect:
-        serializedVersion: 2
-        x: 901
-        y: 291
-        width: 853
-        height: 587
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d26062ba49758f24e8f29360304d23f7
-      internalID: -1073832248
+      spriteID: 1c37568905bb76542810b5e690ba4733
+      internalID: -1108302410
       vertices: []
       indices: 
       edges: []
@@ -157,7 +135,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3095faa651614b644b349c8d7e38df8d
+    spriteID: 2f76f83bfa28a8444b466ad183dde3e8
     internalID: 0
     vertices: []
     indices: 
@@ -167,8 +145,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SP victory-defeat_0: -1139892123
-      SP victory-defeat_1: -1073832248
+      Logo_0: -1108302410
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

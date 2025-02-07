@@ -18,9 +18,9 @@ MonoBehaviour:
   - 0.2
   - 0.5
   - 0.75
-  - 1
+  - 0.9
   sellValues: 0a000000140000001e00000028000000
   modificatorName: Slow
   modificatorDescription: Reduces enemies speed by {x}% for 1s
-  isPercentDisplay: 0
+  isPercentDisplay: 1
   minimumRank: 0

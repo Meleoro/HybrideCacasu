@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f5c0ad6a7ef798145aac7a6b04b552d1
+guid: 9f969a31af373094298b53bc3df5a721
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SP victory-defeat_0
+      name: SP cadres fromages UI_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 134
-        width: 758
-        height: 832
+        x: 329
+        y: 127
+        width: 774
+        height: 776
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +125,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99c4006ddfd539648a5355bd5585e17a
-      internalID: -1139892123
+      spriteID: d610547d317e6f9488de7a56b5cdc40f
+      internalID: -1541208503
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SP victory-defeat_1
+      name: SP cadres fromages UI_1
       rect:
         serializedVersion: 2
-        x: 901
-        y: 291
-        width: 853
-        height: 587
+        x: 1275
+        y: 324
+        width: 378
+        height: 376
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,8 +147,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d26062ba49758f24e8f29360304d23f7
-      internalID: -1073832248
+      spriteID: e0ee6f54308516c48a5cb6ceeaeb4678
+      internalID: 1522890347
       vertices: []
       indices: 
       edges: []
@@ -157,7 +157,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3095faa651614b644b349c8d7e38df8d
+    spriteID: 8975e7c6dd0174e43b74f0e902f7c0ab
     internalID: 0
     vertices: []
     indices: 
@@ -167,8 +167,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SP victory-defeat_0: -1139892123
-      SP victory-defeat_1: -1073832248
+      SP cadres fromages UI_0: -1541208503
+      SP cadres fromages UI_1: 1522890347
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
