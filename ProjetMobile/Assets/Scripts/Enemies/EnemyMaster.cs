@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Notifications.Android;
 using UnityEngine;
 using Utilities;
 
@@ -22,6 +23,7 @@ public class EnemyMaster : MonoBehaviour
     [Header("References")] 
     [SerializeField] private Transform meshTr;
     [SerializeField] private ParticleSystem deathVFX;
+    [SerializeField] private ParticleSystem hitVFX;
 
 
     private void Start()
@@ -83,6 +85,8 @@ public class EnemyMaster : MonoBehaviour
     public void TakeDamage(int damages, Vector3 damageOrigin)
     {
         currentHealth -= damages;
+        
+        hitVFX?.Play();
 
         if (currentHealth <= 0)
         {
