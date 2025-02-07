@@ -32,7 +32,7 @@ public class EndScreen : MonoBehaviour
     
     public IEnumerator DisplayLoseCoroutine()
     {
-        AppearEffect(1.5f);
+        AppearEffect(1f);
                 
         currencyText.text = "+ " + 0;
         mainText.text = "GAME OVER";
@@ -78,7 +78,7 @@ public class EndScreen : MonoBehaviour
 
     public IEnumerator DisplayWinCoroutine()
     {
-        AppearEffect(1.5f);
+        AppearEffect(1f);
         
         currencyText.text = "+ " + 0;
         for(int i = 0; i < objectivesText.Length; i++)

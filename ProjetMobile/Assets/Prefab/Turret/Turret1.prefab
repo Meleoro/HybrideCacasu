@@ -52,6 +52,7 @@ MonoBehaviour:
   shootVFX: {fileID: 8969501327622468926}
   upgradeVFX: {fileID: 1461380781463834340}
   jointToRotate: {fileID: 8871061700536708930}
+  anim: {fileID: 6853347634252924571}
 --- !u!1001 &6859244087987993374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -219,6 +220,11 @@ PrefabInstance:
 --- !u!4 &2210246901661163969 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8313574655608679099, guid: 3c9df7d8e0a31c34fb57c6c43fe1e8d9, type: 3}
+  m_PrefabInstance: {fileID: 7922851827703679866}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6853347634252924571 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3668292527397391841, guid: 3c9df7d8e0a31c34fb57c6c43fe1e8d9, type: 3}
   m_PrefabInstance: {fileID: 7922851827703679866}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8871061700536708930 stripped
