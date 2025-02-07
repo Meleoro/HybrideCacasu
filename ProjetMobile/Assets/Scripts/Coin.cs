@@ -15,8 +15,8 @@ public class Coin : MonoBehaviour
     [Header("References")] 
     [SerializeField] private Rigidbody rb;
     [SerializeField] private SpriteRenderer sprite;
-
-
+    
+    
     public void Initialise(Vector3 wantedPos, int coinValue)
     {
         this.wantedPos = wantedPos;
@@ -25,7 +25,7 @@ public class Coin : MonoBehaviour
         rb.AddForce(new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * startImpulseForce, ForceMode.Impulse);
     }
     
-    private void Update()
+    private void FixedUpdate()
     {
         Vector3 forceDir = wantedPos - transform.position;
         
