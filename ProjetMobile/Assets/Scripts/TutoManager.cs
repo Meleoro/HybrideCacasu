@@ -17,6 +17,9 @@ public class TutoManager : MonoBehaviour
     public ForcedPool[] level1ForcedPools;
     public ForcedPool[] level2ForcedPools;
 
+    [Header("Public Infos")] 
+    public bool forceMiddleChoice;
+    
     [Header("Private Infos")] 
     private bool opennedChest;
     private bool upgradedChest;
@@ -59,10 +62,11 @@ public class TutoManager : MonoBehaviour
         ForcedPool[] pickedForcedPools = level1ForcedPools;
         if (levelIndex == 2) pickedForcedPools = level2ForcedPools;
         
+        if (levelIndex == 1 && poolIndex == 1) StartCoroutine(PlayDragAndDropTuto());
         if (poolIndex >= pickedForcedPools.Length) return (new ModificatorData[3], new int[3]);
-        
+            
         poolIndex++;
-
+        
         return (pickedForcedPools[poolIndex - 1].forcedModificators, pickedForcedPools[poolIndex - 1].forcedRanks);
     }
 
@@ -100,8 +104,9 @@ public class TutoManager : MonoBehaviour
 
     private IEnumerator PlayDragAndDropTuto()
     {
-        yield return new WaitForSeconds(1.5f);
-        
+        yield return new WaitForSecondsRealtime(1f);
+
+        forceMiddleChoice = true;
         cursorImage.enabled = true;
         
         while (true)
@@ -110,7 +115,9 @@ public class TutoManager : MonoBehaviour
             
             yield return new WaitForEndOfFrame();
         }
-        
+
+        forceMiddleChoice = false;
+        dragAndDropped = false;
         cursorImage.enabled = false;
     }
     

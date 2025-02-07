@@ -68,7 +68,7 @@ public class GetNewModificatorUI : MonoBehaviour
             float cumulatedProba = 0;
             for (int i = 0; i < currentProbabilityPerRank.Length; i++)
             {
-                cumulatedProba += currentProbabilityPerRank[i];
+                cumulatedProba += Mathf.Clamp(currentProbabilityPerRank[i], 0f, 1f);
                 if (pickedRankProba <= cumulatedProba)
                 {
                     if (i >= possibleModificators[pickedModificatorIndex].minimumRank && isValidated)
@@ -92,7 +92,7 @@ public class GetNewModificatorUI : MonoBehaviour
         
         for (int i = 0; i < startProgressPerRank.Length; i++)
         {
-            float currentProgress = Mathf.Clamp(Mathf.Sin(currentProgresses[i] * (float)Math.PI * 0.5f), 0, 1);
+            float currentProgress = Mathf.Clamp(Mathf.Sin(Mathf.Clamp(currentProgresses[i], 0f, 2f) * (float)Math.PI * 0.5f), 0, 1);
             currentProbabilityPerRank[i] = rankCurve.Evaluate(currentProgress);
 
             currentProbabilitiesSum += currentProbabilityPerRank[i];
