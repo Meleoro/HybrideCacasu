@@ -50,12 +50,12 @@ MonoBehaviour:
     waveDelayBetweenSpawn: 15
     waveEnemies:
     - enemyType: {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
-      amount: 25
+      amount: 20
   - waveWaitDuration: 125
-    waveDelayBetweenSpawn: 1.5
+    waveDelayBetweenSpawn: 3
     waveEnemies:
     - enemyType: {fileID: 3464992193447295867, guid: d3c5208b7cfd93b42ac9d26e834872f4, type: 3}
-      amount: 20
+      amount: 15
   - waveWaitDuration: 145
     waveDelayBetweenSpawn: 2
     waveEnemies:
@@ -83,3 +83,6 @@ MonoBehaviour:
   moneyPerEnemy: 1
   softCurrencyWon: 0
   durationObjectives: 3c00000078000000b4000000
+  isFirstLevel: 0
+  isSecondLevel: 0
+  isThirdLevel: 0

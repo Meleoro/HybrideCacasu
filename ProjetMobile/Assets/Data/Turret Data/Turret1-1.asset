@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretName: Turret 1
   turretIndex: 0
-  damages: 15
-  shootCooldown: 0.75
-  shootDispersion: 0.5
-  bulletSpeed: 9
+  damages: 10
+  shootCooldown: 1
+  shootDispersion: 0.3
+  bulletSpeed: 8
   bulletCount: 1
   bulletSize: 0.3
-  explosionRange: 1.2
+  explosionRange: 1
   shootBehavior: 0
   bulletBehavior: 0
   turretLevels:
