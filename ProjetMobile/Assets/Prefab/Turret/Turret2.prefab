@@ -53,6 +53,7 @@ MonoBehaviour:
   shootVFX: {fileID: 322676111406476307}
   upgradeVFX: {fileID: 4083091654411369740}
   jointToRotate: {fileID: 8753586051492627209}
+  anim: {fileID: 5940784941351320089}
 --- !u!95 &2725309422481763045
 Animator:
   serializedVersion: 7

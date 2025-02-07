@@ -94,7 +94,7 @@ public class Bullet : MonoBehaviour
             enemy.TakeDamage(damages, transform.position);
         }
 
-        Instantiate(explosionVFX, transform.position, Quaternion.Euler(0, 0, 0));
+        Instantiate(explosionVFX, transform.position + Vector3.down * 0.15f, Quaternion.Euler(0, 0, 0));
         Destroy(gameObject);
     }
 

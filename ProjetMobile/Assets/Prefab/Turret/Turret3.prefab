@@ -52,6 +52,7 @@ MonoBehaviour:
   shootVFX: {fileID: 902954315258310986}
   upgradeVFX: {fileID: 7595162934151432939}
   jointToRotate: {fileID: 3553793842496159296}
+  anim: {fileID: 2044146845504501121}
 --- !u!1001 &2454532468889075473
 PrefabInstance:
   m_ObjectHideFlags: 0

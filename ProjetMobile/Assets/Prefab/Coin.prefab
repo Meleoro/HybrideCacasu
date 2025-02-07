@@ -129,9 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d47df48db5d75447a9daea081be156b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinSpeed: 10
-  startImpulseForce: 20
+  coinSpeed: 12
+  startImpulseForce: 15
   rb: {fileID: 8632227160813488038}
+  sprite: {fileID: 2600070417338616194}
 --- !u!1 &4977369498729221110
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +210,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Time: 0.5
+  m_Time: 0.25
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -275,7 +276,7 @@ TrailRenderer:
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0
   m_MaskInteraction: 0
   m_Autodestruct: 0
   m_Emitting: 1
