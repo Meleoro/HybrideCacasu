@@ -29,29 +29,22 @@ public class TurretSlotsManager : MonoBehaviour
         
         for (int i = 0; i < turret1Slots.Length; i++)
         {
-            turret1Slots[i].InitialiseSlot(this);
+            turret1Slots[i].InitialiseSlot(this, i < 1);
             turretSlots[currentIndex] = turret1Slots[i];
             currentIndex++;
         }
         for (int i = 0; i < turret2Slots.Length; i++)
         {
-            turret2Slots[i].InitialiseSlot(this);
+            turret2Slots[i].InitialiseSlot(this, i < 1);
             turretSlots[currentIndex] = turret2Slots[i];
             currentIndex++;
         }
         for (int i = 0; i < turret3Slots.Length; i++)
         {
-            turret3Slots[i].InitialiseSlot(this);
+            turret3Slots[i].InitialiseSlot(this, i < 1);
             turretSlots[currentIndex] = turret3Slots[i];
             currentIndex++;
         }
-        
-        turret1Slots[1].gameObject.SetActive(false);
-        turret2Slots[1].gameObject.SetActive(false);
-        turret3Slots[1].gameObject.SetActive(false);
-        turret1Slots[2].gameObject.SetActive(false);
-        turret2Slots[2].gameObject.SetActive(false);
-        turret3Slots[2].gameObject.SetActive(false);
     }
     
     
@@ -80,16 +73,16 @@ public class TurretSlotsManager : MonoBehaviour
         
         if (currentUpgradeCount > unlockSecondRawUpgradeNeeded)
         {
-            turret1Slots[1].gameObject.SetActive(true);
-            turret2Slots[1].gameObject.SetActive(true);
-            turret3Slots[1].gameObject.SetActive(true);
+            turret1Slots[1].EnableSlot();
+            turret2Slots[1].EnableSlot();
+            turret3Slots[1].EnableSlot();
         }
 
         if (currentUpgradeCount > unlockThirdRawUpgradeNeeded)
         {
-            turret1Slots[2].gameObject.SetActive(true);
-            turret2Slots[2].gameObject.SetActive(true);
-            turret3Slots[2].gameObject.SetActive(true);
+            turret1Slots[2].EnableSlot();
+            turret2Slots[2].EnableSlot();
+            turret3Slots[2].EnableSlot();
         }
     }
     
