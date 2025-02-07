@@ -174,7 +174,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  explosionVFX: {fileID: 7453704367065220673, guid: dfcdbb20dc1377e4bad0d04093cfaa6c, type: 3}
+  explosionVFX: {fileID: 925908942123545554, guid: dfcdbb20dc1377e4bad0d04093cfaa6c, type: 3}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
