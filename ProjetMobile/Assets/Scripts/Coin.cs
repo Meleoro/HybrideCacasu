@@ -14,6 +14,7 @@ public class Coin : MonoBehaviour
     
     [Header("References")] 
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private SpriteRenderer sprite;
 
 
     public void Initialise(Vector3 wantedPos, int coinValue)
@@ -28,10 +29,15 @@ public class Coin : MonoBehaviour
     {
         Vector3 forceDir = wantedPos - transform.position;
         
-        if (forceDir.magnitude < 0.6f)
+        if (forceDir.magnitude < 0.25f)
         {
             MoneyManager.Instance.AddMoney(coinValue);
-            Destroy(gameObject);
+
+            sprite.enabled = false;
+
+            rb.isKinematic = true;
+            Destroy(gameObject, 1f);
+            Destroy(this);
         }
 
         transform.forward = CameraManager.Instance.transform.forward;

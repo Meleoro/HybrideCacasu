@@ -48,6 +48,7 @@ public class TurretMaster : MonoBehaviour
     [SerializeField] private ParticleSystem shootVFX;
     [SerializeField] private ParticleSystem upgradeVFX;
     [SerializeField] private Transform jointToRotate;
+    [SerializeField] private Animator anim;
     
 
     public void InitialiseTurret(int turretIndex)
@@ -123,6 +124,8 @@ public class TurretMaster : MonoBehaviour
 
     private void Shoot(Vector3 aimedPoint)
     {
+        anim.SetTrigger("Shoot");
+        
         for (int i = 0; i < turretData.bulletCount + modificatorValues.addedProjectiles; i++)
         {
             Bullet newBullet = Instantiate(bulletPrefab, shootVFX.transform.position, Quaternion.identity);
