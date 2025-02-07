@@ -105,6 +105,9 @@ public class TurretMaster : MonoBehaviour
         upgradeValues.projectileSpeedMultiplier += speed;
         
         upgradeVFX.Play();
+        
+        transform.UStopSquish();
+        transform.localScale = Vector3.one;
         transform.USquishEffect(0.3f, 0.15f, false, CurveType.None);
     }
 
