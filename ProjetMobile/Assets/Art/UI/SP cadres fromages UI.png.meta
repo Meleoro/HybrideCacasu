@@ -113,12 +113,12 @@ TextureImporter:
       name: SP cadres fromages UI_0
       rect:
         serializedVersion: 2
-        x: 329
-        y: 127
+        x: 578
+        y: 118
         width: 774
         height: 776
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -135,12 +135,12 @@ TextureImporter:
       name: SP cadres fromages UI_1
       rect:
         serializedVersion: 2
-        x: 1275
-        y: 324
-        width: 378
-        height: 376
+        x: 1406
+        y: 323
+        width: 375
+        height: 379
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -149,6 +149,28 @@ TextureImporter:
       bones: []
       spriteID: e0ee6f54308516c48a5cb6ceeaeb4678
       internalID: 1522890347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SP cadres fromages UI_2
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 87
+        width: 507
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c0880434e04e4041916e9d47d2578fa
+      internalID: -733835714
       vertices: []
       indices: 
       edges: []
@@ -169,6 +191,7 @@ TextureImporter:
     nameFileIdTable:
       SP cadres fromages UI_0: -1541208503
       SP cadres fromages UI_1: 1522890347
+      SP cadres fromages UI_2: -733835714
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
