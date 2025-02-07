@@ -74,6 +74,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4577be23121b0534c917437e800a1e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cheeseMeshRenderers: []
+  spikesParents:
+  - {fileID: 6238958124003203107}
+  - {fileID: 6319203998284993131}
+  - {fileID: 7480100374779706055}
+  - {fileID: 3874613446325606668}
+  - {fileID: 2879312989055319776}
+  - {fileID: 3464144451173181762}
+  - {fileID: 2383565119856285419}
 --- !u!54 &5882925767370675719
 Rigidbody:
   m_ObjectHideFlags: 0
