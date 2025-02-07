@@ -63,6 +63,8 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         {
             bottomButtons[1].gameObject.SetActive(false);
             bottomButtons[2].gameObject.SetActive(false);
+            
+            StartCoroutine(tutoManager.PlayOpenChestTutoCoroutine(true));
         } 
         else if (GameManager.Instance.levelData.isSecondLevel)
         {
@@ -105,6 +107,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         if (!MoneyManager.Instance.VerifyHasEnoughMoneyMiddleChest(true)) return;
         
         StartCoroutine(modificatorChooseScript.OpenChoseUpgradeUICoroutine());
+        tutoManager.OpenChest();
     }
 
     public void ClickRightButton()
@@ -233,6 +236,7 @@ public class HUDManager : GenericSingletonClass<HUDManager>
         {
             if (turretSlotsManager.EndDrag(currentDraggedCap) && isDraggingNewCap)
             {
+                tutoManager.DragAndDrop();
                 modificatorChooseScript.CloseChoseUpgradeUI();
             }
             else
