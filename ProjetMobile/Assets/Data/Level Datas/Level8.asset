@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822bf2e7adda8bb438cf5ce89273541b, type: 3}
   m_Name: Level8
   m_EditorClassIdentifier: 
-  levelName: Level8
+  levelName: Level 8
   levelDuration: 140
   spawnableEnemies:
   - {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
