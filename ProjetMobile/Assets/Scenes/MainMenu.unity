@@ -983,6 +983,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8761164332764481825, guid: 16d627f9dc49f9c42b9fe47565aae8c8, type: 3}
+      propertyPath: levels.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761164332764481825, guid: 16d627f9dc49f9c42b9fe47565aae8c8, type: 3}
       propertyPath: 'levels.Array.data[2]'
       value: 
       objectReference: {fileID: 11400000, guid: d4cdf9f6bf380bf46adb07c4e03307e7, type: 2}
@@ -1010,6 +1014,26 @@ PrefabInstance:
       propertyPath: 'levels.Array.data[9]'
       value: 
       objectReference: {fileID: 11400000, guid: dc2b40419db7a3948a2398e4eba8df97, type: 2}
+    - target: {fileID: 8761164332764481825, guid: 16d627f9dc49f9c42b9fe47565aae8c8, type: 3}
+      propertyPath: 'levels.Array.data[10]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e440e769499740f4b902c79bab2893dc, type: 2}
+    - target: {fileID: 8761164332764481825, guid: 16d627f9dc49f9c42b9fe47565aae8c8, type: 3}
+      propertyPath: 'levels.Array.data[11]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 948b09c488a0340458784b796c82e442, type: 2}
+    - target: {fileID: 8761164332764481825, guid: 16d627f9dc49f9c42b9fe47565aae8c8, type: 3}
+      propertyPath: 'levels.Array.data[12]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 560666debeef0824680c36f17121e32b, type: 2}
+    - target: {fileID: 8761164332764481825, guid: 16d627f9dc49f9c42b9fe47565aae8c8, type: 3}
+      propertyPath: 'levels.Array.data[13]'
+      value: 
+      objectReference: {fileID: 11400000, guid: bcd2b3a45da596647a037c7bc3b6ff06, type: 2}
+    - target: {fileID: 8761164332764481825, guid: 16d627f9dc49f9c42b9fe47565aae8c8, type: 3}
+      propertyPath: 'levels.Array.data[14]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 1716c851a31b274438525ce9f90842fb, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
