@@ -91,7 +91,7 @@ public class GetNewModificatorUISlot : MonoBehaviour
     {
         mainTr.UBounce(openAnimDuration * 0.7f, Vector3.one * 1.2f, 
             openAnimDuration * 0.3f, Vector3.one * 1f, CurveType.None, true);
-        backImage.UFadeImage(openAnimDuration * 0.7f, 0.6f, CurveType.None, true);
+        //backImage.UFadeImage(openAnimDuration * 0.7f, 0.6f, CurveType.None, true);
         backImage.rectTransform.UBounce(openAnimDuration * 0.7f, backImage.rectTransform.localScale * 1.1f, 
             openAnimDuration * 0.3f, backImage.rectTransform.localScale, CurveType.None, true);
         
