@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level15
   m_EditorClassIdentifier: 
   levelName: Level 15
-  levelDuration: 85
+  levelDuration: 180
   spawnableEnemies: []
   waves:
   - waveWaitDuration: 15

@@ -13,16 +13,15 @@ MonoBehaviour:
   m_Name: Level11
   m_EditorClassIdentifier: 
   levelName: Level 11
-  levelDuration: 140
+  levelDuration: 145
   spawnableEnemies:
-  - {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
   - {fileID: 3464992193447295867, guid: 73e4bf4f71e31ce45a1a08faa07b13aa, type: 3}
   waves:
   - waveWaitDuration: 10
     waveDelayBetweenSpawn: 2
     waveEnemies:
     - enemyType: {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
-      amount: 6
+      amount: 8
   - waveWaitDuration: 20
     waveDelayBetweenSpawn: 2.5
     waveEnemies:
@@ -31,7 +30,7 @@ MonoBehaviour:
   - waveWaitDuration: 20
     waveDelayBetweenSpawn: 1
     waveEnemies:
-    - enemyType: {fileID: 3464992193447295867, guid: 6d3946f51c9a8d848a8b5d1a5c358d7d, type: 3}
+    - enemyType: {fileID: 3464992193447295867, guid: d3c5208b7cfd93b42ac9d26e834872f4, type: 3}
       amount: 8
   - waveWaitDuration: 35
     waveDelayBetweenSpawn: 3
@@ -76,7 +75,7 @@ MonoBehaviour:
   startMoney: 180
   moneyPerEnemy: 1
   softCurrencyWon: 150
-  durationObjectives: 28000000500000008c000000
+  durationObjectives: 280000005000000091000000
   isFirstLevel: 0
   isSecondLevel: 0
   isThirdLevel: 0
