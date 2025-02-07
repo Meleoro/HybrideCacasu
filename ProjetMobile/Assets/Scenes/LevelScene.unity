@@ -2089,7 +2089,7 @@ MonoBehaviour:
   startProgressPerRank:
   - 1.1
   - 0
-  - -0.7
+  - -0.6
   - -1.7
   progressPerUpgrade: 0.2
   isOpenned: 0
@@ -2787,7 +2787,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015318209}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -102}
+  m_LocalPosition: {x: 0, y: 0, z: -130}
   m_LocalScale: {x: 1, y: 0.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2835,7 +2835,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015318209}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!95 &1015318213
 Animator:
   serializedVersion: 7
@@ -3581,7 +3581,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c0d1f39fe22acc24b985946d91180ded, type: 2}
     - {fileID: 11400000, guid: d259f0b357aed4f45ba03181a55cf0ab, type: 2}
     - {fileID: 11400000, guid: 85bfd79fbbdb67348b3711579e06f08d, type: 2}
-    forcedRanks: 010000000000000000000000
+    forcedRanks: 000000000000000000000000
   - forcedModificators:
     - {fileID: 11400000, guid: c0d1f39fe22acc24b985946d91180ded, type: 2}
     - {fileID: 11400000, guid: d259f0b357aed4f45ba03181a55cf0ab, type: 2}
@@ -3592,7 +3592,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 97a1f8f9c644f6546ba419f0aa785a9c, type: 2}
     - {fileID: 11400000, guid: c0d1f39fe22acc24b985946d91180ded, type: 2}
     - {fileID: 11400000, guid: 2d6019168603ca647ac96e70138df86a, type: 2}
-    forcedRanks: 020000000100000001000000
+    forcedRanks: 010000000000000001000000
   forceMiddleChoice: 0
   cursorImage: {fileID: 1015318211}
   backImage: {fileID: 2136267615}
