@@ -9,11 +9,14 @@ public class EndScreen : MonoBehaviour
 {
     [Header("Parameters")] 
     [SerializeField] private Sprite fullStarSprite;
+    [SerializeField] private Sprite loseSprite;
+    [SerializeField] private Sprite winSprite;
     
     [Header("References")] 
     [SerializeField] private TextMeshProUGUI mainText;
     [SerializeField] private TextMeshProUGUI currencyText;
     [SerializeField] private Image[] starsImages;
+    [SerializeField] private Image winImage;
     [SerializeField] private TextMeshProUGUI[] objectivesText;
     [SerializeField] private ParticleSystem[] starsVFXs;
     [SerializeField] private LevelTransition levelTransitionScript;
@@ -40,6 +43,9 @@ public class EndScreen : MonoBehaviour
         {
             objectivesText[i].text = "SURVIVE " + GameManager.Instance.levelData.durationObjectives[i] + " SECONDS";
         }
+
+        winImage.sprite = loseSprite;
+        winImage.SetNativeSize();
         
         yield return new WaitForSecondsRealtime(1f);
         

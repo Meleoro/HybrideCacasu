@@ -1316,6 +1316,7 @@ MonoBehaviour:
   - {fileID: 6836463235814599996}
   - {fileID: 5934482723854152994}
   - {fileID: 6046192666629758505}
+  starsVFXs: []
   levelTransitionScript: {fileID: 0}
 --- !u!1 &7373744064989550329
 GameObject:
