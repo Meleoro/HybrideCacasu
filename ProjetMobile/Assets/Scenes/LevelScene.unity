@@ -3578,15 +3578,15 @@ MonoBehaviour:
     - {fileID: 11400000, guid: d259f0b357aed4f45ba03181a55cf0ab, type: 2}
     forcedRanks: 000000000000000000000000
   - forcedModificators:
-    - {fileID: 11400000, guid: d259f0b357aed4f45ba03181a55cf0ab, type: 2}
-    - {fileID: 11400000, guid: ebd183216041bb94b922bc0a1488c34e, type: 2}
-    - {fileID: 11400000, guid: c0d1f39fe22acc24b985946d91180ded, type: 2}
-    forcedRanks: 000000000000000000000000
-  - forcedModificators:
     - {fileID: 11400000, guid: c0d1f39fe22acc24b985946d91180ded, type: 2}
     - {fileID: 11400000, guid: d259f0b357aed4f45ba03181a55cf0ab, type: 2}
     - {fileID: 11400000, guid: 85bfd79fbbdb67348b3711579e06f08d, type: 2}
-    forcedRanks: 000000000000000001000000
+    forcedRanks: 010000000000000000000000
+  - forcedModificators:
+    - {fileID: 11400000, guid: d259f0b357aed4f45ba03181a55cf0ab, type: 2}
+    - {fileID: 11400000, guid: c0d1f39fe22acc24b985946d91180ded, type: 2}
+    - {fileID: 11400000, guid: 85bfd79fbbdb67348b3711579e06f08d, type: 2}
+    forcedRanks: 000000000000000000000000
   level2ForcedPools:
   - forcedModificators:
     - {fileID: 11400000, guid: 97a1f8f9c644f6546ba419f0aa785a9c, type: 2}
