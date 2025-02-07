@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d4f9af980d2014e987993b750e5f88, type: 3}
   m_Name: Turret2-1
   m_EditorClassIdentifier: 
-  turretName: Turret 2
+  turretName: Catapulte
   turretIndex: 1
   damages: 25
   shootCooldown: 2
