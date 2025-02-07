@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d4f9af980d2014e987993b750e5f88, type: 3}
   m_Name: Turret3-1
   m_EditorClassIdentifier: 
-  turretName: Turret 3
+  turretName: Sniper
   turretIndex: 2
   damages: 50
   shootCooldown: 3

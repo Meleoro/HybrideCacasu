@@ -64,7 +64,7 @@ public class TurretSlot : MonoBehaviour
 
     public void ActualiseLock(int upgradesNeeded)
     {
-        lockText.text = "+" + upgradesNeeded + " Levels Needed";
+        lockText.text = "+" + upgradesNeeded + " Levels";
     }
 
 
